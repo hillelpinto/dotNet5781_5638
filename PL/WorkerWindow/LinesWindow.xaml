@@ -1,0 +1,144 @@
+﻿<Window x:Class="PL.WorkerWindow.LinesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.WorkerWindow"
+        mc:Ignorable="d"
+        Title="LinesWindow" Height="700" Width="1380">
+    <Grid x:Name="myData" Margin="0,0,0,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="LimeGreen" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListView Name="ListLine" Margin="10,58,569,4" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Line number" Width="90" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding busLineNumber}" TextAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="From " Width="95" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding firstStation }" TextAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="To " Width="95">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding lastStation}" TextAlignment="Center" Foreground="Black" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Area " Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding getArea}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Service start time " Width="108">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding BeginService}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Service end time " Width="108">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding EndService}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="V to Delete" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Name="ToDelete" Checked="LineChecked" Unchecked="LineUnchecked"  HorizontalAlignment="Center" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Width="93">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="AddStation" Content="Add Station" Foreground="Aquamarine" Height="20" Width="87" Background="Gray" Click="AddStationpressed "></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="LimeGreen" Offset="1"/>
+                    <GradientStop Color="#434343" Offset="0.163"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+        </ListView>
+        <Button Content="Back" Foreground="ForestGreen" Background="DarkGray" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
+
+        <ListView x:Name="myDetails" Margin="816,59,0,223" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="532">
+
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Aquamarine" Offset="1"/>
+                    <GradientStop Color="#434343" Offset="0.163"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Station ID" Width="80" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding shelterNumber}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Station name " Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding address}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Time to next stop" Width="110" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Temps}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Distance to next stop" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Distance}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="V to Delete" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Name="ToDelete" HorizontalContentAlignment="Center" Checked="stationchecked" Unchecked="stationunchecked"  HorizontalAlignment="Center" FontSize="15" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+        <Button Name="addlinebutton" Content="Add a Line " Background="Gray" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,500,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
+        <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="LimeGreen" FontSize="16" HorizontalAlignment="Left" Margin="921,17,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="1142,23,0,0" Name="linepresented"  TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="30"/>
+        <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="GreenYellow" FontWeight="Bold" FontSize="15" Margin="847,586,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
+        <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Name="DeleetStationbutton" Content="Delete Station ..."  HorizontalAlignment="Left" Margin="1142,500,0,0" VerticalAlignment="Top" Height="54" Width="136" Click="DeleetStationbutton_Click"/>
+
+    </Grid>
+</Window>

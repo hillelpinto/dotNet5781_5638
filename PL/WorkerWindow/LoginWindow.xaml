@@ -1,0 +1,33 @@
+﻿<Window x:Class="PL.WorkerWindow.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.WorkerWindow"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="400" Width="530">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4E00" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
+            </LinearGradientBrush>
+
+        </Grid.Background>
+        <TextBox Visibility="Hidden" HorizontalAlignment="Left" Margin="250,132,0,0" Name="userfield" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="30"/>
+        <Label Name="usernamelabel" Visibility="Hidden" Content="Username :" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="102,132,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Visibility="Hidden" Name="pwdlabel" Content="Password :" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="102,220,0,0" VerticalAlignment="Top" Width="97"/>
+        <PasswordBox Visibility="Hidden" Name="mypasswordBox" HorizontalAlignment="Left" Margin="250,220,0,0" VerticalAlignment="Top" Width="148" Height="30"/>
+        <Button x:Name="loginbutton" Visibility="Hidden" Click="Loginbutton" Content="Login " FontSize="15" HorizontalAlignment="Left" Margin="372,294,0,0" VerticalAlignment="Top" Width="92"/>
+        <RadioButton Name="NeedAcount" Content="Don't have an account yet ?" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="48,47,0,0" VerticalAlignment="Top" Height="28" Width="216" Checked="NeedAcount_Checked"/>
+        <RadioButton Name="NeedLogin" Content="Already in the family ?" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="332,47,0,0" VerticalAlignment="Top" Checked="NeedLogin_Checked"/>
+        <TextBox Visibility="Hidden" Name="newusername" HorizontalAlignment="Left" Margin="316,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="33"/>
+        <TextBlock Visibility="Hidden" Name="txtboxnew" HorizontalAlignment="Left" Margin="80,133,0,0" FontSize="15" Foreground="White" FontWeight="Bold" Text="Invent your username :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="165"/>
+        <PasswordBox Visibility="Hidden" x:Name="newpwd" HorizontalAlignment="Left" Margin="316,195,0,0" VerticalAlignment="Top" Width="148" Height="33"/>
+        <Label Visibility="Hidden" Content="Invent a strong password :" Name="pwdnew" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,195,0,0" VerticalAlignment="Top" Width="199"/>
+        <TextBox Visibility="Hidden" x:Name="newmailaddress" HorizontalAlignment="Left" Margin="316,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Height="33"/>
+        <Label Visibility="Hidden" Name="maillabel" Content="Enter your mail address please :" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,275,0,0" VerticalAlignment="Top"/>
+        <Button Visibility="Hidden" Click="signin" Content="Sign In" Name="signinbutton" HorizontalAlignment="Left" Margin="237,334,0,0" VerticalAlignment="Top" Width="103" Height="24"/>
+        <Button Name="resetpwd" Visibility="Hidden" Click="resetPassword" Content="Reset my password" HorizontalAlignment="Left" Margin="102,310,0,0" VerticalAlignment="Top" Width="130" Height="36" />
+    </Grid>
+</Window>

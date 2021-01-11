@@ -1,0 +1,138 @@
+﻿<Window x:Class="PL.WorkerWindow.BusesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.WorkerWindow"
+        mc:Ignorable="d"
+        Title="BusesWindow" Height="730" Width="1210">
+    <Grid x:Name="myData" Margin="0,0,0,-16">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4E00" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListView Name="ListBus" Margin="0,84,371,10" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="License Number" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding GFormat}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="License Release Date " >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Kilometers" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Km}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Fuel Level" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Fuel}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Status " Width="110">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <ProgressBar Width="110" Height="20" Foreground="Orange" Minimum="0" Maximum="100" Value="{Binding Percent,UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Name="textinside" Text="{Binding returnStatus,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Gasoil side !" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Refuel"  Foreground="Orange" FontWeight="Bold" Background="Black"  Click="RefuelClicked" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Garage side !" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Maintenance" Foreground="Orange" FontWeight="Bold" Background="Black"  Click="MaintenanceClicked" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Choose to delete">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4E00" Offset="1"/>
+                    <GradientStop Color="#434343" Offset="0.163"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+        </ListView>
+        <Button x:Name="updatebutton" IsEnabled="False" Content="Update" ToolTip="Select a bus and you can update the Driver's Name and the number of the seat available" FontSize="15"  Foreground="Orange" FontWeight="Bold" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="134" Margin="945,644,0,0" Click="Update"/>
+        <Button x:Name="CreateButton" FontSize="15" Content="Add a bus " Foreground="Orange" ToolTip="Press me to add a bus " FontWeight="Bold" Background="Black" HorizontalAlignment="Left" Margin="945,537,0,0" VerticalAlignment="Top" Height="32" Width="132" Click="Button_Click"/>
+        <Button Content="Delete" IsEnabled="False" Foreground="Orange" Name="DeleteButton" FontSize="15" ToolTip="Fill the checkboxes and press me " FontWeight="Bold" Background="Black" HorizontalAlignment="Left" Margin="945,591,0,0" VerticalAlignment="Top" Height="32" Width="132" Click="DeleteButton_Click"/>
+        <Button Content="Back" Foreground="Orange" Background="Black" Name="BackButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
+
+        <ListView x:Name="myDetails" Margin="840,84,0,196" ItemsSource="{Binding}">
+
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#434343" Offset="0.163"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+
+
+
+
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="850,104,0,0" Text="License Number" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="850,144,0,0" Text="License Release Date" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="850,188,0,0" Text="Fuel Level " Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="850,228,0,0" Text="Kilometers " Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="850,268,0,0" Text="Km Since Checkup" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="850,308,0,0" Text="Last Checkup Date " Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Name="DriveForPopu" Margin="850,348,0,0" Text="Driver's Name" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Name="SeatForpopup" Margin="850,388,0,0" Text="Seat Available" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
+        <Popup  Placement="Bottom" PopupAnimation="Scroll"  PlacementTarget="{Binding ElementName=DriveForPopu}"  Name="PopupDriver" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
+            <TextBlock Foreground="Orange"  Background="White" >Make commit here !</TextBlock>
+        </Popup>
+        <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=SeatForpopup}"  Name="PopupSeat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
+            <TextBlock Foreground="Orange"  Background="White" >Make commit here !</TextBlock>
+        </Popup>
+       
+        <TextBox HorizontalAlignment="Left" Margin="1052,104,0,0" Text="{Binding GFormat}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Orange" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,144,0,0" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,188,0,0" Text="{Binding Fuel}" FontSize="15" IsReadOnly="True"  FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,228,0,0" Name="KmText" Text="{Binding Km}" FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,268,0,0" Text="{Binding KmAfterLastMaintenance,UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold" IsReadOnly="True" Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="21"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,308,0,0" IsReadOnly="True" Text="{Binding Checkup,StringFormat='dd/MM/yyyy',UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" TextChanged="driverpopup" Margin="1052,348,0,0" IsReadOnly="True" Text="{Binding DriverName}" Name="DriverField" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox TextChanged="seatpopup" HorizontalAlignment="Left" Margin="1052,388,0,0" IsReadOnly="True" Name="SeatField" Text="{Binding SeatAvailable}" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="600,22,0,0" FontSize="15" VerticalAlignment="Top" Width="155" Height="25" Name="Combofilter" SelectionChanged="Combofilter_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="366,41,0,0" FontSize="15" FontWeight="Bold" Text="Searching and Filtering by :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="212"/>
+        <TextBox Name="LicenseTosearch" HorizontalAlignment="Left" Margin="600,54,0,0" Text="Type the license ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Search " Background="Black " Foreground="Orange" HorizontalAlignment="Left" Margin="770,58,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+
+
+
+
+    </Grid>
+
+</Window>

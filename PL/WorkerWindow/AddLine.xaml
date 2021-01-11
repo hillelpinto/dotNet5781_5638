@@ -1,0 +1,34 @@
+﻿<Window x:Class="PL.WorkerWindow.AddLine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:PL.WorkerWindow"
+        mc:Ignorable="d"
+        Title="AddLine" Height="415" Width="500">
+
+    <Grid x:Name="mydata" RenderTransformOrigin="0.402,1.09" Height="404" VerticalAlignment="Top">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="LimeGreen" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <TextBox Name ="LicenseN" HorizontalAlignment="Left" Margin="312,35,0,0" Text="{Binding busLineNumber}"  TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="36"/>
+
+
+
+        <Button Content="Valider" Foreground="Aquamarine" FontWeight="Bold" Background="Gray" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Button_Click"/>
+        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Bus Line Number :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
+        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Shelter Number of First Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="243"/>
+        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Shelter Number of Last Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="228"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,238,0,0" Text="Area :" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="78"/>
+        <ComboBox Name="ComboArea" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="312,238,0,0" VerticalAlignment="Top" Width="150" Height="32"/>
+        <ComboBox Name="firststationcombo" HorizontalAlignment="Left" Margin="312,101,0,0" VerticalAlignment="Top" Width="150" Height="29" SelectionChanged="firststationcombo_SelectionChanged"/>
+        <ComboBox Name="laststationcombo" HorizontalAlignment="Left" Margin="312,172,0,0" VerticalAlignment="Top" Width="150" Height="29" SelectionChanged="laststationcombo_SelectionChanged"/>
+
+
+    </Grid>
+</Window>
