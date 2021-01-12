@@ -108,7 +108,7 @@ namespace BL
             {
                 foreach(StationLine s in getmyStationsLines())
                 {
-                    if (s.LineHere == l.busLineNumber)
+                    if (s.LineHere == l.ID)
                     {
                         if (s.positioninmyLine!=null)
                         {
@@ -199,7 +199,7 @@ namespace BL
             public bool deleteLines()//It delete all the stations in the line too
             {
             IEnumerable<Line> lineInDeletion = getAllAllLine().ToList().Where(line => line.CheckedOrNot == true).ToList();
-            IEnumerable<StationLine> deleteStationFirst = getmyStationsLines().Where(station => lineInDeletion.ToList().Exists(line => line.busLineNumber == station.LineHere));
+            IEnumerable<StationLine> deleteStationFirst = getmyStationsLines().Where(station => lineInDeletion.ToList().Exists(line => line.ID == station.LineHere));
             deleteStationFirst.ToList().ForEach(station => station.CheckedOrNot = true);
             deleteStationFirst.ToList().ForEach(station => modifyStationline(station));
          
@@ -258,7 +258,7 @@ namespace BL
             StationLine s = i;
             foreach(StationLine l in ss)
             {
-                s.myLines.Add(getLines().Find(line => line.busLineNumber == l.LineHere));
+                s.myLines.Add(getLines().Find(line => line.ID == l.LineHere));
             }
             
             return s;

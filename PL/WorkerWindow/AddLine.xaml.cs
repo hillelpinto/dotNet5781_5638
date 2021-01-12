@@ -30,13 +30,17 @@ namespace PL.WorkerWindow
 
             this.DataContext = l;
             firststationcombo.ItemsSource = instance.GetStations();
+            laststationcombo.ItemsSource = instance.GetStations();
+
             ComboArea.ItemsSource = Enum.GetValues(typeof(Area)).Cast<Area>().ToList();
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LicenseN.Text.Length == 0)
+            if (firststationcombo.SelectedIndex == laststationcombo.SelectedIndex)
+                MessageBox.Show("You have to select 2 different station !");
+            else if (LicenseN.Text.Length == 0)
                 MessageBox.Show("You have to type a line number !");
             else
             {
@@ -48,7 +52,10 @@ namespace PL.WorkerWindow
                 }
                 else
                 {
-                    l.busLineNumber = f;
+                    l.ID = r.Next(0, 10000);
+                    while (instance.getAllAllLine().ToList().Exists(line => line.ID == l.ID))
+                        l.ID = r.Next(0, 10000);
+
                     l.area = (Area)ComboArea.SelectedIndex;
                     StationLine first = instance.fromStation(instance.GetStations().ToList()[firststationcombo.SelectedIndex]);
                     first.ID = r.Next(0, 10000);
@@ -56,14 +63,14 @@ namespace PL.WorkerWindow
                     {
                         first.ID= r.Next(0, 10000);
                     }
-                    first.LineHere = f;
+                    first.LineHere = l.ID;
                     l.CheckedOrNot = false;
                     l.firstStation = first.shelterNumber;                   
                      instance.addStationl(first);
-                      StationLine last = instance.fromStation(instance.GetStations().ToList()[laststationcombo.SelectedIndex + 1]);
-                      last.LineHere = f;
+                     StationLine last = instance.fromStation(instance.GetStations().ToList()[laststationcombo.SelectedIndex]);
+                     last.LineHere = l.ID;
                     int dd = last.shelterNumber;
-                      l.lastStation = last.shelterNumber;
+                    l.lastStation = last.shelterNumber;
                     last.ID = r.Next(0, 10000);
                     while (instance.getAllStationsLines().Exists(station => station.ID == last.ID))
                     {
@@ -87,14 +94,6 @@ namespace PL.WorkerWindow
             }
         }
 
-        private void firststationcombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            laststationcombo.ItemsSource = instance.getStationLessOne(instance.getStation(firststationcombo.SelectedIndex).shelterNumber);
-        }
-
-        private void laststationcombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+     
     }
 }

@@ -42,7 +42,7 @@ namespace PL.WorkerWindow
             {
                 s.ID = r.Next(0, 1000);
             }
-            s.LineHere = temp.busLineNumber;
+            s.LineHere = temp.ID;
           
             int test;
             bool check = int.TryParse(indexx.Text, out test);

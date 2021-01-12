@@ -41,7 +41,10 @@ namespace DAL.DS
             #region init Line
             for (int a = 0; a < 10; a++)
             {
+                
                 DataSource.Lines.Add(new Line("s"));
+                DataSource.Lines[a].ID = forID;
+                forID++;
             }
             #endregion
 
@@ -103,7 +106,7 @@ namespace DAL.DS
                     {
                         DataSource.Lines[index].firstStation = DataSource.StationLines[b].shelterNumber;
                     }
-                    DataSource.StationLines[a].LineHere = DataSource.Lines[index].busLineNumber;
+                    DataSource.StationLines[a].LineHere = DataSource.Lines[index].ID;
                 }
                 a--;
                 DataSource.Lines[index].lastStation = DataSource.StationLines[a].shelterNumber;

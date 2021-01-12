@@ -79,14 +79,7 @@ namespace PL.WorkerWindow.Views
             tonotDelete.ForEach(station => instance.modifyStationline(station));
 
         }
-        private void distanceC(object sender, TextChangedEventArgs e)
-        {
-            Popupdistance.IsOpen = false;
-        }
-        private void timeC(object sender, TextChangedEventArgs e)
-        {
-            Popuptime.IsOpen = false;
-        }
+       
         private void changed(object sender, RoutedEventArgs e)
         {
 
@@ -106,6 +99,8 @@ namespace PL.WorkerWindow.Views
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            Popupdistance.IsOpen = false;
+            Popuptime.IsOpen = false;
             if (instance.deleteStationLine())
             {
                 MessageBox.Show("This station was deleted from all the buses who passing through !");
@@ -121,22 +116,21 @@ namespace PL.WorkerWindow.Views
         }
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Popupdistance.IsOpen = false;
+            Popuptime.IsOpen = false;
             AddRealStationLine win = new AddRealStationLine();
 
             win.ShowDialog();
-
-           
-    
-            //ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
-
-
+            ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
         private void updatebutton_Click(object sender, RoutedEventArgs e)
         {
+            Popupdistance.IsOpen = false;
+            Popuptime.IsOpen = false;
+
             StationLine i = instance.findlineForStation(instance.getmyStationsLines()[ListBus.SelectedIndex]);
             i = i.myLines[mycomboLine.SelectedIndex].listStations.Find(station=>station.shelterNumber==i.shelterNumber);//Get the good station according to the choice of the suser in the comboBox
-            Stationsconnected s = instance.getStationConnected().ToList().Find(objet => objet.numeroUno.ID == i.ID);
+            Stationsconnected s = instance.getStationConnected().ToList().Find(objet => objet.numeroUno.ID == i.ID||objet.numeroDeuzio.ID==i.ID);
             TimeSpan essai = new TimeSpan();
             s.distance = float.Parse(distancetxt.Text);
             bool check = TimeSpan.TryParse(timeText.Text, out essai);
@@ -164,12 +158,14 @@ namespace PL.WorkerWindow.Views
             {
                 StationLine i = instance.getmyStationsLines()[ListBus.SelectedIndex];
                 i = instance.findlineForStation(i);
-
-                terminus.Text = instance.getmyStationsLines().Find(station => station.shelterNumber == i.myLines[mycomboLine.SelectedIndex].lastStation).address;
-                i = i.myLines[mycomboLine.SelectedIndex].listStations.Find(station => station.shelterNumber == i.shelterNumber);
-                myData.DataContext = i;
-                distancetxt.Text = i.Distance.ToString();
-                timeText.Text = i.Temps.ToString();
+                if (instance.getmyStationsLines().Exists(station => station.shelterNumber == i.myLines[mycomboLine.SelectedIndex].lastStation))
+                {
+                    terminus.Text = instance.getmyStationsLines().Find(station => station.shelterNumber == i.myLines[mycomboLine.SelectedIndex].lastStation).address;
+                    i = i.myLines[mycomboLine.SelectedIndex].listStations.Find(station => station.shelterNumber == i.shelterNumber);
+                    myData.DataContext = i;
+                    distancetxt.Text = i.Distance.ToString();
+                    timeText.Text = i.Temps.ToString();
+                }
 
             }
 

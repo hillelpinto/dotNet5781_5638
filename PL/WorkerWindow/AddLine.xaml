@@ -26,8 +26,8 @@
         <TextBlock HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Shelter Number of Last Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="228"/>
         <TextBlock HorizontalAlignment="Left" Margin="48,238,0,0" Text="Area :" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="78"/>
         <ComboBox Name="ComboArea" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="312,238,0,0" VerticalAlignment="Top" Width="150" Height="32"/>
-        <ComboBox Name="firststationcombo" HorizontalAlignment="Left" Margin="312,101,0,0" VerticalAlignment="Top" Width="150" Height="29" SelectionChanged="firststationcombo_SelectionChanged"/>
-        <ComboBox Name="laststationcombo" HorizontalAlignment="Left" Margin="312,172,0,0" VerticalAlignment="Top" Width="150" Height="29" SelectionChanged="laststationcombo_SelectionChanged"/>
+        <ComboBox Name="firststationcombo" HorizontalAlignment="Left" Margin="312,101,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
+        <ComboBox Name="laststationcombo" HorizontalAlignment="Left" Margin="312,172,0,0" VerticalAlignment="Top" Width="150" Height="29" />
 
 
     </Grid>

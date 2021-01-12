@@ -75,6 +75,8 @@ namespace PL.WorkerWindow
             {
                 DeleetStationbutton.IsEnabled = false;
                 DeleetStationbutton.Background = null;
+                DeleetStationbutton.Foreground = Brushes.Black;
+
             }
             var cb = sender as CheckBox;
             var thisStation = cb.DataContext as BL.BO.StationLine;
@@ -85,7 +87,7 @@ namespace PL.WorkerWindow
         {
             DeleteLineButton.IsEnabled = true;
             DeleteLineButton.Background = Brushes.Gray;
-            DeleteLineButton.Foreground = Brushes.Yellow;
+            DeleteLineButton.Foreground = Brushes.GreenYellow;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as BL.BO.Line;
   
@@ -115,6 +117,7 @@ namespace PL.WorkerWindow
         {
             AddLine window = new AddLine();
             window.ShowDialog();
+            linepresented.Text = null;
             ListLine.DataContext = instance.getLines();
 
         }
@@ -155,6 +158,7 @@ namespace PL.WorkerWindow
         {
             instance.deleteStationLine();
             DeleetStationbutton.Background = null;
+            DeleetStationbutton.Foreground = Brushes.Black;
             DeleetStationbutton.IsEnabled = false;
             myDetails.DataContext = myData.DataContext = null;
             ListLine.DataContext = instance.getLines();

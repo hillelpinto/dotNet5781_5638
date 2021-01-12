@@ -41,7 +41,7 @@ namespace PL.WorkerWindow.Views
             bool check = int.TryParse(indexx.Text, out test);
             if (check)
             {
-                s.LineHere = instance.getLines()[mycomboLine.SelectedIndex].busLineNumber;
+                s.LineHere = instance.getLines()[mycomboLine.SelectedIndex].ID;
                 s.positioninmyLine = indexx.Text;
                 //instance.addOneCouple(s, instance.getLines()[mycomboLine.SelectedIndex].listStations[int.Parse(indexx.Text)]);
                 if (test - 1 >= 0)
