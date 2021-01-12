@@ -27,7 +27,7 @@
         <Label Visibility="Hidden" Content="Invent a strong password :" Name="pwdnew" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,195,0,0" VerticalAlignment="Top" Width="199"/>
         <TextBox Visibility="Hidden" x:Name="newmailaddress" HorizontalAlignment="Left" Margin="316,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Height="33"/>
         <Label Visibility="Hidden" Name="maillabel" Content="Enter your mail address please :" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,275,0,0" VerticalAlignment="Top"/>
-        <Button Visibility="Hidden" Click="signin" Content="Sign In" Name="signinbutton" HorizontalAlignment="Left" Margin="237,334,0,0" VerticalAlignment="Top" Width="103" Height="24"/>
-        <Button Name="resetpwd" Visibility="Hidden" Click="resetPassword" Content="Reset my password" HorizontalAlignment="Left" Margin="102,310,0,0" VerticalAlignment="Top" Width="130" Height="36" />
+        <Button  Click="signin" Visibility="Hidden" Foreground="Orange" Background="Black" FontSize="15" FontWeight="Bold" Content="Sign In" Name="signinbutton" HorizontalAlignment="Left" Margin="237,334,0,0" VerticalAlignment="Top" Width="103" Height="24"/>
+        <Button Foreground="Orange" Background="Black" Visibility="Hidden" FontSize="15" FontWeight="Bold" Name="resetpwd" Click="resetPassword" Content="Reset my password" HorizontalAlignment="Left" Margin="37,334,0,0" VerticalAlignment="Top" Width="162" Height="30" />
     </Grid>
 </Window>

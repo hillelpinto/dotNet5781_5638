@@ -62,6 +62,7 @@ namespace PL.WorkerWindow
                      instance.addStationl(first);
                       StationLine last = instance.fromStation(instance.GetStations().ToList()[laststationcombo.SelectedIndex + 1]);
                       last.LineHere = f;
+                    int dd = last.shelterNumber;
                       l.lastStation = last.shelterNumber;
                     last.ID = r.Next(0, 10000);
                     while (instance.getAllStationsLines().Exists(station => station.ID == last.ID))
@@ -73,6 +74,7 @@ namespace PL.WorkerWindow
                     try
                     {
                         instance.addLine(l);
+                        MessageBox.Show("Line added successfully !");
                         this.Close();
                     }
                     catch(BLException b)

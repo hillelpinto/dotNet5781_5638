@@ -85,12 +85,16 @@ namespace DAL
         public void addLine(Line l)
         {
             List<Line> checkMany = DataSource.Lines.Where(line => line.busLineNumber == l.busLineNumber).ToList();
-            if (checkMany.Count==2)
+            if (checkMany.Count == 2)
                 throw new DLException("This line already exists !");
+  
             else if (checkMany.Count == 1 && l.firstStation == checkMany[0].lastStation && l.lastStation == checkMany[0].firstStation)
             {
+               
                 DataSource.Lines.Add(l);
             }
+            else if (checkMany.Count == 0)
+                DataSource.Lines.Add(l);
             else
             {
                 throw new DLException("You can add this line only according to the two-way laws !");
@@ -263,11 +267,6 @@ namespace DAL
             List<User> u = DataSource.Users;
             return u;
         }
-
-
-
-
-
 
         #endregion
     }

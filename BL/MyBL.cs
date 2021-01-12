@@ -186,7 +186,7 @@ namespace BL
             }
             catch(DLException ex)
             {
-                (ex.Message);
+                throw new BLException(ex.Message);
             }
             }
         public IEnumerable<Line> getAllAllLine()//get the line without the stations in each of them
@@ -463,13 +463,13 @@ public void addOneCouple(StationLine s,StationLine l)
                         dal.addUser(b);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     b.pwd = "0000";
                     dal.deleteUser(a);
                     dal.addUser(b);
-                throw new Exception(ex.Message);
-                    throw new Exception("Your mail is not valid we can't send you a new password so by default it's 0000 now !");
+              
+                    throw new BLException("Your mail is not valid we can't send you a new password so by default it's 0000 now !");
                 }
             }
             #endregion

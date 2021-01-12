@@ -26,7 +26,7 @@ namespace PL.WorkerWindow.Views
         {
 
             InitializeComponent();
-            ListBus.DataContext = instance.getmyStationsLines();
+            ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
@@ -36,6 +36,8 @@ namespace PL.WorkerWindow.Views
                 updatebutton.Foreground = Brushes.Aquamarine;
                 distancetxt.IsReadOnly = false;
                 timeText.IsReadOnly = false;
+                Popupdistance.IsOpen = true;
+                Popuptime.IsOpen = true;
 
                 StationLine i = instance.getmyStationsLines()[ListBus.SelectedIndex];
                 i = instance.findlineForStation(i);
@@ -53,6 +55,7 @@ namespace PL.WorkerWindow.Views
             var cb = sender as Button;
             var thisStation = cb.DataContext as StationLine;
             string address = "https://www.google.com/maps/search/?api=1&query=" + thisStation.latitude + "," + thisStation.longitude;
+            MessageBox.Show("Coming soon");
             //new Map(address).ShowDialog();
 
         }
@@ -75,6 +78,14 @@ namespace PL.WorkerWindow.Views
             tonotDelete.ForEach(station => station.CheckedOrNot = false);
             tonotDelete.ForEach(station => instance.modifyStationline(station));
 
+        }
+        private void distanceC(object sender, TextChangedEventArgs e)
+        {
+            Popupdistance.IsOpen = false;
+        }
+        private void timeC(object sender, TextChangedEventArgs e)
+        {
+            Popuptime.IsOpen = false;
         }
         private void changed(object sender, RoutedEventArgs e)
         {

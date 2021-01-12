@@ -125,9 +125,9 @@ namespace PL.WorkerWindow
                     instance.resetpwd(a);
                     MessageBox.Show("Your password is now in your mail message");
                 }
-                catch(Exception ex)
+                catch(BLException ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
