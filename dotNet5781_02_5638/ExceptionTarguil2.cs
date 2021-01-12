@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_5638
 {
-    class ExceptionTarguil2
+    class ExceptionTarguil2 : Exception
     {
+        public ExceptionTarguil2()
+        {
+
+        }
+        public ExceptionTarguil2(string msg) : base(msg) { }
     }
 }
