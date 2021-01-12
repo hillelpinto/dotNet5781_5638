@@ -89,7 +89,7 @@
         
         <TextBlock  HorizontalAlignment="Left" Name="add"  Text="Address" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,160,0,0" Height="20" Width="112"/>
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=add}"  Name="Popupadd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Aquamarine" Background="White" >Make commit here !</TextBlock>
+            <TextBlock Foreground="Aquamarine" FontStyle="Italic" Background="Black" >Make commit here !</TextBlock>
         </Popup>
         <TextBlock  HorizontalAlignment="Left"  Text="Digit Panel" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,200,0,0" Height="20" Width="112"/>
         <TextBlock  HorizontalAlignment="Left"  Text="Disable access" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,240,0,0" Height="34" Width="112"/>

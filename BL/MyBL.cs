@@ -186,7 +186,7 @@ namespace BL
             }
             catch(DLException ex)
             {
-                throw new BLException(ex.Message);
+                (ex.Message);
             }
             }
         public IEnumerable<Line> getAllAllLine()//get the line without the stations in each of them

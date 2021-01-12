@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WorkerWindow"
         mc:Ignorable="d"
-        Title="BusesWindow" Height="730" Width="1210">
+        Title="BusesWindow" WindowStartupLocation="CenterScreen" Height="730" Width="1210">
     <Grid x:Name="myData" Margin="0,0,0,-16">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -111,10 +111,10 @@
         <TextBlock HorizontalAlignment="Left" Name="DriveForPopu" Margin="850,348,0,0" Text="Driver's Name" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Name="SeatForpopup" Margin="850,388,0,0" Text="Seat Available" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
         <Popup  Placement="Bottom" PopupAnimation="Scroll"  PlacementTarget="{Binding ElementName=DriveForPopu}"  Name="PopupDriver" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Orange"  Background="White" >Make commit here !</TextBlock>
+            <TextBlock Foreground="Orange"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
         </Popup>
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=SeatForpopup}"  Name="PopupSeat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Orange"  Background="White" >Make commit here !</TextBlock>
+            <TextBlock Foreground="Orange"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
         </Popup>
        
         <TextBox HorizontalAlignment="Left" Margin="1052,104,0,0" Text="{Binding GFormat}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Orange" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

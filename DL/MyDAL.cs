@@ -84,10 +84,18 @@ namespace DAL
      
         public void addLine(Line l)
         {
-            if (DataSource.Lines.Exists(line => line.busLineNumber == l.busLineNumber))
+            List<Line> checkMany = DataSource.Lines.Where(line => line.busLineNumber == l.busLineNumber).ToList();
+            if (checkMany.Count==2)
                 throw new DLException("This line already exists !");
-            DataSource.Lines.Add(l);
-           
+            else if (checkMany.Count == 1 && l.firstStation == checkMany[0].lastStation && l.lastStation == checkMany[0].firstStation)
+            {
+                DataSource.Lines.Add(l);
+            }
+            else
+            {
+                throw new DLException("You can add this line only according to the two-way laws !");
+            }
+
         }
      
         public bool DeleteLines()

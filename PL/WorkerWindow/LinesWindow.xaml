@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WorkerWindow"
         mc:Ignorable="d"
-        Title="LinesWindow" Height="700" Width="1380">
+        Title="LinesWindow" WindowStartupLocation="CenterScreen" Height="700" Width="1380">
     <Grid x:Name="myData" Margin="0,0,0,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -134,10 +134,10 @@
 
 
         </ListView>
-        <Button Name="addlinebutton" Content="Add a Line " Background="Gray" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,500,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
+        <Button Name="addlinebutton" Content="Add Line " Background="Gray" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,500,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
         <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="LimeGreen" FontSize="16" HorizontalAlignment="Left" Margin="921,17,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
         <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="1142,23,0,0" Name="linepresented"  TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="30"/>
-        <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="GreenYellow" FontWeight="Bold" FontSize="15" Margin="847,586,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
+        <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="15" Margin="847,586,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
         <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Name="DeleetStationbutton" Content="Delete Station ..."  HorizontalAlignment="Left" Margin="1142,500,0,0" VerticalAlignment="Top" Height="54" Width="136" Click="DeleetStationbutton_Click"/>
 
     </Grid>

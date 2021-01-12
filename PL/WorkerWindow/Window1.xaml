@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WorkerWindow"
         mc:Ignorable="d"
-        Title="WorkerWindow" Height="400" Width="400">
+        Title="WorkerWindow" WindowStartupLocation="CenterScreen" Height="400" Width="400">
     <Grid Margin="0,0,0,-6">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

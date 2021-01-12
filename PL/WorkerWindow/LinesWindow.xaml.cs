@@ -85,6 +85,7 @@ namespace PL.WorkerWindow
         {
             DeleteLineButton.IsEnabled = true;
             DeleteLineButton.Background = Brushes.Gray;
+            DeleteLineButton.Foreground = Brushes.Yellow;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as BL.BO.Line;
   
@@ -100,6 +101,7 @@ namespace PL.WorkerWindow
             {
                 DeleteLineButton.IsEnabled = false;
                 DeleteLineButton.Background = null;
+                DeleteLineButton.Foreground = Brushes.Black;
             }
             else
             {
@@ -131,7 +133,7 @@ namespace PL.WorkerWindow
                 DeleteLineButton.Background = null;
                 ListLine.DataContext = instance.getLines();
                 DeleteLineButton.IsEnabled = false;
-                DeleteLineButton.Background = null;
+                DeleteLineButton.Foreground = Brushes.Black;
                 myDetails.DataContext = null;
                 ListLine.SelectedItem = null;
                 MessageBox.Show("Your Line(s) is well deleted !");

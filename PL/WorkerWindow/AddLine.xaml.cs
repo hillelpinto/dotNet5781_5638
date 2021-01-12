@@ -69,10 +69,16 @@ namespace PL.WorkerWindow
                         last.ID = r.Next(0, 10000);
                     }
                     instance.addStationl(last);
-                    instance.addOneCouple(first, last);     
-                    instance.addLine(l);
-                    this.Close();
-                        
+                    instance.addOneCouple(first, last);
+                    try
+                    {
+                        instance.addLine(l);
+                        this.Close();
+                    }
+                    catch(BLException b)
+                    {
+                        MessageBox.Show(b.Message);
+                    }
                   
                   
                 }

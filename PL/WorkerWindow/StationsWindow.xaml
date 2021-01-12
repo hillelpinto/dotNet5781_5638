@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:PL.WorkerWindow.Views"
         xmlns:viewmodels="clr-namespace:PL.WorkerWindow.ViewModels"
         mc:Ignorable="d"
-        Title="StationsWindow" Height="720" Width="1222">
+        Title="StationsWindow" WindowStartupLocation="CenterScreen" Height="720" Width="1222">
     <Window.Resources>
         <DataTemplate x:Name="stationTemplate" DataType="{x:Type viewmodels:StationModels}" >
             <views:StationView DataContext="{Binding}"/>

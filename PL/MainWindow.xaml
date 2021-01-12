@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-             Title="Moovit 2.0" Height="500" Width="600">
+        Title="Moovit 2.0" WindowStartupLocation="CenterScreen" Height="500" Width="600">
     <Grid Name="myGrid">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
