@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Spire.Xls;
+using System.IO;
 using DAL.DO;
 namespace DAL.DS
 {
@@ -48,7 +49,9 @@ namespace DAL.DS
             Workbook newBook = new Workbook();
             Worksheet newSheet = newBook.Worksheets[0];
             Workbook workbook = new Workbook();
-            workbook.LoadFromFile("StationBus.xlsx");
+            string directory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
+
+            workbook.LoadFromFile(directory+@"\StationBus.xlsx");
             int row = 2;
             int columns = 2;
             int columnsName = 3;
