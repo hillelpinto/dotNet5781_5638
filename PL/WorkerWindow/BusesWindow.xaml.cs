@@ -50,38 +50,41 @@ namespace PL.WorkerWindow
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             int index = ListBus.SelectedIndex;
-            if (Combofilter.SelectedIndex == 0)
+            if (index != -1)
             {
-                b=instance.getBusesFilteringbyFuel()[index];
-            }
-            if (Combofilter.SelectedIndex == 1)
-            {
-                b=instance.getBusesFilteringByKmC()[index];
+                if (Combofilter.SelectedIndex == 0)
+                {
+                    b = instance.getBusesFilteringbyFuel()[index];
+                }
+                if (Combofilter.SelectedIndex == 1)
+                {
+                    b = instance.getBusesFilteringByKmC()[index];
 
-            }
-            if (Combofilter.SelectedIndex == 2) 
-            {
-                b=instance.getBusesFilteringbyKm()[index];
-            }
-            else if (inLicenseFilter == true)
-            {
-                b = instance.getBusesFilteringBylicense(LicenseTosearch.Text)[index];
-            }
+                }
+                if (Combofilter.SelectedIndex == 2)
+                {
+                    b = instance.getBusesFilteringbyKm()[index];
+                }
+                else if (inLicenseFilter == true)
+                {
+                    b = instance.getBusesFilteringBylicense(LicenseTosearch.Text)[index];
+                }
 
-            else if(index!=-1)
-                b = instance.GetBuses()[index];
-            PopupDriver.IsOpen = true;
-            PopupSeat.IsOpen = true;
-           
-            myData.DataContext = b;
-            DriverField.Text = b.DriverName;
-            SeatField.Text = b.SeatAvailable.ToString();
-            DriverField.IsReadOnly = false;
-            SeatField.IsReadOnly = false;
-            updatebutton.IsEnabled = true;
-            myDetails.Items.Refresh();
-            comp1 = DriverField.Text;
-            comp2 = SeatField.Text;
+                else
+                    b = instance.GetBuses()[index];
+                PopupDriver.IsOpen = true;
+                PopupSeat.IsOpen = true;
+
+                myData.DataContext = b;
+                DriverField.Text = b.DriverName;
+                SeatField.Text = b.SeatAvailable.ToString();
+                DriverField.IsReadOnly = false;
+                SeatField.IsReadOnly = false;
+                updatebutton.IsEnabled = true;
+                myDetails.Items.Refresh();
+                comp1 = DriverField.Text;
+                comp2 = SeatField.Text;
+            }
         }
         private void MaintenanceClicked(object sender, RoutedEventArgs e)
         {

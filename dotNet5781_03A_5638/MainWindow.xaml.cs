@@ -11,8 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using dotNet5781_02_5638;
 namespace dotNet5781_03A_5638
 {
     /// <summary>
@@ -20,7 +19,7 @@ namespace dotNet5781_03A_5638
     /// </summary>
     public partial class MainWindow : Window
     {
-        private dotNet5781_02_1743_5638.Line currentDisplayBusLine;         // because there is 2 type of class "Line"
+        private Line currentDisplayBusLine;        
         public HandleCollectionBus h;
         public MainWindow()
         {
@@ -34,14 +33,14 @@ namespace dotNet5781_03A_5638
 
         private void cbBusLines_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as dotNet5781_02_1743_5638.Line).BusLineNumber);
+            ShowBusLine((cbBusLines.SelectedValue as Line).BusLineNumber);
         }
         private void ShowBusLine(int index)
         {
             currentDisplayBusLine = h[index];
             UpGrid.DataContext = currentDisplayBusLine.BusLineNumber;
             lbBusLineStations.DataContext = currentDisplayBusLine.listStations;
-            tbArea.Text = h[index].GetArea().ToString();
+            tbArea.Text = h[index].getArea().ToString();
 
         }
 

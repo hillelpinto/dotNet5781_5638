@@ -14,19 +14,25 @@
             </LinearGradientBrush>
         </Grid.Background>
         <ListView Name="ListLine" Margin="10,58,569,4" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Line number" Width="90" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding busLineNumber}" TextAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding busLineNumber}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="From " Width="95" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding firstStation }" TextAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding firstStation }"   Foreground="Black" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -47,14 +53,14 @@
                     <GridViewColumn Header="Service start time " Width="108">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding BeginService}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding BeginService}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Service end time " Width="108">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding EndService}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding EndService}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -84,6 +90,12 @@
         <Button Content="Back" Foreground="ForestGreen" Background="DarkGray" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
 
         <ListView x:Name="myDetails" Margin="816,59,0,223" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="532">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
 
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -97,7 +109,7 @@
                     <GridViewColumn Header="Station ID" Width="80" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding shelterNumber}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -125,7 +137,7 @@
                     <GridViewColumn Header="V to Delete" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox Name="ToDelete" HorizontalContentAlignment="Center" Checked="stationchecked" Unchecked="stationunchecked"  HorizontalAlignment="Center" FontSize="15" />
+                                <CheckBox Name="ToDelete" HorizontalContentAlignment="Center"   Checked="stationchecked" Unchecked="stationunchecked"  HorizontalAlignment="Center" FontSize="15" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

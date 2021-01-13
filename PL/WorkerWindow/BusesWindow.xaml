@@ -14,33 +14,39 @@
             </LinearGradientBrush>
         </Grid.Background>
         <ListView Name="ListBus" Margin="0,84,371,10" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="License Number" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="Txt" Text="{Binding GFormat}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding GFormat}" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="License Release Date " >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="Txt" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Kilometers" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding Km}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Km}" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Fuel Level" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding Fuel}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Fuel}" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -58,21 +64,21 @@
                     <GridViewColumn Header="Gasoil side !" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Refuel"  Foreground="Orange" FontWeight="Bold" Background="Black"  Click="RefuelClicked" />
+                                <Button Content="Refuel" HorizontalAlignment="Center"  Foreground="Orange" FontWeight="Bold" Background="Black"  Click="RefuelClicked" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Garage side !" Width="90">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Maintenance" Foreground="Orange" FontWeight="Bold" Background="Black"  Click="MaintenanceClicked" />
+                                <Button Content="Maintenance" HorizontalAlignment="Center" Foreground="Orange" FontWeight="Bold" Background="Black"  Click="MaintenanceClicked" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Choose to delete">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged" />
+                                <CheckBox HorizontalAlignment="Center" Name="ToDelete" Checked="changed" Unchecked="unchanged" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_5638
 {
-    class HandleCollectionBus : Line
+    public class HandleCollectionBus : Line
     {
-        private List<Line> listLine;
+        public  List<Line> listLine;
 
 
         public bool CheckFirstLast(Line l2) => listLine.Exists(Line => Line.listStations.First().ShelterNumber == l2.listStations.Last().ShelterNumber && Line.listStations.Last().ShelterNumber == l2.listStations.First().ShelterNumber);

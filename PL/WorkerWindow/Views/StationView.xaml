@@ -14,54 +14,60 @@
             </LinearGradientBrush>
         </Grid.Background>
         <ListView Name="ListBus" ItemsSource="{Binding}" MouseDoubleClick="ListBus_SelectionDetail"  Margin="0,10,357,10">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Station ID" Width="100" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding shelterNumber}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header=" Latitude " Width="110" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding latitude}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding latitude}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Longitude" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding longitude}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding longitude}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Address" Width="160">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding address}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding address}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Digital Panel " Width="110">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding DigitPanel }" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding DigitPanel }"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Disabled Access " Width="110">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding HandicappedAccess}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding HandicappedAccess}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="V to Delete">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged"  HorizontalAlignment="Center" FontSize="15"  />
+                                <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged"    HorizontalAlignment="Center" FontSize="15"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

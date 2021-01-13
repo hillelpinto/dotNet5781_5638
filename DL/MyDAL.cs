@@ -10,6 +10,7 @@ namespace DAL
 {
     public class MyDAL : IDAL
     {
+        Random r = new Random();
 
         private static IDAL instance = null;
         public static IDAL Instance
@@ -41,6 +42,7 @@ namespace DAL
                 throw new DLException("This bus already exists !");
             else
             {
+               
                 DataSource.Buses.Add(a);
             }
         }
@@ -91,7 +93,7 @@ namespace DAL
            
             else if (checkMany.Count==0||checkMany.Count == 1 && l.firstStation == checkMany[0].lastStation && l.lastStation == checkMany[0].firstStation)
             {
-               
+           
                 DataSource.Lines.Add(l);
             }
             else
@@ -142,6 +144,7 @@ namespace DAL
         {
             if (DataSource.Stations.Exists(station => station.shelterNumber == a.shelterNumber))
                 throw new DLException("This stations already exists !");
+      
             DataSource.Stations.Add(a);
         }
       
@@ -187,10 +190,10 @@ namespace DAL
                 inside = true;
             return inside;
         }
-        public void addStationL(StationLine l)
+        public void addStationL(StationLine a)
         {
            
-            DataSource.StationLines.Add(l);
+            DataSource.StationLines.Add(a);
         }
 
 

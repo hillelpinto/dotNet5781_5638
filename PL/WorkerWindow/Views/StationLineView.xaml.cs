@@ -55,9 +55,10 @@ namespace PL.WorkerWindow.Views
             var cb = sender as Button;
             var thisStation = cb.DataContext as StationLine;
             string address = "https://www.google.com/maps/search/?api=1&query=" + thisStation.latitude + "," + thisStation.longitude;
-            MessageBox.Show("Coming soon");
             //new Map(address).ShowDialog();
-
+            Map map = new Map(address);
+            map.ShowDialog();
+           
         }
 
         private void unchanged(object sender, RoutedEventArgs e)
