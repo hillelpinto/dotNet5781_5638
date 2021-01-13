@@ -26,9 +26,10 @@ namespace PL.WorkerWindow
         public AddStationLine(BL.BO.Line l)
         {
            myList = new List<Station>();
-
+            Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(myiconWindow);
             temp = l;
-            myList = instance.GetStations().Where(station => l.listStations.Exists(stationL => stationL.shelterNumber == station.shelterNumber) == false).ToList();
+            myList = instance.GetStations().Where(station => l.listStations.Exists(stationL => stationL.shelterNumber == station.shelterNumber) == false).ToList();//Get all the stations except the stations already in the line
             InitializeComponent();
             mycombo.ItemsSource = myList;
 

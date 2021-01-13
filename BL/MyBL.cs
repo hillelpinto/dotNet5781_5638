@@ -127,9 +127,10 @@ namespace BL
                 }
                 else
                 {
+                    l.listStations[0].CheckedOrNot = true;
+                    modifyStationline(l.listStations[0]);
                     l.CheckedOrNot = true;
                     modifyLine(l);
-
                     t.Remove(l);
                 }
             }
@@ -219,6 +220,15 @@ namespace BL
             l.ID = s.ID;
             return l;
             }
+        public DAL.DO.StationLine convertSLinetoDO(StationLine s)
+        {
+            DAL.DO.StationLine l = new DAL.DO.StationLine();
+
+            s.CopyPropertiesTo(l);
+            l.LineHere = s.LineHere;
+            l.ID = s.ID;
+            return l;
+        }
         public List<StationLine> getAllStationsLines()
         {
             List<StationLine> toReturn = new List<StationLine>();
@@ -285,12 +295,15 @@ namespace BL
                 dal.addStationL(s);
          
             }
-            public void modifyStationline(StationLine l)
+            public void modifyStationline(StationLine l)//
             {
-                DAL.DO.StationLine s = new DAL.DO.StationLine();
-                l.CopyPropertiesTo(s);
-            int verif = s.LineHere;
-                dal.modifystationline(s);
+            List<StationLine> tonotDelete = new List<StationLine>();
+            tonotDelete = getAllStationsLines().Where(station => station.shelterNumber == l.shelterNumber).ToList();
+            tonotDelete.ForEach(station => station.CheckedOrNot = l.CheckedOrNot);
+            tonotDelete.ForEach(station => station.address = l.address);
+            List<DAL.DO.StationLine> cloning = new List<DAL.DO.StationLine>();
+            tonotDelete.ForEach(station => cloning.Add(convertSLinetoDO(station)));
+            cloning.ForEach(station => dal.modifystationline(station));
             }
             public bool isStationLinexists(StationLine l)
             {

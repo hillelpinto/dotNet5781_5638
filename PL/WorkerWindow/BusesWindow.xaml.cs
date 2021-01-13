@@ -68,7 +68,7 @@ namespace PL.WorkerWindow
                 b = instance.getBusesFilteringBylicense(LicenseTosearch.Text)[index];
             }
 
-            else
+            else if(index!=-1)
                 b = instance.GetBuses()[index];
             PopupDriver.IsOpen = true;
             PopupSeat.IsOpen = true;

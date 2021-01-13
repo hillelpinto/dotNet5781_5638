@@ -72,11 +72,8 @@ namespace PL.WorkerWindow.Views
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = false;
-            List<StationLine> tonotDelete = new List<StationLine>();
-            tonotDelete = instance.getAllStationsLines().Where(station => station.shelterNumber == thisbus.shelterNumber).ToList();
-         
-            tonotDelete.ForEach(station => station.CheckedOrNot = false);
-            tonotDelete.ForEach(station => instance.modifyStationline(station));
+            instance.modifyStationline(thisbus);
+           
 
         }
        
@@ -88,12 +85,7 @@ namespace PL.WorkerWindow.Views
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = true;
-            List<StationLine> toDelete = new List<StationLine>();
-            toDelete = instance.getAllStationsLines().Where(station => station.shelterNumber == thisbus.shelterNumber).ToList();
-         
-            toDelete.ForEach(station => station.CheckedOrNot = true);
-           
-            toDelete.ForEach(station => instance.modifyStationline(station));
+            instance.modifyStationline(thisbus);
             count++;
 
         }
@@ -113,6 +105,7 @@ namespace PL.WorkerWindow.Views
 
                 ListBus.DataContext = instance.getmyStationsLines();
             }
+
         }
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {

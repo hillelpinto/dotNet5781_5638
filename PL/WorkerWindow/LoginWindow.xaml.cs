@@ -28,6 +28,8 @@ namespace PL.WorkerWindow
             InitializeComponent();
             //b.DoWork += bgw_DoWork;
             //b.RunWorkerCompleted += bgw_RunWorkerCompleted;
+            Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(myiconWindow);
 
 
         }

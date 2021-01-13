@@ -150,7 +150,7 @@ namespace PL.WorkerWindow
             AddStationLine window = new AddStationLine(thisline);
             window.ShowDialog();
             ListLine.DataContext = instance.getLines();
-            myData.DataContext =myDetails.DataContext= null;
+            myData.DataContext =myDetails.DataContext=linepresented.Text= null;
 
         }
 
