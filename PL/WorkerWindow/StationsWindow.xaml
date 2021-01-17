@@ -26,8 +26,12 @@
         <Button Content="Back" Foreground="Aquamarine" Background="Gray" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
 
 
-        <ComboBox HorizontalAlignment="Left" SelectedValue="0" Margin="601,10,0,0" VerticalAlignment="Top" Width="245" Name="comboChoice" Height="36" SelectionChanged="ComboBox_SelectionChanged"/>
         <ContentControl Content="{Binding}" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="595" Width="1222"/>
+        <RadioButton x:Name="BusButton" Checked="BusesChecked" Unchecked="BusesUnchecked" Content="Stations of buses " FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="798,49,0,0" VerticalAlignment="Top" Height="21" Width="146"/>
+        <RadioButton Content="Stations of lines " Name="LineButton" FontSize="15" Checked="LinesChecked" Unchecked="LinesUnchecked" FontWeight="Bold" HorizontalAlignment="Left" Margin="277,45,0,0" VerticalAlignment="Top"/>
+        <Grid Name="myTime" Margin="345,10,278,631">
+            <Label Name="currentHour" FontWeight="Black" Visibility="Visible" Foreground="Aquamarine" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="202,10,0,0" VerticalAlignment="Top" Height="37" Width="170"/>
+        </Grid>
 
     </Grid>
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.WorkerWindow"
         mc:Ignorable="d"
         Title="WorkerWindow" WindowStartupLocation="CenterScreen" Height="400" Width="400">
-    <Grid Margin="0,0,0,-6">
+    <Grid Margin="0,0,0,-6" x:Name="D">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF4E00" Offset="1"/>
@@ -17,6 +17,9 @@
         <Button x:Name="BusesButton"  Content="Autobuses in my Garage" FontWeight="Bold" ToolTip="See your buses and make CRUD action" Background="PeachPuff" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top"  FontSize="15" Width="192" Height="47" Click="Button_Click_1"/>
         <Button x:Name="StationsButton" Content="Stations of Lines" FontWeight="Bold" ToolTip="See your stations and make CRUD actions" HorizontalAlignment="Center" Background="PeachPuff" Margin="0,195,0,0" VerticalAlignment="Top" Height="51"  FontSize="15"  Width="192" Click="StationButton_Click" />
         <Button x:Name="LinesButton" Content="Lines in Service" FontWeight="Bold" ToolTip="See your lines and make CRUD actions" HorizontalAlignment="Center" Margin="0,289,0,0" Background="PeachPuff" VerticalAlignment="Top" FontSize="15" Height="53" Width="192" Click="LineButton_Click" />
+        <Button Content="Start simulation" Click="simulationstart" Name="StartButton" Background="Black" FontWeight="Bold" Foreground="GreenYellow" HorizontalAlignment="Left" Margin="274,25,0,0" VerticalAlignment="Top"/>
+        <Button Content="Stop simulation " Background="Black" Foreground="Red" Click="stopsimulation" Name="StopButton" FontWeight="Bold" HorizontalAlignment="Left" Margin="274,50,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="label" TextChanged="Check" Visibility="Hidden" Text="{Binding Time,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="115,25,0,0" VerticalAlignment="Top" Width="129" Height="35"/>
 
 
     </Grid>

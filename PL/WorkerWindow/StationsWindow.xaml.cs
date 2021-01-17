@@ -19,7 +19,8 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class StationsWindow : Window
     {
-        
+        BL.IBl instance = BLFactory.Instance;
+        SimulatorClock simulatorClock = SimulatorClock.Instance;
         List<string> combosource = new List<string>();
         public StationsWindow()
         {
@@ -27,10 +28,12 @@ namespace PL.WorkerWindow
             InitializeComponent();
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
-            combosource.Add("Stations Autobus");
-            combosource.Add("Stations of Lines");
-            comboChoice.ItemsSource = combosource;
-            comboChoice.SelectedIndex = 0;
+            BusButton.IsChecked = true;
+            myTime.DataContext= simulatorClock;
+            if (simulatorClock.Time.Seconds != -1)
+                currentHour.Visibility = Visibility.Visible;
+            else
+                currentHour.Visibility = Visibility.Hidden;
             DataContext = new StationModels();
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -40,17 +43,25 @@ namespace PL.WorkerWindow
             this.Close();
 
         }
-
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LinesChecked(object sender, RoutedEventArgs e)
         {
-            if (comboChoice.SelectedIndex == 0)
-                DataContext = new StationModels();
-            else if (comboChoice.SelectedIndex == 1)
-            {
-                DataContext = new StationLineModels();
-            }
-           
+            DataContext = new StationLineModels();
         }
+
+        private void LinesUnchecked(object sender, RoutedEventArgs e)
+        {
+            BusButton.IsChecked = true;
+
+        }
+        private void BusesChecked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new StationModels();
+        }
+        private void BusesUnchecked(object sender, RoutedEventArgs e)
+        {
+            LineButton.IsChecked = true;
+        }
+
+     
     }
 }

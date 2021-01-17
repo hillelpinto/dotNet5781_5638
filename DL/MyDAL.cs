@@ -230,6 +230,25 @@ namespace DAL
         }
         #endregion
 
+        #region Schedule
+
+        public IEnumerable<ExitLine> getmySchedules()
+        {
+
+            return DataSource.ExitLines;
+        }
+        public void modifySchedule(ExitLine l)
+        { 
+            int index = DataSource.ExitLines.FindIndex(item => item.ID == l.ID);
+            DataSource.ExitLines[index] = l;
+        }
+
+
+        #endregion
+
+
+
+
         #region User
         public void addUser(User a)
         {
@@ -264,8 +283,9 @@ namespace DAL
         {
             DataSource.Users.RemoveAll(user => user.username == u.username);
         }
-        public List<User> getmyUsers()
+        public IEnumerable<User> getmyUsers()
         {
+
             List<User> u = DataSource.Users;
             return u;
         }

@@ -5,6 +5,8 @@ namespace BL
 {
     public interface IBl
     {
+
+       
         #region BusFunction
       
         void addBus(Bus a);
@@ -44,6 +46,14 @@ namespace BL
 
         #endregion
 
+        #region Simulation
+        void StartSimulator(TimeSpan startTime, int Rate, Action<TimeSpan> updateTime);
+        void StopSimulator();
+
+        TimeSpan getHours();
+
+        #endregion
+
         #region StationFunction
         IEnumerable<Station> GetStations();
          bool deleteStations();
@@ -52,6 +62,14 @@ namespace BL
 
         Station getStation(int a);
         void addstation(Station a);
+
+        #endregion
+
+        #region Schedule
+
+        IEnumerable<ExitLine> getmySchedules();
+
+        void modifySchedule(ExitLine s);
 
         #endregion
 

@@ -52,11 +52,19 @@ namespace DAL
 
         #endregion
 
+        #region ScheduleLine
+        IEnumerable<ExitLine> getmySchedules();
+
+        void modifySchedule(ExitLine l);
+        
+
+        #endregion
+
         #region User
         void addUser(User u);
 
         void deleteUser(User u);
-        List<User> getmyUsers();
+        IEnumerable<User> getmyUsers();
         #endregion
     }
 }

@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Collections;
+using System.Windows.Input;
+using System.Diagnostics;
+using System.Threading;
+using System.ComponentModel;
 using BL.BO;
 using DAL;
 using System.Net.Mail;
+using System.Collections;
 
 namespace BL
 {
 
     public class MyBL : IBl
     {
-        IDAL dal = DALFactory.GetDL("data");
+        IDAL dalData = DALFactory.GetDL("xml");
+        TimeSpan hours;
         #region BusFunction
-      
+
         public BO.Bus convertBusToBO(DAL.DO.Bus a)
         {
             Bus b = new Bus();
@@ -25,7 +30,7 @@ namespace BL
 
         public void checkStatus()
         {
-            dal.checkstatus();
+            dalData.checkstatus();
 
         }
         public void addBus(Bus a)
@@ -34,7 +39,7 @@ namespace BL
             {
                 DAL.DO.Bus b = new DAL.DO.Bus();
                 a.CopyPropertiesTo(b);
-                dal.addBus(b);
+                dalData.addBus(b);
             }
             catch(DLException ex)
             {
@@ -67,7 +72,7 @@ namespace BL
         }
         public List<Bus> GetBuses()
         {
-            List<DAL.DO.Bus> myList = dal.getmyBuses();
+            List<DAL.DO.Bus> myList = dalData.getmyBuses();
             List<Bus> MyList = new List<Bus>();
             foreach (DAL.DO.Bus bus in myList)
             {
@@ -78,7 +83,7 @@ namespace BL
      
         public bool deleteBuses()
         {
-            return dal.deletebuses();
+            return dalData.deletebuses();
 
         }
       
@@ -87,7 +92,7 @@ namespace BL
 
             DAL.DO.Bus c = new DAL.DO.Bus();
             b.CopyPropertiesTo(c);
-            dal.modifyBus(c);
+            dalData.modifyBus(c);
         }
         #endregion
 
@@ -96,14 +101,14 @@ namespace BL
         public void modifyLine(Line l)
         {
             DAL.DO.Line s = Deepcopy.convertToDOLine(l);
-            dal.modifyLine(s);
+            dalData.modifyLine(s);
         }
     
 
         public List<Line> getLines()//It search all the lines saved and add it all the stationLine which passing through 
         {
             List<Line> t = new List<Line>();
-            dal.getLines().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
+            dalData.getLines().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
             foreach(Line l in t.ToList())
             {
                 foreach(StationLine s in getmyStationsLines())
@@ -133,8 +138,13 @@ namespace BL
                     modifyLine(l);
                     t.Remove(l);
                 }
+                l.listStations[l.listStations.Count - 1].Distance = 0;
+
+                l.listStations[l.listStations.Count - 1].Temps = new TimeSpan(0,0,0);
+
             }
-            
+
+
             return t;
         }
 
@@ -183,7 +193,7 @@ namespace BL
                 DAL.DO.Line s = new DAL.DO.Line();
                 l.CopyPropertiesTo(s);
 
-                dal.addLine(s);
+                dalData.addLine(s);
             }
             catch(DLException ex)
             {
@@ -193,7 +203,7 @@ namespace BL
         public IEnumerable<Line> getAllAllLine()//get the line without the stations in each of them
         {
             List<Line> t = new List<Line>();
-            dal.getAllAllLine().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
+            dalData.getAllAllLine().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
             return t;
         }
 
@@ -205,7 +215,7 @@ namespace BL
             deleteStationFirst.ToList().ForEach(station => modifyStationline(station));
          
        
-                return dal.DeleteLines();
+                return dalData.DeleteLines();
             }
 
             #endregion
@@ -232,20 +242,20 @@ namespace BL
         public List<StationLine> getAllStationsLines()
         {
             List<StationLine> toReturn = new List<StationLine>();
-            dal.getAllStationsLines().ForEach(station => toReturn.Add(convertSLinetoBO(station)));
+            dalData.getAllStationsLines().ForEach(station => toReturn.Add(convertSLinetoBO(station)));
             return toReturn;
         }
 
             public bool deleteStationLine()
             {
 
-                return dal.deleteStationLine();
+                return dalData.deleteStationLine();
             }
             public List<StationLine> getmyStationsLines()//It returns all the stationsLine with setting it time and distance acording to stationsConected 
             {
                 List<StationLine> list = new List<StationLine>();
             
-            dal.getstationslines().ForEach(station => list.Add(convertSLinetoBO(station)));
+            dalData.getstationslines().ForEach(station => list.Add(convertSLinetoBO(station)));
 
             foreach (StationLine sl in list)
             {
@@ -292,7 +302,7 @@ namespace BL
            
                 DAL.DO.StationLine s = new DAL.DO.StationLine();
                 l.CopyPropertiesTo(s);
-                dal.addStationL(s);
+                dalData.addStationL(s);
          
             }
             public void modifyStationline(StationLine l)//
@@ -303,11 +313,11 @@ namespace BL
             tonotDelete.ForEach(station => station.address = l.address);
             List<DAL.DO.StationLine> cloning = new List<DAL.DO.StationLine>();
             tonotDelete.ForEach(station => cloning.Add(convertSLinetoDO(station)));
-            cloning.ForEach(station => dal.modifystationline(station));
+            cloning.ForEach(station => dalData.modifystationline(station));
             }
             public bool isStationLinexists(StationLine l)
             {
-                return dal.getstationslines().Exists(station => station.shelterNumber == l.shelterNumber);
+                return dalData.getstationslines().Exists(station => station.shelterNumber == l.shelterNumber);
             }
            
 
@@ -324,7 +334,7 @@ namespace BL
             public IEnumerable<Station> GetStations()
             {
             List<Station> temp = new List<Station>(); 
-                dal.GetStation().ForEach(station => temp.Add(convertStationtoBo(station)));
+                dalData.GetStation().ForEach(station => temp.Add(convertStationtoBo(station)));
             IEnumerable<Station> myList = temp.Where(station => station.CheckedOrNot == false);
                 return myList;
             }
@@ -337,7 +347,7 @@ namespace BL
            
             public bool deleteStations()
             {
-                return (dal.deleteStations());
+                return (dalData.deleteStations());
             }
             public Station getStation(int a)
             {
@@ -361,7 +371,7 @@ namespace BL
             {
                 DAL.DO.Station s = new DAL.DO.Station();
                 a.CopyPropertiesTo(s);
-                dal.addStation(s);
+                dalData.addStation(s);
             }
             catch(DLException ex)
             {
@@ -380,18 +390,51 @@ namespace BL
            
                 DAL.DO.Station s = new DAL.DO.Station();
                 a.CopyPropertiesTo(s);
-                dal.modifyStation(s);
+                dalData.modifyStation(s);
        }
 
         #endregion
 
+        #region Simulation
+        public void StartSimulator(TimeSpan startTime, int Rate, Action<TimeSpan> updateTime)
+        {
+            SimulatorClock.Instance.Cancel = false;
+
+            SimulatorClock simulatorClock = SimulatorClock.Instance;
+            simulatorClock.Rate = Rate;
+            simulatorClock.stopWatch.Restart();
+            simulatorClock.ClockObserver += updateTime;
+            while (simulatorClock.Cancel != true)
+            {
+                simulatorClock.Time = startTime + new TimeSpan(simulatorClock.stopWatch.ElapsedTicks * simulatorClock.Rate);
+                hours = simulatorClock.Time;
+                    Thread.Sleep(100);
+            }
+
+        }
+        public TimeSpan getHours()
+        {
+            return hours;
+        }
+        public void StopSimulator()
+        {
+            SimulatorClock.Instance.Cancel = true;
+            SimulatorClock.Instance.Time = new TimeSpan(0, 0, -1);
+        }
+ 
+      
+
+   
+
+
+        #endregion
 
         #region StationConnected
-       
+
         public IEnumerable<Stationsconnected> getStationConnected()
         {
             List<Stationsconnected> toreturn = new List<Stationsconnected>();
-            dal.getStationConnected().ToList().ForEach(station =>toreturn.Add(Deepcopy.convertSConnectedTOBO(station)));
+            dalData.getStationConnected().ToList().ForEach(station =>toreturn.Add(Deepcopy.convertSConnectedTOBO(station)));
             IEnumerable<Stationsconnected> end = toreturn;
             return end;
 
@@ -401,7 +444,7 @@ namespace BL
             DAL.DO.Stationsconnected l = new DAL.DO.Stationsconnected();
             l = Deepcopy.convertSConnectedTODO(s);
             float f = l.distance;
-            return dal.commitTime(l);
+            return dalData.commitTime(l);
         }
       
 
@@ -413,7 +456,7 @@ public void addOneCouple(StationLine s,StationLine l)
             l.CopyPropertiesTo(tempp);
             int i = temp.shelterNumber;
             int j= tempp.shelterNumber;
-            dal.addOnecouple(temp,tempp);
+            dalData.addOnecouple(temp,tempp);
         }
         #endregion
 
@@ -422,22 +465,24 @@ public void addOneCouple(StationLine s,StationLine l)
             {
                 DAL.DO.User b = new DAL.DO.User();
                 u.CopyPropertiesTo(b);
-                dal.addUser(b);
+                dalData.addUser(b);
             }
             public void deleteUser(User u)
             {
                 DAL.DO.User b = new DAL.DO.User();
                 u.CopyPropertiesTo(b);
-                dal.deleteUser(b);
+                dalData.deleteUser(b);
             }
             public bool isExists(User u)
             {
-                return dal.getmyUsers().Exists(user => user.username == u.username);
+          
+            
+                return dalData.getmyUsers().ToList().Exists(user => user.username == u.username);
             }
             public bool checkpwd(User a)
             {
                 User b = new User();
-                b.pwd = dal.getmyUsers().Find(user => user.username == a.username).pwd;
+                b.pwd = dalData.getmyUsers().ToList().Find(user => user.username == a.username).pwd;
                 if (b.pwd == a.pwd)
                     return true;
                 else
@@ -447,7 +492,7 @@ public void addOneCouple(StationLine s,StationLine l)
             {
                 DAL.DO.User a = new DAL.DO.User();
                 j.CopyPropertiesTo(a);
-                DAL.DO.User b = dal.getmyUsers().Find(user => user.username == a.username);
+                DAL.DO.User b = dalData.getmyUsers().ToList().Find(user => user.username == a.username);
                 string pass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
                 string newpwd = "";
                 Random r = new Random();
@@ -472,20 +517,45 @@ public void addOneCouple(StationLine s,StationLine l)
                             smpt.Send(mymessage);
 
                         }
-                        dal.deleteUser(a);
-                        dal.addUser(b);
+                        dalData.deleteUser(a);
+                        dalData.addUser(b);
                     }
                 }
                 catch (Exception )
                 {
                     b.pwd = "0000";
-                    dal.deleteUser(a);
-                    dal.addUser(b);
+                    dalData.deleteUser(a);
+                    dalData.addUser(b);
               
                     throw new BLException("Your mail is not valid we can't send you a new password so by default it's 0000 now !");
                 }
             }
-            #endregion
-     }
+        #endregion
+
+
+        #region Schedule
+        public ExitLine convertSchedule(DAL.DO.ExitLine s)
+        {
+            ExitLine l = new ExitLine();
+            s.CopyPropertiesTo(l);
+            return l;
+        }
+        public IEnumerable<ExitLine> getmySchedules()
+        {
+            IEnumerable<DAL.DO.ExitLine> mylist = dalData.getmySchedules();
+            List<ExitLine> toreturn = new List<ExitLine>();
+            mylist.ToList().ForEach(item => toreturn.Add(convertSchedule(item)));
+            return toreturn;
+        }
+        public void modifySchedule(ExitLine s)
+        {
+            DAL.DO.ExitLine l = new DAL.DO.ExitLine();
+            s.CopyPropertiesTo(l);
+            dalData.modifySchedule(l);
+        }
+
+
+        #endregion
+    }
 }
 

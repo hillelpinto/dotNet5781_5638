@@ -122,7 +122,7 @@
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=SeatForpopup}"  Name="PopupSeat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
             <TextBlock Foreground="Orange"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
         </Popup>
-       
+
         <TextBox HorizontalAlignment="Left" Margin="1052,104,0,0" Text="{Binding GFormat}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Orange" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="1052,144,0,0" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="1052,188,0,0" Text="{Binding Fuel}" FontSize="15" IsReadOnly="True"  FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -135,6 +135,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="366,41,0,0" FontSize="15" FontWeight="Bold" Text="Searching and Filtering by :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="212"/>
         <TextBox Name="LicenseTosearch" HorizontalAlignment="Left" Margin="600,54,0,0" Text="Type the license ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25" TextChanged="TextBox_TextChanged"/>
         <Button Content="Search " Background="Black " Foreground="Orange" HorizontalAlignment="Left" Margin="770,58,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Grid Name="myTime" Margin="900,16,43,651">
+            <Label Name="CurrentHours" HorizontalAlignment="Left" Margin="116,10,0,0"  Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="Orange" VerticalAlignment="Top" Width="138" Height="27"/>
+        </Grid>
+
 
 
 

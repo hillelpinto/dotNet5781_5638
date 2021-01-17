@@ -1,0 +1,62 @@
+﻿<Window x:Class="PL.WorkerWindow.Timing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.WorkerWindow"
+        mc:Ignorable="d"
+        Title="Timing" Height="450" Width="600">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Aquamarine" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListView x:Name="Info" ItemsSource="{Binding}" Margin="195,65,0,10">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#434343" Offset="0.163"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Line number " Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Orange"  Text="{Binding BusLineNumber}"  HorizontalAlignment="Center"  FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Time before arrival " Width="110">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding timeBeforeArrival}" Foreground="Orange"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Last station" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding lastStation}"  HorizontalAlignment="Center" Foreground="Orange" FontSize="15" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid x:Name="myTime" Margin="36,0,36,374">
+            <Label Name="hour" Visibility="Hidden" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Center" Width="141" Height="30" RenderTransformOrigin="0.5,0.5">
+               
+            </Label>
+        </Grid>
+
+    </Grid>
+</Window>

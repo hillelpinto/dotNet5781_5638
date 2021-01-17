@@ -16,7 +16,7 @@ namespace DAL
                 case "data": return MyDAL.Instance;
 
 
-                //case "xml": return D.Instance;
+                case "xml": return DLXML.Instance;
 
                 default: throw new ArgumentException("bad Dal type to use");
 

@@ -21,6 +21,7 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class BusesWindow : Window
     {
+        SimulatorClock simulatorClock = SimulatorClock.Instance;
         string comp1, comp2 = null;
         int count;
         BL.IBl instance = BL.BLFactory.Instance;
@@ -37,7 +38,12 @@ namespace PL.WorkerWindow
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
             ListBus.DataContext = instance.GetBuses();
-           
+            myTime.DataContext = simulatorClock;
+            if (simulatorClock.Time.Seconds != -1)
+                CurrentHours.Visibility = Visibility.Visible;
+            else
+                CurrentHours.Visibility = Visibility.Hidden;
+
             comboSource.Add("Higher fuel to lower");
             comboSource.Add("Higher Km since checkup to lower");
             comboSource.Add("Higher Km to lower");
@@ -121,7 +127,7 @@ namespace PL.WorkerWindow
             for (int i = 0; i < 100; i++)
             {
                 mine.Percent = i;
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
             }
            
             mine.Percent = 100;
@@ -161,7 +167,7 @@ namespace PL.WorkerWindow
             for (int i = 0; i < 100; i++)
             {
 
-                Thread.Sleep(12000 / 100);
+                Thread.Sleep(500);
                 mine.Percent = i;
 
             }
@@ -269,7 +275,7 @@ namespace PL.WorkerWindow
 
 
         }
-
+     
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

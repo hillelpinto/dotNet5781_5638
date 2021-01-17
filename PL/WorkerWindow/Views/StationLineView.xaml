@@ -67,6 +67,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="Simulation" Visibility="{Binding}" Click="SimulationClicked" Content="Simulation..."  Background="Gray" Foreground="Aquamarine" FontWeight="Bold"   HorizontalAlignment="Center" FontSize="13"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
                 </GridView>
             </ListView.View>

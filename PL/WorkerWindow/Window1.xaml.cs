@@ -8,15 +8,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.ComponentModel;
+using System.Windows.Threading;
+using System.Threading;
 using System.Windows.Shapes;
-
+using BL;
 namespace PL.WorkerWindow
 {
     /// <summary>
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
+  
     public partial class Window1 : Window
     {
+        BL.IBl instance = BLFactory.Instance;
+        SimulatorClock simulatorClock = SimulatorClock.Instance;
+
+
         public Window1()
         {
             InitializeComponent();
@@ -43,6 +51,8 @@ namespace PL.WorkerWindow
             window.Show();
             this.Close();
         }
+     
+        
 
         private void StationButton_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +60,32 @@ namespace PL.WorkerWindow
             window.Show();
             this.Close();
 
+        }
+        private void simulationstart(object sender, RoutedEventArgs e)
+        {
+            SimulationParameters win = new SimulationParameters();
+            StartButton.IsEnabled = false;
+            StopButton.IsEnabled = true;
+            win.ShowDialog();
+            if(simulatorClock.Time.Seconds!=-1)
+            {
+                label.Visibility = Visibility.Visible;
+                label.Background = null;
+                this.DataContext = simulatorClock;
+            }
+           
+
+        }
+        private void Check(object sender, TextChangedEventArgs e)
+        {
+            if (simulatorClock.Time.Seconds == -1)
+                label.Visibility = Visibility.Hidden;
+        }
+        private void stopsimulation(object sender, RoutedEventArgs e)
+        {
+            StopButton.IsEnabled = false;
+            StartButton.IsEnabled = true;
+            instance.StopSimulator();
         }
     }
 }

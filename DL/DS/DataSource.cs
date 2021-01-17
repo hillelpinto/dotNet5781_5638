@@ -137,6 +137,17 @@ namespace DAL.DS
 
             #endregion
 
+            #region iniLineTrip
+
+            for(int a=0;a<10;a++)
+            {
+                DataSource.ExitLines.Add(new ExitLine(DataSource.Lines[a].busLineNumber));
+                DataSource.ExitLines[a].ID = forID;
+                forID++;
+            }
+
+            #endregion
+
 
 
         }

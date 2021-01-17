@@ -8,8 +8,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BL;
+using BL.BO;
 namespace PL.WorkerWindow
 {
     /// <summary>
@@ -20,13 +20,18 @@ namespace PL.WorkerWindow
         BL.IBl instance = BLFactory.Instance;
         int count;
         int countS;
+        SimulatorClock simulatorClock = SimulatorClock.Instance;
         public LinesWindow()
         {
            
             InitializeComponent();
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
-
+            myTime.DataContext = simulatorClock;
+            if (simulatorClock.Time.Seconds != -1)
+                CurrentHour.Visibility = Visibility.Visible;
+            else
+                CurrentHour.Visibility = Visibility.Hidden;
             ListLine.DataContext = instance.getLines();
         }
 
@@ -36,6 +41,16 @@ namespace PL.WorkerWindow
             window.Show();
             this.Close();
         }
+        
+        private void ScheduleClicked(object sender, RoutedEventArgs e)
+        {
+            var thisLine = (sender as Button).DataContext as Line;
+            ScheduleLine win = new ScheduleLine(thisLine);
+            win.ShowDialog();
+
+            ListLine.DataContext = instance.getLines();
+         }
+
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             if (ListLine.SelectedIndex != -1)

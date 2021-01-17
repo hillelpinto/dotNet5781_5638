@@ -21,7 +21,7 @@ namespace PL.WorkerWindow.Views
     {
         BL.IBl instance = BLFactory.Instance;
         int count = 0;
-
+        SimulatorClock simulatorClock = SimulatorClock.Instance;
         public StationLineView()
         {
 
@@ -59,6 +59,17 @@ namespace PL.WorkerWindow.Views
             Map map = new Map(address);
             map.ShowDialog();
            
+        }
+        private void SimulationClicked(object sender, RoutedEventArgs e)
+        {
+            if (simulatorClock.Time.Seconds != -1)
+            {
+                Timing win = new Timing((sender as Button).DataContext as StationLine);
+                win.ShowDialog();
+            }
+            else
+                MessageBox.Show("Please activate the simulation in the main Menu !");
+        
         }
 
         private void unchanged(object sender, RoutedEventArgs e)
