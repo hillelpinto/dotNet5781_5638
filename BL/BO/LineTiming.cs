@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
-
+using System.Linq;
 namespace BL.BO
 {
-    public class LineTiming
+    public class LineTiming:INotifyPropertyChanged
     {
-        BL.IBl instance = BLFactory.Instance;
-
+        List<LineTiming> mylist;
         public int ID { get; set; }
         public int BusLineNumber { get; set; }
-        private int Freq { get; set; }
-        public TimeSpan timeBeforeArrival { get; set; }
+        public int Freq { get; set; }
+        private TimeSpan timeBeforeArrival;
+        public TimeSpan TimeBeforeArrival
+        {
+            get { return timeBeforeArrival; }
+            set
+            {
+                timeBeforeArrival = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("TimeBeforeArrival"));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public TimeSpan StartingAt { get; set; }
         public string lastStation { get; set; }
         public LineTiming() { }
@@ -21,67 +33,54 @@ namespace BL.BO
             StartingAt = l.BeginService;
             lastStation = l.listStations[l.listStations.Count - 1].address;
         }
-        public List<LineTiming> getmyTimings(StationLine i,TimeSpan currentH)
+        public IEnumerable<LineTiming> getmyTimings(IBl bl,StationLine i,List<ExitLine> myShedules,TimeSpan currentH)
         {
-            List<LineTiming> mylist = new List<LineTiming>();
-            List<Line> lineofStation = i.myLines;
-            
-            lineofStation.ForEach(line => mylist.Add(new LineTiming(line)));
-           foreach(LineTiming l in mylist)
-           {
-                foreach(ExitLine exit in instance.getmySchedules())
-                {
-                    if (l.BusLineNumber == exit.IdBus)
-                    {
-                        l.Freq = exit.FrequenceinMN;
-                        break;
-                    }
-                }
-           }
-           foreach(Line l in lineofStation)
+           mylist  = new List<LineTiming>();
+            List<Line> lineofTheStation = i.myLines;
+            for (int c = 0; c < lineofTheStation.Count; c++)//Those 3 for loops will help us to get the time value we need to caclulate the time that the bus will arrives at every station
             {
-                for(int a=1;a<l.listStations.Count;a++)
+                lineofTheStation[c].listStations[0].Temps = new TimeSpan(0, 0, 0);
+
+                for (int a = 1; a < lineofTheStation[c].listStations.Count; a++)
                 {
-                    l.listStations[a].Temps =l.listStations[a].Temps.Add(l.listStations[a - 1].Temps);
+                   
+                    for (int b = 0; b < a; b++)
+                    {
+                      
+                        lineofTheStation[c].listStations[a].Temps= lineofTheStation[c].listStations[a].Temps.Add(TimeSpan.FromMinutes(lineofTheStation[c].listStations[b].Temps.Minutes));
+                        lineofTheStation[c].listStations[a].Temps = lineofTheStation[c].listStations[a].Temps.Add(TimeSpan.FromSeconds(lineofTheStation[c].listStations[b].Temps.Seconds));
+                       
+
+                    }
+
                 }
-                l.listStations[0].Temps = new TimeSpan(0, 0, 0);
-
-            }//Set the time all from the start
-
-
-
-            foreach (Line l in lineofStation)
-
+            }
+            lineofTheStation.ForEach(line => mylist.Add(new LineTiming(line)));
+            foreach(LineTiming l in mylist)
+            {
+                int index = myShedules.FindIndex(item => item.IdBus == l.BusLineNumber);
+                l.Freq = myShedules[index].FrequenceinMN;
+            }//After this loop it only miss the time left before the bus will arrive
+            foreach(Line l in lineofTheStation)
             {
                 int index = mylist.FindIndex(item => item.BusLineNumber == l.busLineNumber);
-                TimeSpan timeleft = new TimeSpan(0, 0, 0);
-                foreach(StationLine s in l.listStations)
+                int index2 = l.listStations.FindIndex(station => station.shelterNumber == i.shelterNumber);
+                int minuteElpasedFromLastDeparture = currentH.Minutes % mylist[index].Freq;
+                if(minuteElpasedFromLastDeparture>l.listStations[index2].Temps.Minutes)//It means that the bus already passed in tgis station and we have to wait the next
                 {
-                    if (s.shelterNumber == i.shelterNumber)
-                    {
-                        timeleft = s.Temps;
-                        break;
-                    }
+                    mylist[index].timeBeforeArrival = new TimeSpan(0, mylist[index].Freq - minuteElpasedFromLastDeparture + l.listStations[index2].Temps.Minutes, 60-currentH.Seconds);
                 }
-                int departures = currentH.Minutes%mylist[index].Freq;
-                TimeSpan finalTime;
-                if (departures>timeleft.Minutes)
+                else if (minuteElpasedFromLastDeparture < l.listStations[index2].Temps.Minutes)//It means that the bus already passed in tgis station and we have to wait the next
                 {
-                     finalTime= new TimeSpan(0, mylist[index].Freq - departures+timeleft.Minutes, 0);
+                    mylist[index].timeBeforeArrival = new TimeSpan(0, l.listStations[index2].Temps.Minutes - minuteElpasedFromLastDeparture,60- currentH.Seconds);
                 }
                 else
                 {
-                    finalTime = new TimeSpan(0, timeleft.Minutes - departures, 0);
+                    mylist[index].timeBeforeArrival = new TimeSpan(0, 0,60-currentH.Seconds);
                 }
-                mylist[index].timeBeforeArrival = finalTime;
-                 
             }
-           
-           
-           
 
-
-            return mylist;
+            return from timing in mylist orderby timing.timeBeforeArrival.Minutes ascending select timing;
         }
 
     }

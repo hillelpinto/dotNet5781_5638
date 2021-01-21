@@ -21,20 +21,22 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class BusesWindow : Window
     {
-        SimulatorClock simulatorClock = SimulatorClock.Instance;
+        SimulatorClock simulatorClock;
         string comp1, comp2 = null;
         int count;
-        BL.IBl instance = BL.BLFactory.Instance;
+        BL.IBl instance;
         BackgroundWorker threadMaintenance;
         BackgroundWorker threadRefuel;
        List<string> comboSource =new List<string>();
         Bus b = new Bus();
         bool inLicenseFilter = false;
 
-        public BusesWindow()
+        public BusesWindow(IBl b,SimulatorClock s)
         {
             
             InitializeComponent();
+            instance = b;
+            simulatorClock = s;
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
             ListBus.DataContext = instance.GetBuses();
@@ -51,8 +53,9 @@ namespace PL.WorkerWindow
             Combofilter.ItemsSource = comboSource;
             Combofilter.SelectedIndex = 3;
 
+
         }
-        
+
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             int index = ListBus.SelectedIndex;
@@ -127,7 +130,7 @@ namespace PL.WorkerWindow
             for (int i = 0; i < 100; i++)
             {
                 mine.Percent = i;
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
            
             mine.Percent = 100;
@@ -167,7 +170,7 @@ namespace PL.WorkerWindow
             for (int i = 0; i < 100; i++)
             {
 
-                Thread.Sleep(500);
+                Thread.Sleep(100);
                 mine.Percent = i;
 
             }
@@ -177,7 +180,7 @@ namespace PL.WorkerWindow
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddBus window = new AddBus();
+            AddBus window = new AddBus(instance);
             window.ShowDialog();
             instance.checkStatus();
             Combofilter.SelectedIndex = 3;
@@ -215,7 +218,7 @@ namespace PL.WorkerWindow
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 window = new Window1();
+            Window1 window = new Window1(instance);
             window.Show();
             this.Close();
            
@@ -298,8 +301,15 @@ namespace PL.WorkerWindow
                 inLicenseFilter = true;
             }
             myDetails.DataContext = null;
-            ListBus.DataContext = instance.getBusesFilteringBylicense(LicenseTosearch.Text);
-            ListBus.Items.Refresh();
+            try
+            {
+                ListBus.DataContext = instance.getBusesFilteringBylicense(LicenseTosearch.Text);
+                ListBus.Items.Refresh();
+            }
+            catch(BLException check)
+            {
+                MessageBox.Show(check.Message);
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

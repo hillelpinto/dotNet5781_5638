@@ -18,7 +18,7 @@ namespace BL.BO
         public bool DigitPanel { get; set; }
         public override string ToString()
         {
-            return String.Format("Shelter Number: {0}", shelterNumber);
+            return String.Format("Station ID: {0}", shelterNumber);
         }
         public Station(string s)
         {

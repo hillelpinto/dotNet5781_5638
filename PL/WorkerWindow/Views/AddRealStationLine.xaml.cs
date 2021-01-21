@@ -18,19 +18,19 @@ namespace PL.WorkerWindow.Views
     /// </summary>
     public partial class AddRealStationLine : Window
     {
-        BL.IBl instance = BLFactory.Instance;
-        public AddRealStationLine()
+        BL.IBl instance;
+        List<Station> finallist;
+        public AddRealStationLine(IBl bl)
         {
-            
+            instance = bl;
             InitializeComponent();
            mycomboLine.ItemsSource = instance.getLines();
-            mycomboStation.ItemsSource = instance.GetStations();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
-            StationLine s = instance.fromStation(instance.GetStations().ToList()[mycomboStation.SelectedIndex]);
+            StationLine s = instance.fromStation(finallist[mycomboStation.SelectedIndex]);
             Random r = new Random();
             s.ID = r.Next(0, 10000);
             while (instance.getmyStationsLines().Exists(station => station.ID == s.ID))
@@ -63,11 +63,17 @@ namespace PL.WorkerWindow.Views
 
         private void mycomboLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(mycomboLine.SelectedIndex!=-1)
+            if (mycomboLine.SelectedIndex != -1)
             {
                 Line toExcept = instance.getLines()[mycomboLine.SelectedIndex];
-                mycomboStation.ItemsSource = instance.GetStations().Where(station => toExcept.listStations.Exists(stationS => stationS.shelterNumber == station.shelterNumber) == false);
+                finallist = instance.GetStations().Where(station => toExcept.listStations.Exists(stationS => stationS.shelterNumber == station.shelterNumber) == false).ToList();
+                mycomboStation.ItemsSource = finallist;
             }
         }
+        private void stationchanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
+
     }
 }

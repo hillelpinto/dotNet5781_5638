@@ -26,21 +26,21 @@ namespace BL
             }
             set
             {
-                time = value;
+                time=value;
                 clockObserver?.Invoke(time);
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("Time"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("timest"));
             }
         }
         public int Rate { get; set; }
         internal volatile bool Cancel;
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        //protected void NotifyPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
 
         public Stopwatch stopWatch = new Stopwatch();
 

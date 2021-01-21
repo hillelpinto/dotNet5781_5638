@@ -18,15 +18,16 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class AddBus : Window
     {
-        IBl instance = BLFactory.Instance;
+        IBl instance;
         private Bus busToSend = null;
         public Bus BusToSend { get => busToSend; }
         bool flag = false;
         bool OldBus;
-        public AddBus()
+        public AddBus(IBl bl)
         {
             InitializeComponent();
             busToSend = new Bus();
+            instance = bl;
             this.DataContext = busToSend;
         }
 

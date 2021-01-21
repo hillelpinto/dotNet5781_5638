@@ -19,13 +19,14 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class AddStationLine : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        BL.IBl instance;
         BL.BO.Line temp = new BL.BO.Line();
         Random r = new Random();
         List<Station> myList;
-        public AddStationLine(BL.BO.Line l)
+        public AddStationLine(BL.BO.Line l,IBl b)
         {
            myList = new List<Station>();
+            instance = b;
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
             temp = l;
@@ -38,6 +39,7 @@ namespace PL.WorkerWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StationLine s = instance.fromStation(instance.GetStations().ToList().Find(station => station.shelterNumber == myList[mycombo.SelectedIndex].shelterNumber));
+            int num = s.shelterNumber;
             s.ID = r.Next(0, 1000);
             while (instance.getmyStationsLines().Exists(station => station.ID == s.ID))
             {

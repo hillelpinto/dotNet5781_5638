@@ -17,14 +17,16 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class LinesWindow : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        BL.IBl instance;
         int count;
         int countS;
-        SimulatorClock simulatorClock = SimulatorClock.Instance;
-        public LinesWindow()
+        SimulatorClock simulatorClock;
+        public LinesWindow(IBl b,SimulatorClock s)
         {
            
             InitializeComponent();
+            simulatorClock = s;
+            instance = b;
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
             myTime.DataContext = simulatorClock;
@@ -37,7 +39,7 @@ namespace PL.WorkerWindow
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 window = new Window1();
+            Window1 window = new Window1(instance);
             window.Show();
             this.Close();
         }
@@ -45,7 +47,7 @@ namespace PL.WorkerWindow
         private void ScheduleClicked(object sender, RoutedEventArgs e)
         {
             var thisLine = (sender as Button).DataContext as Line;
-            ScheduleLine win = new ScheduleLine(thisLine);
+            ScheduleLine win = new ScheduleLine(thisLine,instance);
             win.ShowDialog();
 
             ListLine.DataContext = instance.getLines();
@@ -66,7 +68,7 @@ namespace PL.WorkerWindow
         private void stationchecked(object sender, RoutedEventArgs e)
         {
             DeleetStationbutton.IsEnabled = true;
-            DeleetStationbutton.Background = Brushes.Aquamarine;
+            DeleetStationbutton.Background = Brushes.DeepSkyBlue;
             var cb = sender as CheckBox;
             var thisStation = cb.DataContext as BL.BO.StationLine;
             if (instance.getLines()[ListLine.SelectedIndex].listStations.Count == 2)
@@ -79,7 +81,7 @@ namespace PL.WorkerWindow
             else
             {
                 thisStation.CheckedOrNot = true;
-                instance.modifyStationline(thisStation);
+                instance.modifyOnlyOneStation(thisStation);
                 countS++;
             }
         }
@@ -96,7 +98,7 @@ namespace PL.WorkerWindow
             var cb = sender as CheckBox;
             var thisStation = cb.DataContext as BL.BO.StationLine;
             thisStation.CheckedOrNot = false;
-            instance.modifyStationline(thisStation);
+            instance.modifyOnlyOneStation(thisStation);
         }
         private void LineChecked(object sender, RoutedEventArgs e)
         {
@@ -130,7 +132,7 @@ namespace PL.WorkerWindow
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddLine window = new AddLine();
+            AddLine window = new AddLine(instance);
             window.ShowDialog();
             linepresented.Text = null;
             ListLine.DataContext = instance.getLines();
@@ -162,7 +164,7 @@ namespace PL.WorkerWindow
         {
             var cb = sender as Button;
             var thisline = cb.DataContext as BL.BO.Line;
-            AddStationLine window = new AddStationLine(thisline);
+            AddStationLine window = new AddStationLine(thisline,instance);
             window.ShowDialog();
             ListLine.DataContext = instance.getLines();
             myData.DataContext =myDetails.DataContext=linepresented.Text= null;
@@ -175,7 +177,7 @@ namespace PL.WorkerWindow
             DeleetStationbutton.Background = null;
             DeleetStationbutton.Foreground = Brushes.Black;
             DeleetStationbutton.IsEnabled = false;
-            myDetails.DataContext = myData.DataContext = null;
+            myDetails.DataContext = myData.DataContext =linepresented.Text= null;
             ListLine.DataContext = instance.getLines();
             MessageBox.Show("Your Station is well deleted from the Line");
 

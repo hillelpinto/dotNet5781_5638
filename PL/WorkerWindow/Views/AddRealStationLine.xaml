@@ -14,11 +14,11 @@
             </LinearGradientBrush>
         </Grid.Background>
         <TextBlock HorizontalAlignment="Left" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" Margin="84,137,0,0" Text="Select the Station to add in your Line" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="278"/>
-        <ComboBox HorizontalAlignment="Left" x:Name="mycomboStation" ItemsSource="{Binding}" SelectedItem="" Margin="150,180,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox SelectionChanged="stationchanged" HorizontalAlignment="Left" x:Name="mycomboStation" ItemsSource="{Binding}" SelectedItem="" Margin="150,180,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="84,240,0,0" Text="Select the index where you want to add the Station" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Width="373"/>
         <TextBox HorizontalAlignment="Left" Margin="164,291,0,0" Name="indexx" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="26"/>
         <Button Content="Valider" Foreground="Aquamarine"  Background="Gray" HorizontalAlignment="Left" Margin="41,367,0,0" VerticalAlignment="Top" Height="30" Width="91" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="150,42,0,0" Text="Select a Line "  Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Name="mycomboLine" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="150,90,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="mycomboLine_SelectionChanged"/>
+        <ComboBox Name="mycomboLine" ItemsSource="{Binding}" SelectedIndex="0" HorizontalAlignment="Left" Margin="150,90,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="mycomboLine_SelectionChanged"/>
     </Grid>
 </Window>

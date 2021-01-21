@@ -8,15 +8,15 @@ namespace DAL.DO
     {
         Random r = new Random();
         public int ID { get; set; }
-        public StationLine numeroUno { get; set; }
-        public StationLine numeroDeuzio { get; set; }
+        public int numeroUno { get; set; }
+        public int numeroDeuzio { get; set; }
         public float distance { get; set; }
         public TimeSpan timeBetween { get; set; }
         public bool sameZone; 
         public Stationsconnected(StationLine s,StationLine i)
         {
-            numeroUno = s;
-            numeroDeuzio = i;
+            numeroUno = s.ID;
+            numeroDeuzio = i.ID;
             distance = r.Next(100, 600);
             if (distance > 300)
             {

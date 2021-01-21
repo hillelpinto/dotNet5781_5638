@@ -25,6 +25,7 @@ namespace PL.WorkerWindow.Views
         public StationView()
         {
             InitializeComponent();
+          
             ListBus.DataContext = instance.GetStations();
 
         }
@@ -96,7 +97,7 @@ namespace PL.WorkerWindow.Views
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            AddStation window = new AddStation();
+            AddStation window = new AddStation(instance);
             window.ShowDialog();
             ListBus.DataContext = instance.GetStations();
             ListBus.Items.Refresh();

@@ -71,8 +71,7 @@ namespace BL
             Do.positioninmyLine = bo.positioninmyLine;
             Do.shelterNumber = bo.shelterNumber;
             Do.stationName = bo.stationName;
-            Do.Temps = bo.Temps;
-            Do.Distance = bo.Distance;
+        
             Do.prevStation = bo.prevStation;
             return Do;
         }
@@ -85,17 +84,21 @@ namespace BL
         public static BO.Stationsconnected convertSConnectedTOBO(DAL.DO.Stationsconnected l)
         {
             BL.BO.Stationsconnected s = new Stationsconnected();
-            l.CopyPropertiesTo(s);
-            s.numeroUno = convertStationLinetoBO(l.numeroUno);
-            s.numeroDeuzio = convertStationLinetoBO(l.numeroDeuzio);
+            s.ID = l.ID;
+            s.timeBetween = l.timeBetween;
+            s.distance = l.distance;
+      
+            s.numeroUno = l.numeroUno;
+            s.numeroDeuzio = l.numeroDeuzio;
             return s;
         }
-        public static DAL.DO.Stationsconnected convertSConnectedTODO(BL.BO.Stationsconnected l)
+        public static DAL.DO.Stationsconnected convertSConnectedTODO(Stationsconnected l)
         {
             DAL.DO.Stationsconnected s = new DAL.DO.Stationsconnected();
             l.CopyPropertiesTo(s);
-            s.numeroUno = convertStationLinetoDO(l.numeroUno);
-            s.numeroDeuzio = convertStationLinetoDO(l.numeroDeuzio);
+            s.ID = l.ID;
+            s.numeroUno = l.numeroUno;
+            s.numeroDeuzio =l.numeroDeuzio;
             return s;
         }
     }

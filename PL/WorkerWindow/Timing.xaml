@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.WorkerWindow"
         mc:Ignorable="d"
-        Title="Timing" Height="450" Width="600">
+        Title="Timing" Height="450" Width="390">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Aquamarine" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="Black" Offset="0.163"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView x:Name="Info" ItemsSource="{Binding}" Margin="195,65,0,10">
+        <ListView x:Name="Info" ItemsSource="{Binding}" Margin="0,99,0,36">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -22,27 +21,26 @@
             </ListView.ItemContainerStyle>
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#434343" Offset="0.163"/>
+                    <GradientStop Color="#FF353B3C" Offset="1"/>
                 </LinearGradientBrush>
             </ListView.Background>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Line number " Width="90">
+                    <GridViewColumn Header="Line number" Width="90">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Foreground="Orange"  Text="{Binding BusLineNumber}"  HorizontalAlignment="Center"  FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Time before arrival " Width="110">
+                    <GridViewColumn Header="Time left" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding timeBeforeArrival}" Foreground="Orange"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding TimeBeforeArrival,UpdateSourceTrigger=PropertyChanged}" Foreground="Orange"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Last station" Width="120">
+                    <GridViewColumn Header="Terminus of the line " Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock  Text="{Binding lastStation}"  HorizontalAlignment="Center" Foreground="Orange" FontSize="15" FontWeight="Bold" />
@@ -52,11 +50,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid x:Name="myTime" Margin="36,0,36,374">
-            <Label Name="hour" Visibility="Hidden" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Center" Width="141" Height="30" RenderTransformOrigin="0.5,0.5">
-               
+        <Grid x:Name="myTime" Margin="36,0,36,384">
+            <Label Name="LabelSimulationTime" Visibility="Hidden" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}"  FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Center" Width="141" Height="30" RenderTransformOrigin="0.5,0.5">
+
             </Label>
         </Grid>
+        <Image Name="myBus" HorizontalAlignment="Left" Height="44" Margin="10,55,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="===>"  HorizontalAlignment="Left" Margin="263,55,0,0" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Top"/>
+        <Image Name="myTimer" HorizontalAlignment="Left" Height="52" Margin="116,50,0,0" VerticalAlignment="Top" Width="105"/>
 
     </Grid>
 </Window>

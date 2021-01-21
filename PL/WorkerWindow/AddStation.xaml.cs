@@ -19,11 +19,12 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class AddStation : Window
     {
-        BL.IBl instance =BLFactory.Instance;
+        BL.IBl instance;
         Station b = new Station();
-        public AddStation()
+        public AddStation(IBl bl)
         {
             InitializeComponent();
+            instance = bl;
             this.DataContext = b;
         }
         bool isDigit()

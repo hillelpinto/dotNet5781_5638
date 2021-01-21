@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Threading;
@@ -22,12 +24,10 @@ namespace PL.WorkerWindow
     public partial class LoginWindow : Window
     {
         BL.IBl instance = BLFactory.Instance;
-        BackgroundWorker b = new BackgroundWorker();
         public LoginWindow()
         {
             InitializeComponent();
-            //b.DoWork += bgw_DoWork;
-            //b.RunWorkerCompleted += bgw_RunWorkerCompleted;
+            
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
 
@@ -60,18 +60,19 @@ namespace PL.WorkerWindow
         private void signin(object sender, RoutedEventArgs e)
         {
             User a = new User();
+
             a.email = newmailaddress.Text;
             a.username = newusername.Text;
             a.pwd = newpwd.Password.ToString();
             if (newmailaddress.Text.Length == 0 || newusername.Text.Length == 0 || newpwd.Password.Length == 0)
                 MessageBox.Show("Missing data !");
-           else if (instance.isExists(a))
-                MessageBox.Show("This account already exists !");
+         else if (instance.isExists(a))
+                MessageBox.Show("This username already exists !");
             else
             {
                 instance.addUser(a);
                 this.Close();
-                Window1 window = new Window1();
+                Window1 window = new Window1(instance);
                 window.ShowDialog();
             }
 
@@ -105,14 +106,16 @@ namespace PL.WorkerWindow
             a.username = userfield.Text;
             if (mypasswordBox.Password.Length == 0 || userfield.Text.Length == 0)
                 MessageBox.Show("Missing data !");
-            if (instance.isExists(a)&&instance.checkpwd(a))
+            if (instance.isExists(a) && instance.checkpwd(a))
             {
                 this.Close();
-                Window1 window = new Window1();
+                Window1 window = new Window1(instance);
                 window.ShowDialog();
             }
+            else if (!instance.isExists(a))
+                MessageBox.Show("This account doesn't exists !");
             else
-                MessageBox.Show("ERROR");
+                MessageBox.Show("Wrong password !");
         }
         private void resetPassword(object sender,RoutedEventArgs e)
         {

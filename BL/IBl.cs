@@ -5,7 +5,7 @@ namespace BL
 {
     public interface IBl
     {
-
+        void init();
        
         #region BusFunction
       
@@ -39,6 +39,7 @@ namespace BL
         List<StationLine> getAllStationsLines();
 
        void modifyStationline(StationLine l);
+        void modifyOnlyOneStation(StationLine l);
         StationLine findlineForStation(StationLine l);
 
         bool deleteStationLine();
@@ -59,6 +60,9 @@ namespace BL
          bool deleteStations();
          IEnumerable<Station> getStationLessOne(int a);
         void modifyStation(Station a);
+
+        void getmyTime(StationLine i);
+
 
         Station getStation(int a);
         void addstation(Station a);
@@ -87,6 +91,7 @@ namespace BL
 
         void addUser(User u);
          bool isExists(User u);
+        IEnumerable<User> getmyUser();
         void deleteUser(User u);
 
          bool checkpwd(User a);

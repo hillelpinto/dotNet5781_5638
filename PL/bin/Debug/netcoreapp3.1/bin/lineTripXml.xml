@@ -2,70 +2,70 @@
 <ArrayOfExitLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ExitLine>
     <ID>71</ID>
-    <IdBus>595</IdBus>
+    <IdBus>639</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>72</ID>
-    <IdBus>486</IdBus>
+    <IdBus>463</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>73</ID>
-    <IdBus>678</IdBus>
+    <IdBus>323</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>74</ID>
-    <IdBus>671</IdBus>
+    <IdBus>245</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>75</ID>
-    <IdBus>588</IdBus>
+    <IdBus>155</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>76</ID>
-    <IdBus>218</IdBus>
+    <IdBus>709</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>77</ID>
-    <IdBus>299</IdBus>
+    <IdBus>931</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>78</ID>
-    <IdBus>475</IdBus>
+    <IdBus>106</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>79</ID>
-    <IdBus>791</IdBus>
+    <IdBus>579</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>
   </ExitLine>
   <ExitLine>
     <ID>80</ID>
-    <IdBus>527</IdBus>
+    <IdBus>949</IdBus>
     <FrequenceinMN>10</FrequenceinMN>
     <Start>PT6M</Start>
     <End>PT22H</End>

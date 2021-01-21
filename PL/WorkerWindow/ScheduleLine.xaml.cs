@@ -18,14 +18,15 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class ScheduleLine : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        BL.IBl instance;
         Line temp;
         List<string> comboSource = new List<string>();
 
-        public ScheduleLine(Line l)
+        public ScheduleLine(Line l,IBl b)
         {
             InitializeComponent();
             temp = l;
+            instance = b;
             comboSource.Add("5");
             comboSource.Add("10");
             comboSource.Add("15");

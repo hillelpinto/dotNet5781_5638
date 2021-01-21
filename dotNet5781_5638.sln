@@ -19,6 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{9B3E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DL\DAL.csproj", "{1E6071A1-27C4-4014-ACFD-B85816E5725A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{56B23D8A-CC05-4168-BA6B-BF25C3BF22E0}"
+	ProjectSection(SolutionItems) = preProject
+		PL\bin\Debug\netcoreapp3.1\bin\AdjacentStationsXml.xml = PL\bin\Debug\netcoreapp3.1\bin\AdjacentStationsXml.xml
+		PL\bin\Debug\netcoreapp3.1\bin\BusXML.xml = PL\bin\Debug\netcoreapp3.1\bin\BusXML.xml
+		PL\bin\Debug\netcoreapp3.1\bin\lineStationXml.xml = PL\bin\Debug\netcoreapp3.1\bin\lineStationXml.xml
+		PL\bin\Debug\netcoreapp3.1\bin\lineTripXml.xml = PL\bin\Debug\netcoreapp3.1\bin\lineTripXml.xml
+		PL\bin\Debug\netcoreapp3.1\bin\LineXml.xml = PL\bin\Debug\netcoreapp3.1\bin\LineXml.xml
+		PL\bin\Debug\netcoreapp3.1\bin\StationXml.xml = PL\bin\Debug\netcoreapp3.1\bin\StationXml.xml
+		PL\bin\Debug\netcoreapp3.1\bin\User.xml = PL\bin\Debug\netcoreapp3.1\bin\User.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

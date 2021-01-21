@@ -6,16 +6,4 @@
     <pwd>admin</pwd>
     <email>admin</email>
   </User>
-  <User>
-    <ID>884</ID>
-    <username>hillel</username>
-    <pwd>0000</pwd>
-    <email>h</email>
-  </User>
-  <User>
-    <ID>431</ID>
-    <username>yoel</username>
-    <pwd>0000</pwd>
-    <email>d</email>
-  </User>
 </ArrayOfUser>

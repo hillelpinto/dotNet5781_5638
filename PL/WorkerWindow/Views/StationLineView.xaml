@@ -56,11 +56,11 @@
                     <GridViewColumn Header="View on the map" Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="MapRequest"  Content="Open me " FontSize="13"  HorizontalAlignment="Center" Background="Gray" Foreground="Aquamarine" FontWeight="Bold" />
+                                <Button Click="MapRequest" Content="Show Map" FontSize="13"  HorizontalAlignment="Center" Background="Gray" Foreground="Aquamarine" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="V to Delete">
+                    <GridViewColumn Header="Delete" Width="52">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged"   HorizontalAlignment="Center" FontSize="15"  />

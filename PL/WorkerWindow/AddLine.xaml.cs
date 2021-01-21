@@ -20,14 +20,14 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class AddLine : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        BL.IBl instance;
         Line l = new Line();
         Random r = new Random();
-        public AddLine()
+        public AddLine(IBl bl)
         {
 
             InitializeComponent();
-
+            instance = bl;
             this.DataContext = l;
             firststationcombo.ItemsSource = instance.GetStations();
             laststationcombo.ItemsSource = instance.GetStations();
@@ -69,7 +69,6 @@ namespace PL.WorkerWindow
                      instance.addStationl(first);
                      StationLine last = instance.fromStation(instance.GetStations().ToList()[laststationcombo.SelectedIndex]);
                      last.LineHere = l.ID;
-                    int dd = last.shelterNumber;
                     l.lastStation = last.shelterNumber;
                     last.ID = r.Next(0, 10000);
                     while (instance.getAllStationsLines().Exists(station => station.ID == last.ID))

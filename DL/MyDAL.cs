@@ -23,9 +23,14 @@ namespace DAL
                 return instance;
             }
         }
+
+        public void init()
+        {
+
+        }
         #region BusFuction
        
-        public List<Bus> getmyBuses()//We have to catch only the bus which are available 
+        public IEnumerable<Bus> getmyBuses()//We have to catch only the bus which are available 
         {
             IEnumerable<Bus> mylist = DataSource.Buses.Where(bus => bus.CheckedOrNot == false);
             return mylist.ToList();
@@ -73,7 +78,7 @@ namespace DAL
 
         #region LineFunction
        
-        public List<Line> getLines()
+        public IEnumerable<Line> getLines()
         {
             List<Line> lines = DataSource.Lines.Where(line=>line.CheckedOrNot==false).ToList();
             return lines;
@@ -149,7 +154,7 @@ namespace DAL
         }
       
 
-        public List<Station> GetStation()
+        public IEnumerable<Station> GetStation()
         {
 
             List<Station> t = DataSource.Stations;
@@ -220,10 +225,20 @@ namespace DAL
         public bool commitTime(Stationsconnected s)//if in the index we have the same value so no commit made ->return false
         {
             bool commit = false;
-            int index = DataSource.StationsConnecteds.FindIndex(station => station.numeroUno.shelterNumber == s.numeroUno.shelterNumber);
+            int index = getStationConnected().ToList().FindIndex(st => st.ID == s.ID);
             if (DataSource.StationsConnecteds[index].timeBetween != s.timeBetween || DataSource.StationsConnecteds[index].distance != s.distance)
             {
-                DataSource.StationsConnecteds[index] = s;
+
+              
+                    DataSource.StationsConnecteds[index].distance = s.distance;
+                    DataSource.StationsConnecteds[index].timeBetween = s.timeBetween;
+                
+                //else
+                //{
+                //    DataSource.StationsConnecteds[index+1].distance = s.distance;
+                //    DataSource.StationsConnecteds[index+1].timeBetween = s.timeBetween;
+                //}
+
                 commit = true;
             }
             return commit;
@@ -252,7 +267,7 @@ namespace DAL
         #region User
         public void addUser(User a)
         {
-            ;
+
             using (MailMessage mymessage = new MailMessage())
             {
                 mymessage.From = new MailAddress("hillelpinto5@gmail.com", "From MoovitProject");
@@ -270,7 +285,7 @@ namespace DAL
                         DataSource.Users.Add(a);
                     }
                 }
-                catch (Exception )//There's a fake mail ...
+                catch (Exception)//There's a fake mail ...
                 {
                     DataSource.Users.Add(a);
                 }

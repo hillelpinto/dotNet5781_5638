@@ -13,7 +13,7 @@
                 <GradientStop Color="#434343" Offset="0.163"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView Name="ListLine" Margin="10,58,569,4" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail" >
+        <ListView Name="ListLine" Margin="10,83,569,22" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -22,7 +22,7 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Line number" Width="90" >
+                    <GridViewColumn Header="Line number" Width="80" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding busLineNumber}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
@@ -36,14 +36,14 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="To " Width="80">
+                    <GridViewColumn Header="To " Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock  Text="{Binding lastStation}" TextAlignment="Center" Foreground="Black" FontSize="15" HorizontalAlignment="Center" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Area " Width="100">
+                    <GridViewColumn Header="Area " Width="90">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock  Text="{Binding getArea}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
@@ -64,21 +64,21 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="V to Delete" Width="70">
+                    <GridViewColumn Header="Delete" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox Name="ToDelete" Checked="LineChecked" Unchecked="LineUnchecked"  HorizontalAlignment="Center" FontSize="15" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn  Width="93">
+                    <GridViewColumn  Width="94">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="AddStation" Content="Add Station" Foreground="Aquamarine" Height="20" Width="87" Background="Gray" Click="AddStationpressed "></Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn  Width="70">
+                    <GridViewColumn  Width="85">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Schedules" HorizontalAlignment="Center" Foreground="GreenYellow " FontWeight="Bold" Background="Black" Click="ScheduleClicked"  />
@@ -96,7 +96,7 @@
         </ListView>
         <Button Content="Back" Foreground="ForestGreen" Background="DarkGray" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
 
-        <ListView x:Name="myDetails" Margin="816,59,0,223" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="532">
+        <ListView x:Name="myDetails" Margin="811,83,0,199" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="532">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -141,7 +141,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="V to Delete" Width="70">
+                    <GridViewColumn Header="Delete" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox Name="ToDelete" HorizontalContentAlignment="Center"   Checked="stationchecked" Unchecked="stationunchecked"  HorizontalAlignment="Center" FontSize="15" />
@@ -154,13 +154,13 @@
 
 
         </ListView>
-        <Button Name="addlinebutton" Content="Add Line " Background="Gray" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,500,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
-        <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="LimeGreen" FontSize="16" HorizontalAlignment="Left" Margin="921,17,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
-        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="1142,23,0,0" Name="linepresented"  TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="30"/>
-        <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="15" Margin="847,586,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
-        <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Foreground="Black" Name="DeleetStationbutton" Content="Delete Station "  HorizontalAlignment="Left" Margin="1172,500,0,0" VerticalAlignment="Top" Height="54" Width="150" Click="DeleetStationbutton_Click"/>
-        <Grid x:Name="myTime" Margin="164,10,569,606">
-            <Label HorizontalAlignment="Left"  Name="CurrentHour" Margin="248,10,0,0" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="LimeGreen" VerticalAlignment="Top" Width="158" Height="24"/>
+        <Button Name="addlinebutton" Content="Add Line " Background="Gray" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,512,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
+        <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="LimeGreen" FontSize="16" HorizontalAlignment="Left" Margin="921,31,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
+        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="1142,32,0,0" Name="linepresented"  TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="30" RenderTransformOrigin="0.413,0.141"/>
+        <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="15" Margin="847,580,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
+        <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Foreground="Black" Name="DeleetStationbutton" Content="Delete Station "  HorizontalAlignment="Left" Margin="1172,580,0,0" VerticalAlignment="Top" Height="54" Width="150" Click="DeleetStationbutton_Click"/>
+        <Grid x:Name="myTime" Margin="164,10,569,601">
+            <Label HorizontalAlignment="Center"  Name="CurrentHour" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="StringFormat='{}{0:hh\\:mm\\:ss}'}" FontWeight="Bold" FontSize="15" Foreground="LimeGreen" VerticalAlignment="Top" Width="257" Height="54"/>
         </Grid>
 
     </Grid>

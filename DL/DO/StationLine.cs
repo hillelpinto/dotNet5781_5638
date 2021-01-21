@@ -13,8 +13,7 @@ namespace DAL.DO
         public string positioninmyLine { get; set; }
         public int nextStation { get; set; }
         public int prevStation { get; set; }
-        public TimeSpan Temps { get; set; }
-        public double Distance { get; set; }
+      
 
         public StationLine()
         {

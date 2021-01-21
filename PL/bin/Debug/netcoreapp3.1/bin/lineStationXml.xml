@@ -12,8 +12,6 @@
     <LineHere>21</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT2M35S</Temps>
-    <Distance>118</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -27,8 +25,6 @@
     <LineHere>21</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M45S</Temps>
-    <Distance>406</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -42,8 +38,6 @@
     <LineHere>21</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M3S</Temps>
-    <Distance>467</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -57,8 +51,6 @@
     <LineHere>21</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M57S</Temps>
-    <Distance>460</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -72,8 +64,6 @@
     <LineHere>22</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT1M</Temps>
-    <Distance>142</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -87,8 +77,6 @@
     <LineHere>22</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M16S</Temps>
-    <Distance>356</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -102,8 +90,6 @@
     <LineHere>22</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M48S</Temps>
-    <Distance>455</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -117,8 +103,6 @@
     <LineHere>22</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M58S</Temps>
-    <Distance>441</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -132,8 +116,6 @@
     <LineHere>23</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT58S</Temps>
-    <Distance>267</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -147,8 +129,6 @@
     <LineHere>23</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT45S</Temps>
-    <Distance>238</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -162,8 +142,6 @@
     <LineHere>23</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT1M6S</Temps>
-    <Distance>283</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -177,8 +155,6 @@
     <LineHere>23</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M40S</Temps>
-    <Distance>390</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -192,8 +168,6 @@
     <LineHere>24</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M39S</Temps>
-    <Distance>327</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -207,8 +181,6 @@
     <LineHere>24</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M8S</Temps>
-    <Distance>562</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -222,8 +194,6 @@
     <LineHere>24</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M40S</Temps>
-    <Distance>571</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -237,8 +207,6 @@
     <LineHere>24</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M51S</Temps>
-    <Distance>597</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -252,8 +220,6 @@
     <LineHere>25</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M50S</Temps>
-    <Distance>439</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -267,8 +233,6 @@
     <LineHere>25</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M46S</Temps>
-    <Distance>444</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -282,8 +246,6 @@
     <LineHere>25</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT18S</Temps>
-    <Distance>251</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -297,8 +259,6 @@
     <LineHere>25</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M32S</Temps>
-    <Distance>555</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -312,8 +272,6 @@
     <LineHere>26</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M26S</Temps>
-    <Distance>306</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -327,8 +285,6 @@
     <LineHere>26</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M54S</Temps>
-    <Distance>448</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -342,8 +298,6 @@
     <LineHere>26</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M52S</Temps>
-    <Distance>327</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -357,8 +311,6 @@
     <LineHere>26</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M51S</Temps>
-    <Distance>305</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -372,8 +324,6 @@
     <LineHere>27</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT2M18S</Temps>
-    <Distance>259</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -387,8 +337,6 @@
     <LineHere>27</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M17S</Temps>
-    <Distance>354</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -402,8 +350,6 @@
     <LineHere>27</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT1M21S</Temps>
-    <Distance>280</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -417,8 +363,6 @@
     <LineHere>27</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M35S</Temps>
-    <Distance>365</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -432,8 +376,6 @@
     <LineHere>28</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M6S</Temps>
-    <Distance>427</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -447,8 +389,6 @@
     <LineHere>28</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M34S</Temps>
-    <Distance>356</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -462,8 +402,6 @@
     <LineHere>28</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT11S</Temps>
-    <Distance>105</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -477,8 +415,6 @@
     <LineHere>28</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT4M39S</Temps>
-    <Distance>442</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -492,8 +428,6 @@
     <LineHere>29</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT5M42S</Temps>
-    <Distance>409</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -507,8 +441,6 @@
     <LineHere>29</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT2M36S</Temps>
-    <Distance>277</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -522,8 +454,6 @@
     <LineHere>29</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M19S</Temps>
-    <Distance>355</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -537,8 +467,6 @@
     <LineHere>29</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT1M26S</Temps>
-    <Distance>252</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -552,8 +480,6 @@
     <LineHere>30</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M9S</Temps>
-    <Distance>498</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -567,8 +493,6 @@
     <LineHere>30</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT1M59S</Temps>
-    <Distance>180</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -582,8 +506,6 @@
     <LineHere>30</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT3M53S</Temps>
-    <Distance>305</Distance>
   </StationLine>
   <StationLine>
     <CheckedOrNot>false</CheckedOrNot>
@@ -597,7 +519,5 @@
     <LineHere>30</LineHere>
     <nextStation>0</nextStation>
     <prevStation>0</prevStation>
-    <Temps>PT2M26S</Temps>
-    <Distance>173</Distance>
   </StationLine>
 </ArrayOfStationLine>

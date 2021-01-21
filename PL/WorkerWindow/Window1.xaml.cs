@@ -21,15 +21,33 @@ namespace PL.WorkerWindow
   
     public partial class Window1 : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        BL.IBl instance;
         SimulatorClock simulatorClock = SimulatorClock.Instance;
 
-
-        public Window1()
+        public Window1(IBl bl)
         {
             InitializeComponent();
+            instance = bl;
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
+            this.DataContext = simulatorClock;
+            if (simulatorClock != null && simulatorClock.Time.Seconds != -1)
+            {
+                label.Visibility = Visibility.Visible;
+                StartButton.IsEnabled = false;
+                StopButton.IsEnabled = true;
+                StopButton.Foreground = Brushes.Red;
+
+            }
+            else
+
+            {
+                label.Visibility = Visibility.Hidden;
+                StopButton.IsEnabled = false;
+                StartButton.IsEnabled = true;
+                StartButton.Foreground = Brushes.GreenYellow;
+
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,14 +58,14 @@ namespace PL.WorkerWindow
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            BusesWindow window = new BusesWindow();
+            BusesWindow window = new BusesWindow(instance,simulatorClock);
             window.Show();
             this.Close();
         }
 
         private void LineButton_Click(object sender, RoutedEventArgs e)
         {
-            LinesWindow window = new LinesWindow();
+            LinesWindow window = new LinesWindow(instance,simulatorClock);
             window.Show();
             this.Close();
         }
@@ -56,35 +74,32 @@ namespace PL.WorkerWindow
 
         private void StationButton_Click(object sender, RoutedEventArgs e)
         {
-           StationsWindow window = new StationsWindow();
+           StationsWindow window = new StationsWindow(instance,simulatorClock);
             window.Show();
             this.Close();
 
         }
         private void simulationstart(object sender, RoutedEventArgs e)
         {
-            SimulationParameters win = new SimulationParameters();
-            StartButton.IsEnabled = false;
-            StopButton.IsEnabled = true;
-            win.ShowDialog();
-            if(simulatorClock.Time.Seconds!=-1)
-            {
-                label.Visibility = Visibility.Visible;
-                label.Background = null;
-                this.DataContext = simulatorClock;
-            }
+            SimulationParameters win = new SimulationParameters(instance);
            
+            win.ShowDialog();
+            if (win.flag == true)
+            {
+                StartButton.IsEnabled = false;
+                StopButton.IsEnabled = true;
+                label.Visibility = Visibility.Visible;
+                StopButton.Foreground = Brushes.Red;
 
+            }
         }
-        private void Check(object sender, TextChangedEventArgs e)
-        {
-            if (simulatorClock.Time.Seconds == -1)
-                label.Visibility = Visibility.Hidden;
-        }
+      
         private void stopsimulation(object sender, RoutedEventArgs e)
         {
             StopButton.IsEnabled = false;
             StartButton.IsEnabled = true;
+            StartButton.Foreground = Brushes.GreenYellow;
+            label.Visibility = Visibility.Hidden;
             instance.StopSimulator();
         }
     }

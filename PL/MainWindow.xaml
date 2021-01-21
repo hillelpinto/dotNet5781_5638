@@ -16,6 +16,6 @@
         </Grid.Background>
         <Button Content="Worker" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="102,242,0,0" VerticalAlignment="Top" Height="59" Width="164" Click="Button_Click"/>
         <Button Content="Traveler" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="365,242,0,0" VerticalAlignment="Top" Height="64" Width="164"/>
-        <Image x:Name="myLogo"  HorizontalAlignment="Left" Height="78" Margin="430,39,0,0" VerticalAlignment="Top" Width="148"/>
+        <Image x:Name="myLogo"  HorizontalAlignment="Left" Height="78" Margin="64,39,0,0" VerticalAlignment="Top" Width="476"/>
     </Grid>
 </Window>

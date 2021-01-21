@@ -19,13 +19,15 @@ namespace PL.WorkerWindow
     /// </summary>
     public partial class StationsWindow : Window
     {
-        BL.IBl instance = BLFactory.Instance;
-        SimulatorClock simulatorClock = SimulatorClock.Instance;
+        BL.IBl instance;
+        SimulatorClock simulatorClock;
         List<string> combosource = new List<string>();
-        public StationsWindow()
+        public StationsWindow(IBl b,SimulatorClock s)
         {
           
             InitializeComponent();
+            instance = b;
+            simulatorClock = s;
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
             BusButton.IsChecked = true;
@@ -38,7 +40,7 @@ namespace PL.WorkerWindow
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Window1 window = new Window1();
+            Window1 window = new Window1(instance);
             window.Show();
             this.Close();
 

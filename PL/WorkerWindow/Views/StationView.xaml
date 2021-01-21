@@ -43,7 +43,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Address" Width="160">
+                    <GridViewColumn Header="Address" Width="172">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock  Text="{Binding address}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
@@ -64,7 +64,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="V to Delete">
+                    <GridViewColumn Header="Delete">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox Name="ToDelete" Checked="changed" Unchecked="unchanged"    HorizontalAlignment="Center" FontSize="15"  />

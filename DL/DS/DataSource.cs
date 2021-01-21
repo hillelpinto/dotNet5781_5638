@@ -34,8 +34,10 @@ namespace DAL.DS
             {
                 DataSource.Buses.Add(new Bus("s"));
                 DataSource.Buses[a].ID = forID;
-                forID ++;
+                forID++;
             }
+
+
             #endregion
 
             #region init Line
@@ -129,11 +131,7 @@ namespace DAL.DS
                 DataSource.StationsConnecteds[a].ID = forID;
                 forID++;
             }
-            for (int a = 0; a < 40; a++)
-            {
-                DataSource.StationLines[a].Temps = DataSource.StationsConnecteds[a].timeBetween;
-                DataSource.StationLines[a].Distance = DataSource.StationsConnecteds[a].distance;
-            }
+          
 
             #endregion
 

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.WorkerWindow;
+using BL;
 namespace PL
 {
     /// <summary>
@@ -20,9 +21,12 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
+        IBl instance = BLFactory.Instance;
+        SimulatorClock s = SimulatorClock.Instance;
         public MainWindow()
         {
-
+            
+           // instance.init();
             InitializeComponent();
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
@@ -33,7 +37,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          LoginWindow mywindow = new LoginWindow();
+          StationsWindow mywindow = new StationsWindow(instance,s);
             mywindow.ShowDialog();
         }
     }

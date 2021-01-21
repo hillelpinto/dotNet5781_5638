@@ -17,13 +17,16 @@ namespace PL.WorkerWindow
     /// <summary>
     /// Logique d'interaction pour SimulationParameters.xaml
     /// </summary>
+   
     public partial class SimulationParameters : Window
     {
-        BL.IBl instance = BLFactory.Instance;
+        public bool flag = false;
+        BL.IBl instance;
 
-        public SimulationParameters()
+        public SimulationParameters(IBl b)
         {
             InitializeComponent();
+            instance = b;
         }
         public void Validation(object sender, RoutedEventArgs e)
         {
@@ -38,6 +41,7 @@ namespace PL.WorkerWindow
            else
             {
                 BackgroundWorker bg = new BackgroundWorker();
+                flag = true;
                 bg.DoWork += Simulator;
                 bg.RunWorkerAsync();
                 this.Close();

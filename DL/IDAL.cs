@@ -5,16 +5,17 @@ namespace DAL
 {
     public interface IDAL
     {
+        void init();
         #region Bus
         void addBus(Bus a);
-        List<Bus> getmyBuses();
+        IEnumerable<Bus> getmyBuses();
         void modifyBus(Bus a);
         bool deletebuses();
         void checkstatus();
         #endregion
 
         #region LineFunction
-        List<Line> getLines();
+        IEnumerable<Line> getLines();
         void addLine(Line l);
 
         IEnumerable<Line> getAllAllLine();
@@ -25,7 +26,7 @@ namespace DAL
         #endregion
 
         #region StationFunction
-        List<Station> GetStation();
+        IEnumerable<Station> GetStation();
         bool deleteStations();
         void modifyStation(Station a);
         void addStation(Station a);

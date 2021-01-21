@@ -26,6 +26,7 @@ namespace PL.WorkerWindow.Views
         {
 
             InitializeComponent();
+          
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
@@ -44,6 +45,7 @@ namespace PL.WorkerWindow.Views
                 mycomboLine.ItemsSource = i.myLines;
                 mycomboLine.SelectedIndex = 0;
                 myData.DataContext = i.myLines[0].listStations.Find(station => station.shelterNumber == i.shelterNumber);
+                instance.getmyTime(i);
                 distancetxt.Text = i.Distance.ToString();
                 timeText.Text = i.Temps.ToString();
                 terminus.Text = instance.getmyStationsLines().Find(station => station.shelterNumber == i.myLines[0].lastStation).address;
@@ -64,7 +66,7 @@ namespace PL.WorkerWindow.Views
         {
             if (simulatorClock.Time.Seconds != -1)
             {
-                Timing win = new Timing((sender as Button).DataContext as StationLine);
+                Timing win = new Timing((sender as Button).DataContext as StationLine,instance,simulatorClock);
                 win.ShowDialog();
             }
             else
@@ -123,7 +125,7 @@ namespace PL.WorkerWindow.Views
         {
             Popupdistance.IsOpen = false;
             Popuptime.IsOpen = false;
-            AddRealStationLine win = new AddRealStationLine();
+            AddRealStationLine win = new AddRealStationLine(instance);
 
             win.ShowDialog();
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
@@ -132,29 +134,29 @@ namespace PL.WorkerWindow.Views
         {
             Popupdistance.IsOpen = false;
             Popuptime.IsOpen = false;
+            StationLine i = instance.getmyStationsLines()[ListBus.SelectedIndex];
+            instance.findlineForStation(i);
+            i = i.myLines[mycomboLine.SelectedIndex].listStations.Find(station => station.shelterNumber == i.shelterNumber);
+            float distancee = float.Parse(distancetxt.Text);
+            Stationsconnected s = instance.getStationConnected().ToList().Find(st => st.numeroUno == i.ID);
 
-            StationLine i = instance.findlineForStation(instance.getmyStationsLines()[ListBus.SelectedIndex]);
-            i = i.myLines[mycomboLine.SelectedIndex].listStations.Find(station=>station.shelterNumber==i.shelterNumber);//Get the good station according to the choice of the suser in the comboBox
-            Stationsconnected s = instance.getStationConnected().ToList().Find(objet => objet.numeroUno.ID == i.ID||objet.numeroDeuzio.ID==i.ID);
+            s.distance = distancee;
             TimeSpan essai = new TimeSpan();
-            s.distance = float.Parse(distancetxt.Text);
             bool check = TimeSpan.TryParse(timeText.Text, out essai);
-            if (!check)
-                MessageBox.Show("Error of time format !");
-            else
+            if (check)
             {
-                s.timeBetween = TimeSpan.Parse(timeText.Text);
+                s.timeBetween = essai;
                 if (instance.commitDistanceTime(s))
                 {
-                    updatebutton.IsEnabled = false;
-                    updatebutton.Foreground = Brushes.Black;
-                    MessageBox.Show("Commit made successfully !");
-                    ListBus.DataContext = instance.getmyStationsLines();
-                    myData.DataContext = myDetails.DataContext = mycomboLine.ItemsSource = timeText.Text = terminus.Text = distancetxt.Text = null;
                     ListBus.SelectedItem = null;
-
+                    updatebutton.Foreground = Brushes.Black;
+                    myData.DataContext =mycomboLine.ItemsSource=terminus.Text=numnext.Text=distancetxt.Text=timeText.Text= null;
+                    updatebutton.IsEnabled = false;
+                    MessageBox.Show("Commit saved !");
                 }
             }
+            else
+                MessageBox.Show("Error of time format !");
         }
 
         private void mycomboLine_SelectionChanged(object sender, SelectionChangedEventArgs e)

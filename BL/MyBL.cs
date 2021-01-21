@@ -19,6 +19,11 @@ namespace BL
     {
         IDAL dalData = DALFactory.GetDL("xml");
         TimeSpan hours;
+
+        public void init()
+        {
+            dalData.init();
+        }
         #region BusFunction
 
         public BO.Bus convertBusToBO(DAL.DO.Bus a)
@@ -65,14 +70,16 @@ namespace BL
         }
         public List<Bus> getBusesFilteringBylicense(string a)
         {
-
+            bool check = GetBuses().Exists(item => item.license.ToString().Substring(0, a.Length) == a);
+            if (!check)
+                throw new BLException("This license number doesn't exists ,try again !");
             IEnumerable<Bus> Listfiltered = GetBuses().Where(bus => bus.license.ToString().Substring(0, a.Length) == a);
             return Listfiltered.ToList();
 
         }
         public List<Bus> GetBuses()
         {
-            List<DAL.DO.Bus> myList = dalData.getmyBuses();
+            List<DAL.DO.Bus> myList = dalData.getmyBuses().ToList();
             List<Bus> MyList = new List<Bus>();
             foreach (DAL.DO.Bus bus in myList)
             {
@@ -108,7 +115,7 @@ namespace BL
         public List<Line> getLines()//It search all the lines saved and add it all the stationLine which passing through 
         {
             List<Line> t = new List<Line>();
-            dalData.getLines().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
+            dalData.getLines().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
             foreach(Line l in t.ToList())
             {
                 foreach(StationLine s in getmyStationsLines())
@@ -154,10 +161,6 @@ namespace BL
                 for (int a = 0; a < l.listStations.Count(); a++)
                 {
                 
-                    l.listStations[a].Temps = getStationConnected().ToList().Find(station => station.numeroUno.ID == l.listStations[a].ID|| station.numeroDeuzio.ID == l.listStations[a].ID).timeBetween;
-                    l.listStations[a].Distance = getStationConnected().ToList().Find(station => station.numeroUno.ID == l.listStations[a].ID|| station.numeroDeuzio.ID == l.listStations[a].ID).distance;
-
-
                     if (a == 0)
                     {
                         l.listStations[a].prevStation = 0;
@@ -174,7 +177,10 @@ namespace BL
                     else
                         l.listStations[a].nextStation = l.listStations[a + 1].shelterNumber;
                 }
-                if (l.listStations.Count != 0)
+            l.listStations[l.listStations.Count - 1].Distance = 0;
+
+            l.listStations[l.listStations.Count - 1].Temps = new TimeSpan(0, 0, 0);
+            if (l.listStations.Count != 0)
                 {
                     l.firstStation = l.listStations[0].shelterNumber;
                     l.lastStation = l.listStations[l.listStations.Count - 1].shelterNumber;
@@ -226,6 +232,7 @@ namespace BL
                 StationLine l = new StationLine();
       
                 s.CopyPropertiesTo(l);
+           
             l.LineHere = s.LineHere;
             l.ID = s.ID;
             return l;
@@ -256,22 +263,20 @@ namespace BL
                 List<StationLine> list = new List<StationLine>();
             
             dalData.getstationslines().ForEach(station => list.Add(convertSLinetoBO(station)));
+            list.ForEach(station => getmyTime(station));
 
-            foreach (StationLine sl in list)
-            {
-
-                foreach (Stationsconnected s in getStationConnected())
-                {
-                    if (s.numeroUno.ID == sl.ID)
-                    {
-                        sl.Temps = s.timeBetween;
-                        sl.Distance = s.distance;
-                        //modifyStationline(sl);
-                    }
-                }
-            }
+           
             return list.ToList();
             }
+
+        public void getmyTime(StationLine i)
+        {
+            int index = getStationConnected().ToList().FindIndex(station => station.numeroUno == i.ID);
+            i.Distance = getStationConnected().ToList()[index].distance;
+
+            i.Temps = getStationConnected().ToList()[index].timeBetween;
+
+        }
         public StationLine findlineForStation(StationLine i)//This function will give all the line pasing through a station
         {
             List<StationLine> ss = getmyStationsLines().Where(station => station.shelterNumber == i.shelterNumber).ToList();
@@ -315,7 +320,13 @@ namespace BL
             tonotDelete.ForEach(station => cloning.Add(convertSLinetoDO(station)));
             cloning.ForEach(station => dalData.modifystationline(station));
             }
-            public bool isStationLinexists(StationLine l)
+        public void modifyOnlyOneStation(StationLine l)
+        {
+            DAL.DO.StationLine s = convertSLinetoDO(l);
+            dalData.modifystationline(s);
+        }
+
+        public bool isStationLinexists(StationLine l)
             {
                 return dalData.getstationslines().Exists(station => station.shelterNumber == l.shelterNumber);
             }
@@ -334,7 +345,7 @@ namespace BL
             public IEnumerable<Station> GetStations()
             {
             List<Station> temp = new List<Station>(); 
-                dalData.GetStation().ForEach(station => temp.Add(convertStationtoBo(station)));
+                dalData.GetStation().ToList().ForEach(station => temp.Add(convertStationtoBo(station)));
             IEnumerable<Station> myList = temp.Where(station => station.CheckedOrNot == false);
                 return myList;
             }
@@ -442,32 +453,51 @@ namespace BL
         public bool commitDistanceTime(Stationsconnected s)
         {
             DAL.DO.Stationsconnected l = new DAL.DO.Stationsconnected();
-            l = Deepcopy.convertSConnectedTODO(s);
-            float f = l.distance;
+            l.numeroUno = s.numeroUno;
+            l.numeroDeuzio = s.numeroDeuzio;
+            l.ID = s.ID;
+            l.timeBetween = s.timeBetween;
+            l.distance = s.distance;
+          
+           
             return dalData.commitTime(l);
         }
       
 
-public void addOneCouple(StationLine s,StationLine l)
+        public void addOneCouple(StationLine s,StationLine l)
         {
             DAL.DO.StationLine temp = new DAL.DO.StationLine();
             DAL.DO.StationLine tempp = new DAL.DO.StationLine();
             s.CopyPropertiesTo(temp);
             l.CopyPropertiesTo(tempp);
-            int i = temp.shelterNumber;
-            int j= tempp.shelterNumber;
+        
             dalData.addOnecouple(temp,tempp);
         }
         #endregion
 
         #region User
+
+        public User convertUserToBO(DAL.DO.User u)
+        {
+            User s = new User();
+            u.CopyPropertiesTo(s);
+            return s;
+        }
         public void addUser(User u)
             {
                 DAL.DO.User b = new DAL.DO.User();
                 u.CopyPropertiesTo(b);
                 dalData.addUser(b);
             }
-            public void deleteUser(User u)
+
+        public IEnumerable<User> getmyUser()
+        {
+            List<User> toR = new List<User>();
+            dalData.getmyUsers().ToList().ForEach(user => toR.Add(convertUserToBO(user)));
+            return toR;
+        }
+
+        public void deleteUser(User u)
             {
                 DAL.DO.User b = new DAL.DO.User();
                 u.CopyPropertiesTo(b);
@@ -492,6 +522,8 @@ public void addOneCouple(StationLine s,StationLine l)
             {
                 DAL.DO.User a = new DAL.DO.User();
                 j.CopyPropertiesTo(a);
+            int index = a.ID;
+            index = j.ID;
                 DAL.DO.User b = dalData.getmyUsers().ToList().Find(user => user.username == a.username);
                 string pass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
                 string newpwd = "";
