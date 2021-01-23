@@ -10,7 +10,7 @@ namespace DAL
         {
 
         }
-        public DLException(string message):base(message)
+        public DLException(string message) :base(message)
         {
 
         }
@@ -28,4 +28,5 @@ namespace DAL
 
         public override string ToString() => base.ToString() + $", fail to load or create xml file: {xmlFilePath}";
     }
+
 }

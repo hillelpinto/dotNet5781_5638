@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -9,7 +11,7 @@ namespace DAL
 {
     class XMLTools
     {
-        static string dir = @"bin\";
+        static string dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString()).ToString()+ @"\xml\";
         static XMLTools()
         {
             if (!Directory.Exists(dir))
@@ -18,6 +20,7 @@ namespace DAL
         #region SaveLoadWithXElement
         public static void SaveListToXMLElement(XElement rootElem, string filePath)
         {
+            string es = dir;
             try
             {
                 rootElem.Save(dir + filePath);

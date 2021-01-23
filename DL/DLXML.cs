@@ -16,8 +16,11 @@ namespace DAL
     public class DLXML : IDAL
     {
         private static IDAL instance = null;
+   
+
         public static IDAL Instance
         {
+
             get
             {
                 if (instance == null)
@@ -27,11 +30,12 @@ namespace DAL
             }
         }
         public int forID = 0;
-     #region Location
+        #region Location
 
 
         #region DS XML Files
-        string busPath = @"BusXML.xml"; //XElement        
+
+        string busPath =@"BusXml.xml"; //XElement        
         string linePath = @"LineXml.xml"; //XMLSerializer
         string stationPath = @"StationXml.xml"; //XMLSerializer
         string StationLinePath = @"lineStationXml.xml"; //XMLSerializer
@@ -48,35 +52,36 @@ namespace DAL
 
         public void init()
         {
-            //List<Bus> ListBus = new List<Bus>();//Init of 20 Bus
-            //for (int a = 0; a < 20; a++)
-            //{
-            //    ListBus.Add(new Bus("s"));
-            //    ListBus[a].ID = forID;
-            //    forID++;
-            //}
-            //XMLTools.SaveListToXMLSerializer(ListBus, busPath);
-            //List<User> ListUser = new List<User>();
-            //for (int a = 0; a < 1; a++)
-            //{
+            string temp=busPath;
+            List<Bus> ListBus = new List<Bus>();//Init of 20 Bus
+            for (int a = 0; a < 20; a++)
+            {
+                ListBus.Add(new Bus("s"));
+                ListBus[a].ID = forID;
+                forID++;
+            }
+            XMLTools.SaveListToXMLSerializer(ListBus, busPath);
+            List<User> ListUser = new List<User>();
+            for (int a = 0; a < 1; a++)
+            {
 
-            //    ListUser.Add(new User());
-            //    ListUser[a].username = ListUser[a].pwd = ListUser[a].email = "admin";
-            //    ListUser[a].ID = forID;
-            //    forID++;
-            //}
+                ListUser.Add(new User());
+                ListUser[a].username = ListUser[a].pwd = ListUser[a].email = "admin";
+                ListUser[a].ID = forID;
+                forID++;
+            }
 
-            //XMLTools.SaveListToXMLSerializer(ListUser, userPath);//Init of admin account
-            //List<Line> ListLine = new List<Line>();
-            //for (int a = 0; a < 10; a++)
-            //{
+            XMLTools.SaveListToXMLSerializer(ListUser, userPath);//Init of admin account
+            List<Line> ListLine = new List<Line>();
+            for (int a = 0; a < 10; a++)
+            {
 
-            //    ListLine.Add(new Line("s"));
-            //    ListLine[a].ID = forID;
-            //    forID++;
-            //}
+                ListLine.Add(new Line("s"));
+                ListLine[a].ID = forID;
+                forID++;
+            }
 
-            //XMLTools.SaveListToXMLSerializer(ListLine, linePath);//Init of Line
+            XMLTools.SaveListToXMLSerializer(ListLine, linePath);//Init of Line
 
             //List<Station> myList = new List<Station>();
             //Workbook newBook = new Workbook();
