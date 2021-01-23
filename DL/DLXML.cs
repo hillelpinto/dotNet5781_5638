@@ -83,111 +83,115 @@ namespace DAL
 
             XMLTools.SaveListToXMLSerializer(ListLine, linePath);//Init of Line
 
-            //List<Station> myList = new List<Station>();
-            //Workbook newBook = new Workbook();
-            //Worksheet newSheet = newBook.Worksheets[0];
-            //Workbook workbook = new Workbook();
-            //string directory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
+            List<Station> myList = new List<Station>();
+            Workbook newBook = new Workbook();
+            Worksheet newSheet = newBook.Worksheets[0];
+            Workbook workbook = new Workbook();
+            string directory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
 
-            //workbook.LoadFromFile(directory + @"\StationBus.xlsx");
-            //int row = 2;
-            //int columns = 2;
-            //int columnsName = 3;
-            //int columnsLongitude = 6;
-            //int columnsLatitude = 5;
-            //Worksheet sheet = workbook.Worksheets[0];
+            workbook.LoadFromFile(directory + @"\StationBus.xlsx");
+            int row = 2;
+            int columns = 2;
+            int columnsName = 3;
+            int columnsLongitude = 6;
+            int columnsLatitude = 5;
+            Worksheet sheet = workbook.Worksheets[0];
 
-            //for (int a = 0; a < 40; a++)
-            //{
-            //    myList.Add(new Station("s"));
+            for (int a = 0; a < 40; a++)
+            {
+                myList.Add(new Station("s"));
 
-            //    CellRange StationCode = sheet.Range[row, columns];
-            //    CellRange Stationname = sheet.Range[row, columnsName];
-            //    CellRange StationLongitude = sheet.Range[row, columnsLongitude];
-            //    CellRange StationLatitude = sheet.Range[row, columnsLatitude];
-            //    myList[a].latitude = double.Parse(StationLatitude.Value);
-            //    myList[a].longitude = double.Parse(StationLongitude.Value);
-            //    myList[a].shelterNumber = int.Parse(StationCode.Value);
-            //    myList[a].ID = forID;
-            //    myList[a].address = Stationname.Value.ToString();
-            //    row++;
-            //    forID++;
-            //}
-            //XMLTools.SaveListToXMLSerializer(myList, stationPath);//Init station
+                CellRange StationCode = sheet.Range[row, columns];
+                CellRange Stationname = sheet.Range[row, columnsName];
+                CellRange StationLongitude = sheet.Range[row, columnsLongitude];
+                CellRange StationLatitude = sheet.Range[row, columnsLatitude];
+                myList[a].latitude = double.Parse(StationLatitude.Value);
+                myList[a].longitude = double.Parse(StationLongitude.Value);
+                myList[a].shelterNumber = int.Parse(StationCode.Value);
+                myList[a].ID = forID;
+                myList[a].address = Stationname.Value.ToString();
+                row++;
+                forID++;
+            }
+            XMLTools.SaveListToXMLSerializer(myList, stationPath);//Init station
 
-            //List<ExitLine> myExit = new List<ExitLine>();
-            //for (int a = 0; a < 10; a++)
-            //{
-            //    myExit.Add(new ExitLine(ListLine[a].busLineNumber));
-            //    myExit[a].ID = forID;
-            //    forID++;
-            //}
-            //XMLTools.SaveListToXMLSerializer(myExit, ExitLinePath);//Init exitLine
 
-            //List<StationLine> stationLine = new List<StationLine>();
+            XElement root = XMLTools.LoadListFromXMLElement(ExitLinePath);
+            for(int a=0;a<10;a++)
+            {
+                ExitLine s = new ExitLine(ListLine[a].ID);
+                s.ID = forID;
+                XElement schedules = new XElement("LineTrip", new XElement("ID", s.ID),
+                             new XElement("BusLineNumber", s.IdBus),
+                             new XElement("FrequenciesOfExit", s.FrequenceinMN),
+                             new XElement("BeginService", s.Start.ToString()),
+                             new XElement("EndService", s.End.ToString()));
+                root.Add(schedules);
+                forID++;
+            }
+            XMLTools.SaveListToXMLElement(root,ExitLinePath);
 
-            //int index = 0;
-            //for (int a = 0; a < 40; a++)
-            //{
+            List<StationLine> stationLine = new List<StationLine>();
 
-            //    stationLine.Add(new StationLine());
-            //    stationLine[a].CheckedOrNot = false;
-            //    stationLine[a].address = myList[a].address;
-            //    stationLine[a].DigitPanel = myList[a].DigitPanel;
-            //    stationLine[a].latitude = myList[a].latitude;
-            //    stationLine[a].longitude = myList[a].longitude;
-            //    stationLine[a].shelterNumber = myList[a].shelterNumber;
-            //    stationLine[a].HandicappedAccess = myList[a].HandicappedAccess;
-            //    stationLine[a].ID = forID;
-            //    forID++;
-            //}
-            //for (int a = 0; a < 40; a++)
-            //{
-            //    for (int b = 0; b < 4; a++, b++)
-            //    {
-            //        if (b == 0)
-            //        {
-            //            ListLine[index].firstStation = stationLine[b].shelterNumber;
-            //        }
-            //        stationLine[a].LineHere = ListLine[index].ID;
-            //    }
-            //    a--;
-            //    ListLine[index].lastStation = stationLine[a].shelterNumber;
+            int index = 0;
+            for (int a = 0; a < 40; a++)
+            {
 
-            //    index++;
-            //}
-            //List<StationLine> sc = new List<StationLine>();
-            //sc.Add(new StationLine());
-            //XMLTools.SaveListToXMLSerializer(sc, StationConnected);
+                stationLine.Add(new StationLine());
+                stationLine[a].CheckedOrNot = false;
+                stationLine[a].address = myList[a].address;
+                stationLine[a].DigitPanel = myList[a].DigitPanel;
+                stationLine[a].latitude = myList[a].latitude;
+                stationLine[a].longitude = myList[a].longitude;
+                stationLine[a].shelterNumber = myList[a].shelterNumber;
+                stationLine[a].HandicappedAccess = myList[a].HandicappedAccess;
+                stationLine[a].ID = forID;
+                forID++;
+            }
+            for (int a = 0; a < 40; a++)
+            {
+                for (int b = 0; b < 4; a++, b++)
+                {
+                    if (b == 0)
+                    {
+                        ListLine[index].firstStation = stationLine[b].shelterNumber;
+                    }
+                    stationLine[a].LineHere = ListLine[index].ID;
+                }
+                a--;
+                ListLine[index].lastStation = stationLine[a].shelterNumber;
 
-            //XElement root = XMLTools.LoadListFromXMLElement(StationConnected);
-            //for (int a = 0; a < 40; a++)
-            //{
-            //    if (a == 39)
-            //    {
-            //        Stationsconnected temp = new Stationsconnected(stationLine[a], stationLine[0]);
-            //        temp.ID = forID;
-            //        XElement personElem = new XElement("AdjacentStation", new XElement("ID", temp.ID),
-            //                      new XElement("FirstStationsID", temp.numeroUno),
-            //                      new XElement("SecondStationsID", temp.numeroDeuzio),
-            //                      new XElement("Distance", temp.distance),
-            //                      new XElement("TimeBetween", temp.timeBetween.ToString()));
-            //        root.Add(personElem);
-            //        break;
-            //    }
-            //    Stationsconnected tempp = new Stationsconnected(stationLine[a], stationLine[a + 1]);
-            //    tempp.ID = forID;
-            //    XElement personElem2 = new XElement("AdjacentStation", new XElement("ID", tempp.ID),
-            //                    new XElement("FirstStationsID", tempp.numeroUno),
-            //                    new XElement("SecondStationsID", tempp.numeroDeuzio),
-            //                    new XElement("Distance", tempp.distance),
-            //                    new XElement("TimeBetween", tempp.timeBetween.ToString()));
-            //    root.Add(personElem2);
-            //    forID++;
-            //}
+                index++;
+            }
 
-            //XMLTools.SaveListToXMLElement(root, StationConnected);
-            //XMLTools.SaveListToXMLSerializer(stationLine,StationLinePath);
+            XElement root2 = XMLTools.LoadListFromXMLElement(StationConnected);
+            for (int a = 0; a < 40; a++)
+            {
+                if (a == 39)
+                {
+                    Stationsconnected tempy = new Stationsconnected(stationLine[a], stationLine[0]);
+                    tempy.ID = forID;
+                    XElement personElem = new XElement("AdjacentStation", new XElement("ID", tempy.ID),
+                                  new XElement("FirstStationsID", tempy.numeroUno),
+                                  new XElement("SecondStationsID", tempy.numeroDeuzio),
+                                  new XElement("Distance", tempy.distance),
+                                  new XElement("TimeBetween", tempy.timeBetween.ToString()));
+                    root2.Add(personElem);
+                    break;
+                }
+                Stationsconnected tempp = new Stationsconnected(stationLine[a], stationLine[a + 1]);
+                tempp.ID = forID;
+                XElement personElem2 = new XElement("AdjacentStation", new XElement("ID", tempp.ID),
+                                new XElement("FirstStationsID", tempp.numeroUno),
+                                new XElement("SecondStationsID", tempp.numeroDeuzio),
+                                new XElement("Distance", tempp.distance),
+                                new XElement("TimeBetween", tempp.timeBetween.ToString()));
+                root2.Add(personElem2);
+                forID++;
+            }
+
+            XMLTools.SaveListToXMLElement(root2, StationConnected);
+            XMLTools.SaveListToXMLSerializer(stationLine, StationLinePath);
 
 
 
@@ -475,16 +479,48 @@ namespace DAL
         #region Schedules
         public IEnumerable<ExitLine> getmySchedules()
         {
-            List<ExitLine> schedule = XMLTools.LoadListFromXMLSerializer<ExitLine>(ExitLinePath);
-            return schedule;
+            XElement root = XMLTools.LoadListFromXMLElement(ExitLinePath);
+            List<ExitLine> myList = new List<ExitLine>();
+            foreach (XElement p in root.Elements())
+            {
+                ExitLine sc = new ExitLine();
+                sc.ID = Int32.Parse(p.Element("ID").Value);
+                sc.IdBus = Int32.Parse(p.Element("BusLineNumber").Value);
+                sc.FrequenceinMN = Int32.Parse(p.Element("FrequenciesOfExit").Value);
+
+                sc.Start = TimeSpan.Parse(p.Element("BeginService").Value);
+                sc.End = TimeSpan.Parse(p.Element("EndService").Value);
+
+                myList.Add(sc);
+            }
+            return myList;
+        }
+        public void addLineSchedule(ExitLine temp)
+        {
+            XElement root = XMLTools.LoadListFromXMLElement(ExitLinePath);
+            Random r = new Random();
+            temp.ID = r.Next(0, 1000);
+            XElement schedules = new XElement("LineTrip", new XElement("ID", temp.ID),
+                                 new XElement("BusLineNumber", temp.IdBus),
+                                 new XElement("FrequenciesOfExit", temp.FrequenceinMN),
+                                 new XElement("BeginService", temp.Start.ToString()),
+                                 new XElement("EndService", temp.End.ToString()));
+            root.Add(schedules);
+            XMLTools.SaveListToXMLElement(root, ExitLinePath);
+
         }
 
-        public void modifySchedule(ExitLine l)
+        public void modifySchedule(ExitLine s)
         {
-            List<ExitLine> el = XMLTools.LoadListFromXMLSerializer<ExitLine>(ExitLinePath);
-            int index = el.FindIndex(item => item.ID == l.ID);
-            el[index] = l;
-            XMLTools.SaveListToXMLSerializer<ExitLine>(el, ExitLinePath);
+         
+            XElement root = XMLTools.LoadListFromXMLElement(ExitLinePath);
+            XElement toCommit = (from item in root.Elements() where item.Element("ID").Value == s.ID.ToString() select item).FirstOrDefault();
+            if (toCommit != null)
+            {
+                toCommit.Element("BeginService").Value = s.Start.ToString();
+                toCommit.Element("EndService").Value = s.End.ToString();
+            }
+            XMLTools.SaveListToXMLElement(root,ExitLinePath);
 
         }
 
@@ -499,23 +535,18 @@ namespace DAL
         {
             XElement root = XMLTools.LoadListFromXMLElement(StationConnected);
             Stationsconnected temp = new Stationsconnected(l, s);
-            Stationsconnected tempp = new Stationsconnected(s, l);
+            Random r = new Random();
+            temp.ID = r.Next(0, 1000);
             XElement personElem = new XElement("AdjacentStation", new XElement("ID", temp.ID),
                                  new XElement("FirstStationsID", temp.numeroUno),
                                  new XElement("SecondStationsID", temp.numeroDeuzio),
                                  new XElement("Distance", temp.distance),
-                                 new XElement("TimeBetween", temp.timeBetween.ToString()));
-            XElement personElem2 = new XElement("AdjacentStation", new XElement("ID", tempp.ID),
-                        new XElement("FirstStationsID", tempp.numeroUno),
-                        new XElement("SecondStationsID", tempp.numeroDeuzio),
-                          new XElement("Distance", tempp.distance),
-                          new XElement("TimeBetween", tempp.timeBetween.ToString()));
-                      
+                                 new XElement("TimeBetween", temp.timeBetween.ToString()));          
             root.Add(personElem);
-            root.Add(personElem2);
             XMLTools.SaveListToXMLElement(root, StationConnected);
 
         }
+     
 
 
         public IEnumerable<Stationsconnected> getStationConnected()

@@ -139,7 +139,7 @@ namespace DAL.DS
 
             for(int a=0;a<10;a++)
             {
-                DataSource.ExitLines.Add(new ExitLine(DataSource.Lines[a].busLineNumber));
+                DataSource.ExitLines.Add(new ExitLine(DataSource.Lines[a].ID));
                 DataSource.ExitLines[a].ID = forID;
                 forID++;
             }

@@ -17,6 +17,7 @@ namespace DAL
         #region LineFunction
         IEnumerable<Line> getLines();
         void addLine(Line l);
+        void addLineSchedule(ExitLine l);
 
         IEnumerable<Line> getAllAllLine();
         void modifyLine(Line l);

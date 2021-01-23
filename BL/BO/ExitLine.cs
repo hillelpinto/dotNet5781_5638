@@ -17,7 +17,9 @@ namespace BL.BO
         }
         public ExitLine()
         {
-
+            Start = new TimeSpan(6, 0, 0);
+            End = new TimeSpan(22, 0, 0);
+            FrequenceinMN = 10;
         }
 
     }

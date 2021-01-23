@@ -32,7 +32,7 @@ namespace PL.WorkerWindow
             comboSource.Add("15");
             comboSource.Add("20");
             this.DataContext = l;
-           int a = instance.getmySchedules().ToList().Find(item => item.IdBus == l.busLineNumber).FrequenceinMN;
+           int a = instance.getmySchedules().ToList().Find(item => item.IdBus==l.ID).FrequenceinMN;
             int index= comboSource.FindIndex(item => item == a.ToString());
             comboFrq.ItemsSource = comboSource;
             comboFrq.SelectedIndex = index;
@@ -41,24 +41,21 @@ namespace PL.WorkerWindow
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan begin = new TimeSpan();
+            TimeSpan end = new TimeSpan();
             bool check = TimeSpan.TryParse(begintxt.Text, out begin);
-            if (!check)
+            bool check2 = TimeSpan.TryParse(endtxt.Text, out end);
+            if (!check || !check2)
+            {
                 MessageBox.Show("Error of time format !");
-            check = TimeSpan.TryParse(endtxt.Text, out begin);
-
-             if (!check)
-                MessageBox.Show("Error of time format !");
-            int test = 0;
-            check = int.TryParse(comboSource[comboFrq.SelectedIndex], out test);
-            if(!check)
-                MessageBox.Show("Error of time format !");
+                return;
+            }
             else
             {
-                temp.BeginService = TimeSpan.Parse(begintxt.Text);
-                temp.EndService = TimeSpan.Parse(endtxt.Text);
-                ExitLine s = instance.getmySchedules().ToList().Find(item => item.IdBus == temp.busLineNumber);
+                int test = int.Parse(comboSource[comboFrq.SelectedIndex]);
+                ExitLine s = instance.getmySchedules().ToList().Find(item => item.IdBus == temp.ID);
+                s.Start = begin;
+                s.End = end;
                 s.FrequenceinMN = test;
-                instance.modifyLine(temp);
                 instance.modifySchedule(s);
                 this.Close();
 

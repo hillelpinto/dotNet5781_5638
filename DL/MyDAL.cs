@@ -88,7 +88,11 @@ namespace DAL
             IEnumerable <Line> lines= DataSource.Lines;
             return lines;
         }
-     
+        public void addLineSchedule(ExitLine l)
+        {
+            DataSource.ExitLines.Add(l);
+        }
+
         public void addLine(Line l)
         {
             List<Line> checkMany = DataSource.Lines.Where(line => line.busLineNumber == l.busLineNumber).ToList();
@@ -217,9 +221,13 @@ namespace DAL
     
        public void addOnecouple(StationLine l, StationLine s)//The ctor will give a random time and distance to the journey from station"l" to station"s"
         {
+            Random r = new Random();
             DataSource.StationsConnecteds.Add(new Stationsconnected(l, s));
-            DataSource.StationsConnecteds.Add(new Stationsconnected(l, s));
- 
+            DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID = r.Next(0, 1000);
+            //while(getStationConnected().ToList().Exists(item=>item.ID == DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID))
+            //    DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID = r.Next(0, 1000);
+
+
         }
 
         public bool commitTime(Stationsconnected s)//if in the index we have the same value so no commit made ->return false

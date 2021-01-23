@@ -19,8 +19,6 @@ namespace DAL.DO
         public bool CheckedOrNot { get; set; }
         public string getArea { get => area.ToString(); set { } }
                    
-        public TimeSpan BeginService { get; set; }
-        public TimeSpan EndService { get; set; }
         public int speed { get; set; }
         public Line() {  }
         public override string ToString()
@@ -47,8 +45,7 @@ namespace DAL.DO
         {
             speed = r.Next(20, 51);
             busLineNumber = r.Next(100, 999);
-            BeginService = new TimeSpan(6, 0, 0);
-            EndService = new TimeSpan(22, 0, 0);
+           
             area = (Area)r.Next(1, 7);
             CheckedOrNot = false;
            

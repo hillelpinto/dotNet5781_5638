@@ -27,8 +27,6 @@ namespace BL
             to.busLineNumber = from.busLineNumber;
             to.firstStation = from.firstStation;
             to.lastStation = from.lastStation;
-            to.BeginService = from.BeginService;
-            to.EndService = from.EndService;
             to.CheckedOrNot = from.CheckedOrNot;
             to.speed = from.speed;
             to.ID = from.ID;
@@ -42,8 +40,7 @@ namespace BL
             to.busLineNumber = from.busLineNumber;
             to.firstStation = from.firstStation;
             to.lastStation = from.lastStation;
-            to.BeginService = from.BeginService;
-            to.EndService = from.EndService;
+         
             to.CheckedOrNot = from.CheckedOrNot;
             to.speed = from.speed;
             to.ID = from.ID;

@@ -22,6 +22,8 @@ namespace BL
 
         #region LineFunction
         List<Line> getLines();
+
+        void addLineSchedule(ExitLine l);
         void setIndexinLine(Line l);
         IEnumerable<Line> getAllAllLine();
 

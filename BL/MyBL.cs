@@ -145,6 +145,7 @@ namespace BL
                     modifyLine(l);
                     t.Remove(l);
                 }
+                getMyHours(l);
                 l.listStations[l.listStations.Count - 1].Distance = 0;
 
                 l.listStations[l.listStations.Count - 1].Temps = new TimeSpan(0,0,0);
@@ -199,6 +200,9 @@ namespace BL
                 DAL.DO.Line s = new DAL.DO.Line();
                 l.CopyPropertiesTo(s);
 
+                ExitLine schedule = new ExitLine();
+                schedule.IdBus = l.ID;
+                addLineSchedule(schedule);
                 dalData.addLine(s);
             }
             catch(DLException ex)
@@ -206,6 +210,24 @@ namespace BL
                 throw new BLException(ex.Message);
             }
             }
+        private void getMyHours(Line l)
+        {
+
+            int index = dalData.getmySchedules().ToList().FindIndex(item => item.IdBus == l.ID);
+            if (index != -1)
+            {
+                l.BeginService = getmySchedules().ToList()[index].Start;
+                l.EndService = getmySchedules().ToList()[index].End;
+            }
+        }
+        public void addLineSchedule(ExitLine l)
+        {
+            DAL.DO.ExitLine S = new DAL.DO.ExitLine();
+            l.CopyPropertiesTo(S);
+            S.IdBus = l.IdBus;
+            dalData.addLineSchedule(S);
+        }
+
         public IEnumerable<Line> getAllAllLine()//get the line without the stations in each of them
         {
             List<Line> t = new List<Line>();

@@ -29,7 +29,7 @@ namespace BL
                 time=value;
                 clockObserver?.Invoke(time);
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("timest"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("Time"));
             }
         }
         public int Rate { get; set; }

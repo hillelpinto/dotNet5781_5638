@@ -1,295 +1,283 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfStationLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <StationLine>
-    <CheckedOrNot>false</CheckedOrNot>
-    <ID>0</ID>
-    <shelterNumber>0</shelterNumber>
-    <latitude>0</latitude>
-    <longitude>0</longitude>
-    <HandicappedAccess>false</HandicappedAccess>
-    <DigitPanel>false</DigitPanel>
-    <LineHere>0</LineHere>
-    <nextStation>0</nextStation>
-    <prevStation>0</prevStation>
-  </StationLine>
+<ArrayOfExitLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AdjacentStation>
     <ID>121</ID>
     <FirstStationsID>81</FirstStationsID>
     <SecondStationsID>82</SecondStationsID>
-    <Distance>306</Distance>
-    <TimeBetween>00:05:12</TimeBetween>
+    <Distance>325</Distance>
+    <TimeBetween>00:03:26</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>122</ID>
     <FirstStationsID>82</FirstStationsID>
     <SecondStationsID>83</SecondStationsID>
-    <Distance>550</Distance>
-    <TimeBetween>00:04:50</TimeBetween>
+    <Distance>504</Distance>
+    <TimeBetween>00:03:02</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>123</ID>
     <FirstStationsID>83</FirstStationsID>
     <SecondStationsID>84</SecondStationsID>
-    <Distance>148</Distance>
-    <TimeBetween>00:02:14</TimeBetween>
+    <Distance>138</Distance>
+    <TimeBetween>00:02:32</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>124</ID>
     <FirstStationsID>84</FirstStationsID>
     <SecondStationsID>85</SecondStationsID>
-    <Distance>543</Distance>
-    <TimeBetween>00:03:02</TimeBetween>
+    <Distance>232</Distance>
+    <TimeBetween>00:02:42</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>125</ID>
     <FirstStationsID>85</FirstStationsID>
     <SecondStationsID>86</SecondStationsID>
-    <Distance>569</Distance>
-    <TimeBetween>00:05:14</TimeBetween>
+    <Distance>336</Distance>
+    <TimeBetween>00:03:16</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>126</ID>
     <FirstStationsID>86</FirstStationsID>
     <SecondStationsID>87</SecondStationsID>
-    <Distance>361</Distance>
-    <TimeBetween>00:03:46</TimeBetween>
+    <Distance>344</Distance>
+    <TimeBetween>00:05:56</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>127</ID>
     <FirstStationsID>87</FirstStationsID>
     <SecondStationsID>88</SecondStationsID>
-    <Distance>277</Distance>
-    <TimeBetween>00:02:54</TimeBetween>
+    <Distance>483</Distance>
+    <TimeBetween>00:05:43</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>128</ID>
     <FirstStationsID>88</FirstStationsID>
     <SecondStationsID>89</SecondStationsID>
-    <Distance>428</Distance>
-    <TimeBetween>00:05:34</TimeBetween>
+    <Distance>394</Distance>
+    <TimeBetween>00:05:16</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>129</ID>
     <FirstStationsID>89</FirstStationsID>
     <SecondStationsID>90</SecondStationsID>
-    <Distance>109</Distance>
-    <TimeBetween>00:00:37</TimeBetween>
+    <Distance>579</Distance>
+    <TimeBetween>00:05:17</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>130</ID>
     <FirstStationsID>90</FirstStationsID>
     <SecondStationsID>91</SecondStationsID>
-    <Distance>273</Distance>
-    <TimeBetween>00:00:23</TimeBetween>
+    <Distance>193</Distance>
+    <TimeBetween>00:01:13</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>131</ID>
     <FirstStationsID>91</FirstStationsID>
     <SecondStationsID>92</SecondStationsID>
-    <Distance>286</Distance>
-    <TimeBetween>00:02:53</TimeBetween>
+    <Distance>128</Distance>
+    <TimeBetween>00:01:46</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>132</ID>
     <FirstStationsID>92</FirstStationsID>
     <SecondStationsID>93</SecondStationsID>
-    <Distance>220</Distance>
-    <TimeBetween>00:00:32</TimeBetween>
+    <Distance>304</Distance>
+    <TimeBetween>00:04:18</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>133</ID>
     <FirstStationsID>93</FirstStationsID>
     <SecondStationsID>94</SecondStationsID>
-    <Distance>236</Distance>
-    <TimeBetween>00:00:04</TimeBetween>
+    <Distance>461</Distance>
+    <TimeBetween>00:03:12</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>134</ID>
     <FirstStationsID>94</FirstStationsID>
     <SecondStationsID>95</SecondStationsID>
-    <Distance>178</Distance>
-    <TimeBetween>00:00:02</TimeBetween>
+    <Distance>422</Distance>
+    <TimeBetween>00:03:08</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>135</ID>
     <FirstStationsID>95</FirstStationsID>
     <SecondStationsID>96</SecondStationsID>
-    <Distance>544</Distance>
-    <TimeBetween>00:05:07</TimeBetween>
+    <Distance>322</Distance>
+    <TimeBetween>00:04:31</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>136</ID>
     <FirstStationsID>96</FirstStationsID>
     <SecondStationsID>97</SecondStationsID>
-    <Distance>261</Distance>
-    <TimeBetween>00:02:56</TimeBetween>
+    <Distance>289</Distance>
+    <TimeBetween>00:01:30</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>137</ID>
     <FirstStationsID>97</FirstStationsID>
     <SecondStationsID>98</SecondStationsID>
-    <Distance>137</Distance>
-    <TimeBetween>00:00:25</TimeBetween>
+    <Distance>329</Distance>
+    <TimeBetween>00:04:43</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>138</ID>
     <FirstStationsID>98</FirstStationsID>
     <SecondStationsID>99</SecondStationsID>
-    <Distance>423</Distance>
-    <TimeBetween>00:03:53</TimeBetween>
+    <Distance>166</Distance>
+    <TimeBetween>00:00:15</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>139</ID>
     <FirstStationsID>99</FirstStationsID>
     <SecondStationsID>100</SecondStationsID>
-    <Distance>515</Distance>
-    <TimeBetween>00:04:14</TimeBetween>
+    <Distance>118</Distance>
+    <TimeBetween>00:02:43</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>140</ID>
     <FirstStationsID>100</FirstStationsID>
     <SecondStationsID>101</SecondStationsID>
-    <Distance>328</Distance>
-    <TimeBetween>00:05:51</TimeBetween>
+    <Distance>576</Distance>
+    <TimeBetween>00:04:01</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>141</ID>
     <FirstStationsID>101</FirstStationsID>
     <SecondStationsID>102</SecondStationsID>
-    <Distance>387</Distance>
-    <TimeBetween>00:05:27</TimeBetween>
+    <Distance>395</Distance>
+    <TimeBetween>00:04:03</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>142</ID>
     <FirstStationsID>102</FirstStationsID>
     <SecondStationsID>103</SecondStationsID>
-    <Distance>260</Distance>
-    <TimeBetween>00:02:08</TimeBetween>
+    <Distance>570</Distance>
+    <TimeBetween>00:04:25</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>143</ID>
     <FirstStationsID>103</FirstStationsID>
     <SecondStationsID>104</SecondStationsID>
-    <Distance>427</Distance>
-    <TimeBetween>00:04:54</TimeBetween>
+    <Distance>387</Distance>
+    <TimeBetween>00:03:55</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>144</ID>
     <FirstStationsID>104</FirstStationsID>
     <SecondStationsID>105</SecondStationsID>
-    <Distance>220</Distance>
-    <TimeBetween>00:00:55</TimeBetween>
+    <Distance>518</Distance>
+    <TimeBetween>00:04:58</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>145</ID>
     <FirstStationsID>105</FirstStationsID>
     <SecondStationsID>106</SecondStationsID>
-    <Distance>342</Distance>
-    <TimeBetween>00:04:46</TimeBetween>
+    <Distance>151</Distance>
+    <TimeBetween>00:00:25</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>146</ID>
     <FirstStationsID>106</FirstStationsID>
     <SecondStationsID>107</SecondStationsID>
-    <Distance>229</Distance>
-    <TimeBetween>00:01:05</TimeBetween>
+    <Distance>476</Distance>
+    <TimeBetween>00:05:02</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>147</ID>
     <FirstStationsID>107</FirstStationsID>
     <SecondStationsID>108</SecondStationsID>
-    <Distance>289</Distance>
-    <TimeBetween>00:01:07</TimeBetween>
+    <Distance>321</Distance>
+    <TimeBetween>00:04:37</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>148</ID>
     <FirstStationsID>108</FirstStationsID>
     <SecondStationsID>109</SecondStationsID>
-    <Distance>440</Distance>
-    <TimeBetween>00:03:10</TimeBetween>
+    <Distance>401</Distance>
+    <TimeBetween>00:03:38</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>149</ID>
     <FirstStationsID>109</FirstStationsID>
     <SecondStationsID>110</SecondStationsID>
-    <Distance>181</Distance>
-    <TimeBetween>00:01:27</TimeBetween>
+    <Distance>523</Distance>
+    <TimeBetween>00:03:17</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>150</ID>
     <FirstStationsID>110</FirstStationsID>
     <SecondStationsID>111</SecondStationsID>
-    <Distance>492</Distance>
-    <TimeBetween>00:05:18</TimeBetween>
+    <Distance>553</Distance>
+    <TimeBetween>00:04:04</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>151</ID>
     <FirstStationsID>111</FirstStationsID>
     <SecondStationsID>112</SecondStationsID>
-    <Distance>361</Distance>
-    <TimeBetween>00:04:30</TimeBetween>
+    <Distance>574</Distance>
+    <TimeBetween>00:04:14</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>152</ID>
     <FirstStationsID>112</FirstStationsID>
     <SecondStationsID>113</SecondStationsID>
-    <Distance>435</Distance>
-    <TimeBetween>00:05:09</TimeBetween>
+    <Distance>390</Distance>
+    <TimeBetween>00:03:06</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>153</ID>
     <FirstStationsID>113</FirstStationsID>
     <SecondStationsID>114</SecondStationsID>
-    <Distance>539</Distance>
-    <TimeBetween>00:04:44</TimeBetween>
+    <Distance>106</Distance>
+    <TimeBetween>00:02:53</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>154</ID>
     <FirstStationsID>114</FirstStationsID>
     <SecondStationsID>115</SecondStationsID>
-    <Distance>571</Distance>
-    <TimeBetween>00:05:39</TimeBetween>
+    <Distance>218</Distance>
+    <TimeBetween>00:00:00</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>155</ID>
     <FirstStationsID>115</FirstStationsID>
     <SecondStationsID>116</SecondStationsID>
-    <Distance>266</Distance>
-    <TimeBetween>00:00:58</TimeBetween>
+    <Distance>308</Distance>
+    <TimeBetween>00:04:24</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>156</ID>
     <FirstStationsID>116</FirstStationsID>
     <SecondStationsID>117</SecondStationsID>
-    <Distance>555</Distance>
-    <TimeBetween>00:05:50</TimeBetween>
+    <Distance>196</Distance>
+    <TimeBetween>00:01:37</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>157</ID>
     <FirstStationsID>117</FirstStationsID>
     <SecondStationsID>118</SecondStationsID>
-    <Distance>570</Distance>
-    <TimeBetween>00:04:15</TimeBetween>
+    <Distance>537</Distance>
+    <TimeBetween>00:05:11</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>158</ID>
     <FirstStationsID>118</FirstStationsID>
     <SecondStationsID>119</SecondStationsID>
-    <Distance>574</Distance>
-    <TimeBetween>00:03:25</TimeBetween>
+    <Distance>281</Distance>
+    <TimeBetween>00:00:33</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>159</ID>
     <FirstStationsID>119</FirstStationsID>
     <SecondStationsID>120</SecondStationsID>
-    <Distance>571</Distance>
-    <TimeBetween>00:04:30</TimeBetween>
+    <Distance>192</Distance>
+    <TimeBetween>00:00:16</TimeBetween>
   </AdjacentStation>
   <AdjacentStation>
     <ID>160</ID>
     <FirstStationsID>120</FirstStationsID>
     <SecondStationsID>81</SecondStationsID>
-    <Distance>406</Distance>
-    <TimeBetween>00:05:31</TimeBetween>
+    <Distance>544</Distance>
+    <TimeBetween>00:04:46</TimeBetween>
   </AdjacentStation>
-</ArrayOfStationLine>
+</ArrayOfExitLine>

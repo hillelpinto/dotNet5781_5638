@@ -39,23 +39,28 @@ namespace PL.WorkerWindow
 
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
-            Random r = new Random();
-            b.ID = r.Next(0, 10000);
-            while(instance.GetStations().ToList().Exists(station=>station.ID==b.ID)==true)
-           {
+            if (LicenseN.Text.Length == 0 || Seat.Text.Length == 0)
+                MessageBox.Show("Missing data !");
+            else
+            {
+                Random r = new Random();
                 b.ID = r.Next(0, 10000);
-            }
-            b.DigitPanel = isDigit();
-            b.HandicappedAccess = isAccess();
-            try
-            {
-                instance.addstation(b);
-                MessageBox.Show("Your Station is added successfully !");
-                this.Close();
-            }
-            catch(BLException ex)
-            {
-                MessageBox.Show(ex.Message);
+                while (instance.GetStations().ToList().Exists(station => station.ID == b.ID) == true)
+                {
+                    b.ID = r.Next(0, 10000);
+                }
+                b.DigitPanel = isDigit();
+                b.HandicappedAccess = isAccess();
+                try
+                {
+                    instance.addstation(b);
+                    MessageBox.Show("Your Station is added successfully !");
+                    this.Close();
+                }
+                catch (BLException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
         }
