@@ -31,6 +31,8 @@ namespace BL
         bool deleteLines();
         void modifyLine(Line l);
 
+        void getMyHours(Line l);
+
         #endregion
 
         #region StationLineFunction

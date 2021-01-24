@@ -32,8 +32,9 @@ namespace BL.BO
             BusLineNumber = l.busLineNumber;
             StartingAt = l.BeginService;
             lastStation = l.listStations[l.listStations.Count - 1].address;
+            ID = l.ID;
         }
-        public IEnumerable<LineTiming> getmyTimings(IBl bl,StationLine i,List<ExitLine> myShedules,TimeSpan currentH)
+        public IEnumerable<LineTiming> getmyTimings(StationLine i,List<ExitLine> myShedules,TimeSpan currentH)
         {
            mylist  = new List<LineTiming>();
             List<Line> lineofTheStation = i.myLines;
@@ -56,9 +57,10 @@ namespace BL.BO
                 }
             }
             lineofTheStation.ForEach(line => mylist.Add(new LineTiming(line)));
+           // lineofTheStation.ForEach(line => bl.getMyHours(line));
             foreach(LineTiming l in mylist)
             {
-                int index = myShedules.FindIndex(item => item.IdBus == l.BusLineNumber);
+                int index = myShedules.FindIndex(item => item.IdBus == l.ID);
                 l.Freq = myShedules[index].FrequenceinMN;
             }//After this loop it only miss the time left before the bus will arrive
             foreach(Line l in lineofTheStation)

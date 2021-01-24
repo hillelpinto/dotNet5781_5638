@@ -51,8 +51,9 @@ namespace PL.WorkerWindow
             myl = new Uri("https://drive.google.com/uc?export=download&id=1cTQC49etPREUPvbq1azgo4vEfHQuUR_s", UriKind.RelativeOrAbsolute);
             image = new BitmapImage(myl);
             myTimer.Source = image;
-            List<ExitLine> myList = instance.getmySchedules().ToList().Where(item => temp.myLines.Exists(line => item.IdBus == line.busLineNumber)).ToList();
-            IEnumerable<LineTiming> myTiming = s.getmyTimings(instance, temp, myList,simulatorClock.Time);
+            List<ExitLine> myList = instance.getmySchedules().ToList().Where(item => temp.myLines.Exists(line => item.IdBus == line.ID)).ToList();
+           
+            IEnumerable<LineTiming> myTiming = s.getmyTimings(temp, myList,simulatorClock.Time);
             Info.DataContext = myTiming;
             myTiming.ToList().ForEach(item => MakeTimer(item, simulatorClock.Rate));
         }

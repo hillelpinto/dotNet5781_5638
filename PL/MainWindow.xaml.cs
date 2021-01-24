@@ -37,7 +37,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          StationsWindow mywindow = new StationsWindow(instance,s);
+          Window1 mywindow = new Window1(instance);
             mywindow.ShowDialog();
         }
     }

@@ -17,7 +17,7 @@ namespace BL
 
     public class MyBL : IBl
     {
-        IDAL dalData = DALFactory.GetDL("xml");
+        IDAL dalData = DALFactory.GetDL("data");
         TimeSpan hours;
 
         public void init()
@@ -155,8 +155,9 @@ namespace BL
 
             return t;
         }
+      
 
-            public void setIndexinLine(Line l)//It set al the needed value in a line (distance,time,first station,last station..) 
+        public void setIndexinLine(Line l)//It set al the needed value in a line (distance,time,first station,last station..) 
             {
             
                 for (int a = 0; a < l.listStations.Count(); a++)
@@ -210,7 +211,7 @@ namespace BL
                 throw new BLException(ex.Message);
             }
             }
-        private void getMyHours(Line l)
+        public void getMyHours(Line l)
         {
 
             int index = dalData.getmySchedules().ToList().FindIndex(item => item.IdBus == l.ID);
@@ -218,6 +219,7 @@ namespace BL
             {
                 l.BeginService = getmySchedules().ToList()[index].Start;
                 l.EndService = getmySchedules().ToList()[index].End;
+               
             }
         }
         public void addLineSchedule(ExitLine l)

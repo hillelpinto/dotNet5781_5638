@@ -77,6 +77,7 @@ namespace PL.WorkerWindow
                     }
                     instance.addStationl(last);
                     instance.addOneCouple(first, last);
+                    instance.addOneCouple(last, first);
 
                     try
                     {
