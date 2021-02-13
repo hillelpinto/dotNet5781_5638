@@ -36,7 +36,7 @@ namespace PL.WorkerWindow.Views
                 int index = ListBus.SelectedIndex;
                 Station i = instance.getStation(index);
                 myData.DataContext = i;
-                updatebutton.Foreground = Brushes.Aquamarine;
+                updatebutton.Foreground = Brushes.Orange;
                 updatebutton.IsEnabled = true;
                 Popupadd.IsOpen = true;
 
@@ -57,7 +57,7 @@ namespace PL.WorkerWindow.Views
             thisbus.CheckedOrNot = true;
             instance.modifyStation(thisbus);
             DeleteButton.IsEnabled = true;
-            DeleteButton.Foreground = Brushes.Aquamarine;
+            DeleteButton.Foreground = Brushes.Orange;
 
         }
         private void unchanged(object sender, RoutedEventArgs e)

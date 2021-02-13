@@ -9,7 +9,8 @@
     <Grid x:Name="myData">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Aquamarine" Offset="1"/>
+                <GradientStop Color="#FF4E00" Offset="1"/>
+                <GradientStop Color="#434343" Offset="0.163"/>
             </LinearGradientBrush>
         </Grid.Background>
         <ListView Name="ListBus" ItemsSource="{Binding}" MouseDoubleClick="ListBus_SelectionDetail"  Margin="0,10,397,10">
@@ -55,7 +56,7 @@
                     <GridViewColumn Header="View on the map" Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="MapRequest" Content="Show Map" FontSize="13"  HorizontalAlignment="Center" Background="Gray" Foreground="Aquamarine" FontWeight="Bold" />
+                                <Button Click="MapRequest" Content="Show Map" FontSize="13"  HorizontalAlignment="Center"  Foreground="Orange" Background="Black" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -69,7 +70,7 @@
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="Simulation" Visibility="{Binding}" Click="SimulationClicked" Content="Simulation..."  Background="Gray" Foreground="Aquamarine" FontWeight="Bold"   HorizontalAlignment="Center" FontSize="13"  />
+                                <Button Name="Simulation" Visibility="{Binding}" Click="SimulationClicked" Content="Simulation..."  Background="Black" Foreground="Orange" FontWeight="Bold"   HorizontalAlignment="Center" FontSize="13"  />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -78,8 +79,11 @@
             </ListView.View>
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Aquamarine" Offset="1"/>
+                    <GradientStop Color="#FF4E00" Offset="1"/>
+                    <GradientStop Color="#434343" Offset="0.163"/>
+
                 </LinearGradientBrush>
+
             </ListView.Background>
         </ListView>
 
@@ -88,14 +92,15 @@
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#434343" Offset="0.163"/>
                 </LinearGradientBrush>
+
             </ListView.Background>
 
         </ListView>
-        <TextBlock  HorizontalAlignment="Left"  Text="Lines passing through" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,40,0,0" Height="30" Width="157"/>
-        <TextBlock  HorizontalAlignment="Left"  Text="Terminus of the line" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,80,0,0" Height="31" Width="147"/>
-        <TextBlock  HorizontalAlignment="Left"  Text="Next Station Number" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="888,131,0,0" Height="31" Width="156"/>
-        <TextBlock  HorizontalAlignment="Left" Name="time"  Text="Time to next stop" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="888,175,0,0" Height="37" Width="147"/>
-        <TextBlock Name="distance"  HorizontalAlignment="Left"  Text="Distance to next stop"   Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,237,0,0" Height="46" Width="147"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Lines passing through" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,40,0,0" Height="30" Width="157"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Terminus of the line" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,80,0,0" Height="31" Width="147"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Next Station Number" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="888,131,0,0" Height="31" Width="156"/>
+        <TextBlock  HorizontalAlignment="Left" Name="time"  Text="Time to next stop" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="888,175,0,0" Height="37" Width="147"/>
+        <TextBlock Name="distance"  HorizontalAlignment="Left"  Text="Distance to next stop"   Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,237,0,0" Height="46" Width="147"/>
         <ComboBox Name="mycomboLine" ItemsSource="{Binding}"   FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="22" Margin="1049,40,0,0" SelectionChanged="mycomboLine_SelectionChanged" />
         <TextBox x:Name="terminus"  FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Gray" HorizontalAlignment="Left"   TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Margin="1049,80,0,0" />
         <TextBox x:Name="numnext" Text="{Binding nextStation}" FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Gray" HorizontalAlignment="Left"   TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Margin="1049,125,0,0" />
@@ -106,9 +111,9 @@
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=time}"  Name="Popuptime" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
             <TextBlock Foreground="Aquamarine" FontStyle="Italic" Background="Black" >Make commit here !</TextBlock>
         </Popup>
-        <Button Name="CreateButton" Content="Create" FontSize="15" Foreground="Aquamarine" ToolTip="Press me to add a station " FontWeight="Bold" Background="Gray" HorizontalAlignment="Left" Margin="923,408,0,0"  VerticalAlignment="Top" Width="171" Height="37" Click="CreateButton_Click"/>
-        <Button  IsEnabled="False"  Foreground="Black" Name="DeleteButton" FontSize="15" ToolTip="Fill a checkboxe and press me " FontWeight="Bold" Background="Gray" Content="Delete" HorizontalAlignment="Left" Margin="923,533,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="DeleteButton_Click"/>
-        <Button Name="updatebutton" IsEnabled="False" Foreground="Black" ToolTip="Select a station and you can update the details available below this button " FontSize="15"  FontWeight="Bold" Background="Gray" Content="Update"  HorizontalAlignment="Left" Margin="923,466,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="updatebutton_Click"/>
+        <Button Name="CreateButton" Content="Create" FontSize="15" Foreground="Orange" ToolTip="Press me to add a station " FontWeight="Bold" Background="Black" HorizontalAlignment="Left" Margin="923,408,0,0"  VerticalAlignment="Top" Width="171" Height="37" Click="CreateButton_Click"/>
+        <Button  IsEnabled="False"  Foreground="Orange" Name="DeleteButton" FontSize="15" ToolTip="Fill a checkboxe and press me " FontWeight="Bold" Background="Black" Content="Delete" HorizontalAlignment="Left" Margin="923,533,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="DeleteButton_Click"/>
+        <Button Name="updatebutton" IsEnabled="False" Foreground="Orange" ToolTip="Select a station and you can update the details available below this button " FontSize="15"  FontWeight="Bold" Background="Black" Content="Update"  HorizontalAlignment="Left" Margin="923,466,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="updatebutton_Click"/>
         <TextBox  IsReadOnly="True" Name="distancetxt"  FontWeight="Bold"  Foreground="Gray" FontSize="15" HorizontalAlignment="Left" Margin="1049,237,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22"/>
     </Grid>
 </UserControl>

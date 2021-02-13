@@ -34,7 +34,7 @@ namespace PL.WorkerWindow.Views
             if (ListBus.SelectedIndex != -1)
             {
                 updatebutton.IsEnabled = true;
-                updatebutton.Foreground = Brushes.Aquamarine;
+                updatebutton.Foreground = Brushes.Orange;
                 distancetxt.IsReadOnly = false;
                 timeText.IsReadOnly = false;
                 Popupdistance.IsOpen = true;
@@ -95,7 +95,7 @@ namespace PL.WorkerWindow.Views
         {
 
             DeleteButton.IsEnabled = true;
-            DeleteButton.Foreground = Brushes.Aquamarine;
+            DeleteButton.Foreground = Brushes.Orange;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = true;
