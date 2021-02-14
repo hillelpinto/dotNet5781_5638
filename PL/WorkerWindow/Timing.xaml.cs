@@ -55,6 +55,8 @@ namespace PL.WorkerWindow
            
             IEnumerable<LineTiming> myTiming = s.getmyTimings(temp, myList,simulatorClock.Time);
             Info.DataContext = myTiming;
+            myTiming.ToList().ForEach(item => ServiceEnded(item));
+
             myTiming.ToList().ForEach(item => MakeTimer(item, simulatorClock.Rate));
         }
 
@@ -96,6 +98,34 @@ namespace PL.WorkerWindow
 
             };
         }
+        void ServiceEnded(LineTiming line)
+        {
+            int id = instance.getAllAllLine().ToList().Find(item => item.busLineNumber == line.BusLineNumber).ID;
+            TimeSpan debut = instance.getmySchedules().ToList().Find(item => item.IdBus == id).Start;
+            TimeSpan fin = instance.getmySchedules().ToList().Find(item => item.IdBus == id).End;
+
+            if( (simulatorClock.Time.Hours==fin.Hours&&simulatorClock.Time.Minutes>0&&simulatorClock.Time.Hours<debut.Hours)||(simulatorClock.Time.Hours>fin.Hours&&simulatorClock.Time.Hours<debut.Hours))
+            {
+                int h1 = simulatorClock.Time.Hours;
+                int h2 = debut.Hours;
+                if(h2-h1>0)
+                {
+                    line.TimeBeforeArrival = new TimeSpan(h2 - h1, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
+                }
+                else if(h2-h1<0)
+                {
+                    line.TimeBeforeArrival=new TimeSpan(24+h2-h1, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
+                }
+                else
+                {
+                    line.TimeBeforeArrival = new TimeSpan(h2, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
+                }
+                
+
+            }
+
+
+        }
 
         private void Check(LineTiming objet,int rate)
         {
@@ -108,10 +138,7 @@ namespace PL.WorkerWindow
             {
                 objet.TimeBeforeArrival = new TimeSpan(0, objet.Freq, 0);
             }
-            else if(simulatorClock.Time>instance.getmySchedules().ToList().Find(item=>item.IdBus==id).End)
-            {
-                objet.TimeBeforeArrival = new TimeSpan(24-simulatorClock.Time.Hours+beginAt.Hours, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
-            }
+          
         }
 
 

@@ -22,7 +22,7 @@ namespace BL
 
         #region LineFunction
         List<Line> getLines();
-
+        //List<Line> GetLinewithoutSchedules();
         void addLineSchedule(ExitLine l);
         void setIndexinLine(Line l);
         IEnumerable<Line> getAllAllLine();

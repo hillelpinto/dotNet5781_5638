@@ -72,8 +72,8 @@ namespace DAL.DS
                 CellRange Stationname = sheet.Range[row, columnsName];
                 CellRange StationLongitude = sheet.Range[row, columnsLongitude];
                 CellRange StationLatitude = sheet.Range[row, columnsLatitude];
-                DataSource.Stations[a].latitude = double.Parse(StationLatitude.Value);
-                DataSource.Stations[a].longitude = double.Parse(StationLongitude.Value);
+                DataSource.Stations[a].latitude = StationLatitude.Value.ToString()+'0';
+                DataSource.Stations[a].longitude = StationLongitude.Value.ToString()+'0';
                 DataSource.Stations[a].shelterNumber = int.Parse(StationCode.Value);
                 DataSource.Stations[a].ID = forID;
                 DataSource.Stations[a].address = Stationname.Value.ToString();

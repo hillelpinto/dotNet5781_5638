@@ -11,6 +11,8 @@ using BL.BO;
 using DAL;
 using System.Net.Mail;
 using System.Collections;
+using System.Net;
+using System.Xml.Linq;
 
 namespace BL
 {
@@ -236,8 +238,13 @@ namespace BL
             dalData.getAllAllLine().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
             return t;
         }
+        //public List<Line> GetLinewithoutSchedules()
+        //{
 
-            public bool deleteLines()//It delete all the stations in the line too
+        //}
+
+
+        public bool deleteLines()//It delete all the stations in the line too
             {
             IEnumerable<Line> lineInDeletion = getAllAllLine().ToList().Where(line => line.CheckedOrNot == true).ToList();
             IEnumerable<StationLine> deleteStationFirst = getmyStationsLines().Where(station => lineInDeletion.ToList().Exists(line => line.ID == station.LineHere));
@@ -296,10 +303,12 @@ namespace BL
         public void getmyTime(StationLine i)
         {
             int index = getStationConnected().ToList().FindIndex(station => station.numeroUno == i.ID);
-            i.Distance = getStationConnected().ToList()[index].distance;
+            if (index != -1)
+            {
+                i.Distance = getStationConnected().ToList()[index].distance;
 
-            i.Temps = getStationConnected().ToList()[index].timeBetween;
-
+                i.Temps = getStationConnected().ToList()[index].timeBetween;
+            }
         }
         public StationLine findlineForStation(StationLine i)//This function will give all the line pasing through a station
         {
@@ -406,6 +415,12 @@ namespace BL
             {
                 DAL.DO.Station s = new DAL.DO.Station();
                 a.CopyPropertiesTo(s);
+                s.longitude = a.longitude;
+                s.latitude = a.latitude;
+                if(s.longitude=="0"||s.latitude=="0")
+                {
+                    setLontLat(s);
+                }
                 dalData.addStation(s);
             }
             catch(DLException ex)
@@ -413,6 +428,57 @@ namespace BL
                 throw new BLException(ex.Message);
             }
             }
+
+        void setRandomValue(DAL.DO.Station s)
+        {
+            Random r = new Random();
+            double latitude;
+            double longitude;
+            latitude = r.NextDouble() * 2.3 + 31;
+            latitude = Math.Round(latitude, 7);
+            longitude = r.NextDouble() * 1.2 + 34.3;
+            longitude = Math.Round(longitude, 7);
+            s.latitude = latitude.ToString();
+            s.longitude = longitude.ToString();
+        }
+        void setLontLat(DAL.DO.Station s)
+        {
+            bool inIsrael = false;
+
+            string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key={1}&address={0}&sensor=false", Uri.EscapeDataString(s.address), "AIzaSyABpOYvrsQpVn7Nm48o5fJ3Fuj7salDLN4");
+            WebRequest request = WebRequest.Create(requestUri);
+            WebResponse response = request.GetResponse();
+            XDocument xdoc = XDocument.Load(response.GetResponseStream());
+            XElement check = xdoc.Element("GeocodeResponse").Element("status");
+            if (check.Value != "ZERO_RESULTS")//We have to check if the address is real 
+            {
+                XElement lastcheck = xdoc.Element("GeocodeResponse").Element("result");
+                var country = lastcheck.Elements("address_component");
+                foreach (XElement str in country)
+                {
+                    if (str.Element("short_name").Value == "IL")
+                    {
+                        inIsrael = true;
+                    }
+
+                }
+                if (inIsrael)
+                {
+                    XElement result = xdoc.Element("GeocodeResponse").Element("result");
+                    XElement locationElement = result.Element("geometry").Element("location");
+                    s.latitude = locationElement.Element("lat").Value;
+                    s.longitude = locationElement.Element("lng").Value;
+                }
+                else
+                {
+                    setRandomValue(s);
+                }
+            }
+            else
+            {
+                setRandomValue(s);
+            }
+        }
        public void modifyStation(Station a)
        {
             if (getmyStationsLines().Exists(station => station.shelterNumber == a.shelterNumber))
@@ -421,13 +487,21 @@ namespace BL
                 station.address = a.address;
                 modifyStationline(station);
             }
-            
            
-                DAL.DO.Station s = new DAL.DO.Station();
-                a.CopyPropertiesTo(s);
-                dalData.modifyStation(s);
+            DAL.DO.Station s = new DAL.DO.Station();
+            a.CopyPropertiesTo(s);
+            setAddress(s);
+            dalData.modifyStation(s);
        }
+        void setAddress(DAL.DO.Station s)
+        {
+            DAL.DO.Station temp = dalData.GetStation().ToList().Find(item => item.ID == s.ID);
+            if(s.address!=temp.address)
+            {
+                setLontLat(s);
 
+            }
+        }
         #endregion
 
         #region Simulation
@@ -442,8 +516,10 @@ namespace BL
             while (simulatorClock.Cancel != true)
             {
                 simulatorClock.Time = startTime + new TimeSpan(simulatorClock.stopWatch.ElapsedTicks * simulatorClock.Rate);
+                if (simulatorClock.Time.Hours == 23 && simulatorClock.Time.Minutes == 59 && simulatorClock.Time.Seconds == 59)
+                    simulatorClock.Time = new TimeSpan(0, 0, 0);
                 hours = simulatorClock.Time;
-                    Thread.Sleep(100);
+                Thread.Sleep(100);
             }
 
         }

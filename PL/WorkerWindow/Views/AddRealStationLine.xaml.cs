@@ -31,34 +31,43 @@ namespace PL.WorkerWindow.Views
         {
            
             StationLine s = instance.fromStation(finallist[mycomboStation.SelectedIndex]);
-            Random r = new Random();
-            s.ID = r.Next(0, 10000);
-            while (instance.getmyStationsLines().Exists(station => station.ID == s.ID))
-            {
-                s.ID = r.Next(0, 10000);
-            }
-            int test;
-            bool check = int.TryParse(indexx.Text, out test);
-            if (check)
+           
+          
+            if (checkIndex(s))
             {
                 s.LineHere = instance.getLines()[mycomboLine.SelectedIndex].ID;
                 s.positioninmyLine = indexx.Text;
+                instance.addStationl(s);
+                
+                s = instance.getAllStationsLines().Find(item => item.shelterNumber == s.shelterNumber&&item.LineHere==s.LineHere);
+            
+
                 //instance.addOneCouple(s, instance.getLines()[mycomboLine.SelectedIndex].listStations[int.Parse(indexx.Text)]);
-                if (test - 1 >= 0)
+                if (int.Parse(indexx.Text) - 1 >= 0)
                 {
-                    instance.addOneCouple(s, instance.getLines()[mycomboLine.SelectedIndex].listStations[test - 1]);
+                    instance.addOneCouple(s, instance.getLines()[mycomboLine.SelectedIndex].listStations[int.Parse(indexx.Text) - 1]);
 
                 }
-                else
+                else 
                     instance.addOneCouple(s, instance.getLines()[mycomboLine.SelectedIndex].listStations[instance.getLines()[mycomboLine.SelectedIndex].listStations.Count - 1]);
 
-                instance.addStationl(s);
                 MessageBox.Show("Station added successfully !");
 
                 this.Close();
             }
             else
-                MessageBox.Show("Eror of index !");
+                MessageBox.Show("Error of index !");
+        }
+        bool checkIndex(StationLine i)
+        {
+
+            int test;
+            bool check = int.TryParse(indexx.Text, out test);
+            int count = instance.getLines()[mycomboLine.SelectedIndex].listStations.Count;
+            if (check && test<=count)
+                return true;
+            else
+                return false;
         }
 
         private void mycomboLine_SelectionChanged(object sender, SelectionChangedEventArgs e)

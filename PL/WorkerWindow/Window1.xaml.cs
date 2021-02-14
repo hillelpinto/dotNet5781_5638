@@ -92,8 +92,9 @@ namespace PL.WorkerWindow
                 StopButton.Foreground = Brushes.Red;
 
             }
+
         }
-      
+
         private void stopsimulation(object sender, RoutedEventArgs e)
         {
             StopButton.IsEnabled = false;

@@ -26,7 +26,7 @@ namespace PL.WorkerWindow.Views
         {
 
             InitializeComponent();
-          
+            
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
@@ -39,7 +39,7 @@ namespace PL.WorkerWindow.Views
                 timeText.IsReadOnly = false;
                 Popupdistance.IsOpen = true;
                 Popuptime.IsOpen = true;
-
+                
                 StationLine i = instance.getmyStationsLines()[ListBus.SelectedIndex];
                 i = instance.findlineForStation(i);
                 mycomboLine.ItemsSource = i.myLines;
@@ -56,7 +56,11 @@ namespace PL.WorkerWindow.Views
         {
             var cb = sender as Button;
             var thisStation = cb.DataContext as StationLine;
-            string address = "https://www.google.com/maps/search/?api=1&query=" + thisStation.latitude + "," + thisStation.longitude;
+            string lat = thisStation.latitude;
+            string lon= thisStation.longitude;
+           lat= lat.Replace(",", ".");
+            lon=lon.Replace(",", ".");
+            string address = "https://www.google.com/maps/search/?api=1&query=" + lat + "," + lon;
             //new Map(address).ShowDialog();
             Map map = new Map(address);
             map.ShowDialog();

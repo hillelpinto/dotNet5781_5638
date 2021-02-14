@@ -40,11 +40,7 @@ namespace PL.WorkerWindow
         {
             StationLine s = instance.fromStation(instance.GetStations().ToList().Find(station => station.shelterNumber == myList[mycombo.SelectedIndex].shelterNumber));
             int num = s.shelterNumber;
-            s.ID = r.Next(0, 1000);
-            while (instance.getmyStationsLines().Exists(station => station.ID == s.ID))
-            {
-                s.ID = r.Next(0, 1000);
-            }
+           
             s.LineHere = temp.ID;
           
             int test;
@@ -56,6 +52,9 @@ namespace PL.WorkerWindow
                 else
                 {
                     s.positioninmyLine = test.ToString();
+                    instance.addStationl(s);
+                    s = instance.getAllStationsLines().Find(item => item.shelterNumber == s.shelterNumber&&item.LineHere==temp.ID);
+
                     if (test - 1 >= 0)
                     {
                         instance.addOneCouple(s, temp.listStations[test - 1]);
@@ -63,10 +62,14 @@ namespace PL.WorkerWindow
                     }
                     else
                         instance.addOneCouple(s, temp.listStations[temp.listStations.Count - 1]);
-                    instance.addStationl(s);
+                    
                     MessageBox.Show("Station added successfully !");
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("The index must be an integer !");
             }
            
             this.Close();

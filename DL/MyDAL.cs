@@ -47,7 +47,12 @@ namespace DAL
                 throw new DLException("This bus already exists !");
             else
             {
-               
+                Random r = new Random();
+                a.ID = r.Next(0, 10000);
+                while (getmyBuses().ToList().Exists(b => b.ID == a.ID) == true)
+                {
+                    a.ID = r.Next(0, 10000);
+                }
                 DataSource.Buses.Add(a);
             }
         }
@@ -153,8 +158,17 @@ namespace DAL
         {
             if (DataSource.Stations.Exists(station => station.shelterNumber == a.shelterNumber))
                 throw new DLException("This stations already exists !");
-      
-            DataSource.Stations.Add(a);
+
+            else
+            {
+                Random r = new Random();
+                a.ID = r.Next(0, 10000);
+                while (GetStation().ToList().Exists(station => station.ID == a.ID) == true)
+                {
+                    a.ID = r.Next(0, 10000);
+                }
+                DataSource.Stations.Add(a);
+            }
         }
       
 
@@ -199,13 +213,15 @@ namespace DAL
                 inside = true;
             return inside;
         }
-        public void addStationL(StationLine a)
+        public void addStationL(StationLine s)
         {
-           
-            DataSource.StationLines.Add(a);
+            s.ID = r.Next(0, 1000);
+            while(getAllStationsLines().Exists(station => station.ID == s.ID))
+            {
+                s.ID = r.Next(0, 1000);
+            }
+            DataSource.StationLines.Add(s);
         }
-
-
 
 
         #endregion
@@ -224,8 +240,10 @@ namespace DAL
             Random r = new Random();
             DataSource.StationsConnecteds.Add(new Stationsconnected(l, s));
             DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID = r.Next(0, 1000);
-            //while(getStationConnected().ToList().Exists(item=>item.ID == DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID))
+            //while (DataSource.StationsConnecteds.Exists(station => station.ID == DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID))
+            //{
             //    DataSource.StationsConnecteds[DataSource.StationsConnecteds.Count - 1].ID = r.Next(0, 1000);
+            //}
 
 
         }

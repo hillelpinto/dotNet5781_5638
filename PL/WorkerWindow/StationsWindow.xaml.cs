@@ -33,9 +33,16 @@ namespace PL.WorkerWindow
             BusButton.IsChecked = true;
             myTime.DataContext= simulatorClock;
             if (simulatorClock.Time.Seconds != -1)
+            {
                 currentHour.Visibility = Visibility.Visible;
+                Hourstxt.Visibility = Visibility.Visible;
+            }
             else
+            {
                 currentHour.Visibility = Visibility.Hidden;
+                Hourstxt.Visibility = Visibility.Hidden;
+
+            }
             DataContext = new StationModels();
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)

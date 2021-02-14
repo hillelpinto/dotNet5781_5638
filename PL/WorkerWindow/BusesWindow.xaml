@@ -136,7 +136,8 @@
         <TextBox Name="LicenseTosearch" HorizontalAlignment="Left" Margin="600,54,0,0" Text="Type the license ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25" TextChanged="TextBox_TextChanged"/>
         <Button Content="Search " Background="Black " Foreground="Orange" HorizontalAlignment="Left" Margin="770,58,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
         <Grid Name="myTime" Margin="900,16,43,651">
-            <Label Name="CurrentHours" HorizontalAlignment="Left" Margin="116,10,0,0"  Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="Orange" VerticalAlignment="Top" Width="138" Height="27"/>
+            <Label Name="CurrentHours" HorizontalAlignment="Left" Margin="116,10,0,0"  Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="Orange" VerticalAlignment="Top" Width="138" Height="27"/>
+            <Label Content="Time :" Visibility="Hidden" Name="Hourstxt" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Top"/>
         </Grid>
 
 

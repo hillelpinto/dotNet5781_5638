@@ -113,14 +113,14 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Station ID" Width="80" >
+                    <GridViewColumn Header="Station ID" Width="72" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Station name " Width="120" >
+                    <GridViewColumn Header="Station name " Width="140" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding address}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
@@ -134,7 +134,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Distance to next stop" Width="120" >
+                    <GridViewColumn Header="Distance to next stop" Width="117" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Distance}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontSize="15" FontWeight="Bold" />
@@ -160,7 +160,8 @@
         <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="15" Margin="847,580,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
         <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Foreground="Black" Name="DeleetStationbutton" Content="Delete Station "  HorizontalAlignment="Left" Margin="1172,580,0,0" VerticalAlignment="Top" Height="54" Width="150" Click="DeleetStationbutton_Click"/>
         <Grid x:Name="myTime" Margin="164,10,569,601">
-            <Label HorizontalAlignment="Center"  Name="CurrentHour" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="StringFormat='{}{0:hh\\:mm\\:ss}'}" FontWeight="Bold" FontSize="15" Foreground="LimeGreen" VerticalAlignment="Top" Width="257" Height="54"/>
+            <Label HorizontalAlignment="Center"  Name="CurrentHour" Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" ContentStringFormat="StringFormat='{}{0:hh\\:mm\\:ss}'}" FontWeight="Bold" FontSize="15" Foreground="LimeGreen" VerticalAlignment="Top" Width="257" Height="54"/>
+            <Label Content="Time :" FontWeight="Bold" HorizontalAlignment="Left" Margin="159,19,0,0" VerticalAlignment="Top" Width="53"/>
         </Grid>
 
     </Grid>

@@ -14,8 +14,8 @@ namespace DAL.DO
        
         public int ID { get; set; }
         public int shelterNumber{ get; set;}
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
         public string address { get; set; }
         public string stationName { get; set; }
         public bool HandicappedAccess { get; set; }
@@ -44,10 +44,13 @@ namespace DAL.DO
         {
             HandicappedAccess = true;
             DigitPanel = false;
-          
+            longitude = "0";
+            latitude = "0";
 
         }
-        public Station() { }
+        public Station() { longitude = "0";
+            latitude = "0";
+        }
     }
   
 }

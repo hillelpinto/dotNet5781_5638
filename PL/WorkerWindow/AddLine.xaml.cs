@@ -58,11 +58,7 @@ namespace PL.WorkerWindow
 
                     l.area = (Area)ComboArea.SelectedIndex;
                     StationLine first = instance.fromStation(instance.GetStations().ToList()[firststationcombo.SelectedIndex]);
-                    first.ID = r.Next(0, 10000);
-                    while(instance.getAllStationsLines().Exists(station=>station.ID==first.ID))
-                    {
-                        first.ID= r.Next(0, 10000);
-                    }
+                   
                     first.LineHere = l.ID;
                     l.CheckedOrNot = false;
                     l.firstStation = first.shelterNumber;                   
@@ -70,12 +66,11 @@ namespace PL.WorkerWindow
                      StationLine last = instance.fromStation(instance.GetStations().ToList()[laststationcombo.SelectedIndex]);
                      last.LineHere = l.ID;
                     l.lastStation = last.shelterNumber;
-                    last.ID = r.Next(0, 10000);
-                    while (instance.getAllStationsLines().Exists(station => station.ID == last.ID))
-                    {
-                        last.ID = r.Next(0, 10000);
-                    }
+                  
                     instance.addStationl(last);
+                    first = instance.getAllStationsLines().Find(item => item.shelterNumber == first.shelterNumber);
+                    last = instance.getAllStationsLines().Find(item => item.shelterNumber == last.shelterNumber);
+
                     instance.addOneCouple(first, last);
                     instance.addOneCouple(last, first);
 

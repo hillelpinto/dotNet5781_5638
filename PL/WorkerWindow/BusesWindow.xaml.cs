@@ -42,9 +42,15 @@ namespace PL.WorkerWindow
             ListBus.DataContext = instance.GetBuses();
             myTime.DataContext = simulatorClock;
             if (simulatorClock.Time.Seconds != -1)
+            {
                 CurrentHours.Visibility = Visibility.Visible;
+                Hourstxt.Visibility = Visibility.Visible;
+            }
             else
+            {
                 CurrentHours.Visibility = Visibility.Hidden;
+                Hourstxt.Visibility = Visibility.Hidden;
+            }
 
             comboSource.Add("Higher fuel to lower");
             comboSource.Add("Higher Km since checkup to lower");
@@ -191,17 +197,27 @@ namespace PL.WorkerWindow
 
         private void Update(object sender, RoutedEventArgs e)
         {
-            int index = 0;
-            bool flag = int.TryParse(SeatField.Text, out index);
+           
             if (comp1 != DriverField.Text || comp2 != SeatField.Text)
             {
                 Bus i = b;
                 int verif;
-                i.DriverName = DriverField.Text;
-                bool essai = int.TryParse(SeatField.Text, out verif);
+                bool essai = int.TryParse(DriverField.Text, out verif);
                 if (!essai)
                 {
-                    MessageBox.Show("Only numbers !");
+                    i.DriverName = DriverField.Text;
+                    verif = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Driver's name must be a string !");
+                    return;
+                }
+                essai = int.TryParse(SeatField.Text, out verif);
+                if (!essai)
+                {
+                    MessageBox.Show("Only numbers for the seat available !");
+                    return;
                 }
                 else
                 {

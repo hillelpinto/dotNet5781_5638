@@ -105,8 +105,8 @@ namespace DAL
                 CellRange Stationname = sheet.Range[row, columnsName];
                 CellRange StationLongitude = sheet.Range[row, columnsLongitude];
                 CellRange StationLatitude = sheet.Range[row, columnsLatitude];
-                myList[a].latitude = double.Parse(StationLatitude.Value);
-                myList[a].longitude = double.Parse(StationLongitude.Value);
+                myList[a].latitude = StationLatitude.Value.ToString();
+                myList[a].longitude = StationLongitude.Value.ToString();
                 myList[a].shelterNumber = int.Parse(StationCode.Value);
                 myList[a].ID = forID;
                 myList[a].address = Stationname.Value.ToString();
@@ -202,10 +202,21 @@ namespace DAL
         public void addBus(Bus a)
         {
             List<Bus> ListBus = XMLTools.LoadListFromXMLSerializer<Bus>(busPath);
+            if (ListBus.Exists(bus => bus.license == a.license))
+                throw new DLException("This bus already exists !");
+            else
+            {
+                Random r = new Random();
+                a.ID = r.Next(0, 10000);
+                while (getmyBuses().ToList().Exists(b => b.ID == a.ID) == true)
+                {
+                    a.ID = r.Next(0, 10000);
+                }
 
-            ListBus.Add(a); //no need to Clone()
+                ListBus.Add(a); //no need to Clone()
 
-            XMLTools.SaveListToXMLSerializer(ListBus, busPath);
+                XMLTools.SaveListToXMLSerializer(ListBus, busPath);
+            }
         }
         public IEnumerable<Bus> getmyBuses()
         {
@@ -328,6 +339,12 @@ namespace DAL
                 throw new DLException("This stations already exists !");
             else
             {
+                Random r = new Random();
+                a.ID = r.Next(0, 10000);
+                while (GetStation().ToList().Exists(station => station.ID == a.ID) == true)
+                {
+                    a.ID = r.Next(0, 10000);
+                }
                 myStation.Add(a);
                 XMLTools.SaveListToXMLSerializer<Station>(myStation, stationPath);
 
@@ -383,6 +400,12 @@ namespace DAL
         public void addStationL(StationLine l)
         {
             List<StationLine> sl = XMLTools.LoadListFromXMLSerializer<StationLine>(StationLinePath);
+            Random r = new Random();
+            l.ID = r.Next(0, 1000);
+            while (getAllStationsLines().Exists(station => station.ID == l.ID))
+            {
+                l.ID = r.Next(0, 1000);
+            }
             sl.Add(l);
             XMLTools.SaveListToXMLSerializer<StationLine>(sl, StationLinePath);
 
@@ -537,6 +560,10 @@ namespace DAL
             Stationsconnected temp = new Stationsconnected(l, s);
             Random r = new Random();
             temp.ID = r.Next(0, 1000);
+            while (getStationConnected().ToList().Exists(station => station.ID == temp.ID))
+            {
+                temp.ID = r.Next(0, 1000);
+            }
             XElement personElem = new XElement("AdjacentStation", new XElement("ID", temp.ID),
                                  new XElement("FirstStationsID", temp.numeroUno),
                                  new XElement("SecondStationsID", temp.numeroDeuzio),

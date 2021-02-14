@@ -18,15 +18,31 @@ namespace BL
         #endregion
 
         private TimeSpan time;
+       
+        public string TimeinFormat
+        {
+            get
+            {
+                return time.ToString("hh\\:mm\\:ss");
+            }
+            set
+            {
+                time = TimeSpan.Parse(value);
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("TimeinFormat"));
+            }
+        }
         public TimeSpan Time
         {
             get
             {
+                
                 return time;
             }
             set
             {
                 time=value;
+                TimeinFormat = value.ToString();
                 clockObserver?.Invoke(time);
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("Time"));

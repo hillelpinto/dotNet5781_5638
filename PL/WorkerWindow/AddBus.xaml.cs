@@ -29,6 +29,8 @@ namespace PL.WorkerWindow
             busToSend = new Bus();
             instance = bl;
             this.DataContext = busToSend;
+            Old.IsChecked = true;
+            OldBus = true;
         }
 
         private void Validate_Click(object sender, RoutedEventArgs e)
@@ -63,17 +65,12 @@ namespace PL.WorkerWindow
                 {
                     try
                     {
-                        Random r = new Random();
-                        busToSend.ID = r.Next(0, 10000);
-                        while (instance.GetBuses().Exists(b => b.ID == busToSend.ID) == true)
-                        {
-                            busToSend.ID = r.Next(0, 10000);
-                        }
+                       
                         int test;
                         bool check = int.TryParse(LicenseN.Text, out test);
                         if (check)
                         {
-                            busToSend.license = int.Parse(LicenseN.Text);
+                            busToSend.license = test;
                             instance.addBus(busToSend);
                             MessageBox.Show("Bus saved succcessfully");
                             this.Close();
@@ -98,6 +95,9 @@ namespace PL.WorkerWindow
             KmAfterLastMaintenance.IsReadOnly = true;
             KmAfterLastMaintenance.Visibility = Visibility.Hidden;
             kmTotal.IsReadOnly = true;
+            KmText.Visibility = Visibility.Hidden;
+            KmAfterText.Visibility = Visibility.Hidden;
+            CDText.Visibility = Visibility.Hidden;
             kmTotal.Visibility = Visibility.Hidden;
             OldBus = false;
             busToSend.Km = 0;
@@ -118,9 +118,12 @@ namespace PL.WorkerWindow
             kmTotal.Visibility = Visibility.Visible;
             CheckupD.Visibility = Visibility.Visible;
             kmlabel.Visibility = Visibility.Visible;
+            CDText.Visibility = Visibility.Visible;
             kmafterlabel.Visibility = Visibility.Visible;
+            KmText.Visibility = Visibility.Visible;
+            KmAfterText.Visibility = Visibility.Visible;
             checkuplabel.Visibility = Visibility.Visible;
-           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

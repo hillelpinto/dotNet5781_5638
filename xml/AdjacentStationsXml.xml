@@ -279,5 +279,5 @@
     <SecondStationsID>81</SecondStationsID>
     <Distance>544</Distance>
     <TimeBetween>00:04:46</TimeBetween>
-  </AdjacentStation>
+  </AdjacentStation> 
 </ArrayOfExitLine>

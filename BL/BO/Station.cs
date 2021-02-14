@@ -10,8 +10,8 @@ namespace BL.BO
         public bool CheckedOrNot { get; set; }
         public int ID{ get; set; }
         public int shelterNumber{ get; set;}
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
         public string address { get; set; }
         public string stationName { get; set; }
         public bool HandicappedAccess { get; set; }
@@ -25,13 +25,19 @@ namespace BL.BO
             shelterNumber = r.Next(1000, 10000);
             HandicappedAccess = true;
             DigitPanel = false;
-            latitude = r.NextDouble() * 2.3 + 31;
-            latitude = Math.Round(latitude, 5);
-            longitude = r.NextDouble() * 1.2 + 34.3;
-            longitude = Math.Round(longitude, 5);
+            latitude = "0";
+            longitude = "0";
+            //latitude = r.NextDouble() * 2.3 + 31;
+            //latitude = Math.Round(latitude, 5);
+            //longitude = r.NextDouble() * 1.2 + 34.3;
+            //longitude = Math.Round(longitude, 5);
 
         }
-        public Station() { }
+        public Station()
+        {
+            latitude = "0";
+            longitude = "0";
+        }
     }
   
 }

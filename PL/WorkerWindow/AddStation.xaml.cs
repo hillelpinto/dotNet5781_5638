@@ -39,16 +39,20 @@ namespace PL.WorkerWindow
 
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
-            if (LicenseN.Text.Length == 0 || Seat.Text.Length == 0)
+            if (LicenseN.Text.Length == 0 || Chauffeurname.Text.Length == 0)
                 MessageBox.Show("Missing data !");
+            else if (kmTotal.Text.Length>0&&Seat.Text.Length>0&&(!checkInteger(kmTotal.Text) || !checkInteger(Seat.Text)))
+            {
+                MessageBox.Show("Lont/Lat must be an integer !");
+            }
+            else if (!checkInteger(LicenseN.Text))
+            {
+                MessageBox.Show("Station's code must be an integer !");
+            }
             else
             {
-                Random r = new Random();
-                b.ID = r.Next(0, 10000);
-                while (instance.GetStations().ToList().Exists(station => station.ID == b.ID) == true)
-                {
-                    b.ID = r.Next(0, 10000);
-                }
+
+               
                 b.DigitPanel = isDigit();
                 b.HandicappedAccess = isAccess();
                 try
@@ -61,8 +65,14 @@ namespace PL.WorkerWindow
                 {
                     MessageBox.Show(ex.Message);
                 }
+
             }
 
+        }
+        bool checkInteger(string a)
+        {
+            int esai;
+            return int.TryParse(a, out esai);
         }
     }
 }
