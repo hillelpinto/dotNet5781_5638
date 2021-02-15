@@ -45,7 +45,9 @@ namespace PL.WorkerWindow
                 label.Visibility = Visibility.Hidden;
                 StopButton.IsEnabled = false;
                 StartButton.IsEnabled = true;
-                StartButton.Foreground = Brushes.GreenYellow;
+                StartButton.Foreground = Brushes.Black;
+                StartButton.Background = Brushes.GreenYellow;
+
 
             }
         }
@@ -65,6 +67,7 @@ namespace PL.WorkerWindow
 
         private void LineButton_Click(object sender, RoutedEventArgs e)
         {
+            int ssss = simulatorClock.Time.Hours;
             LinesWindow window = new LinesWindow(instance,simulatorClock);
             window.Show();
             this.Close();
@@ -99,7 +102,9 @@ namespace PL.WorkerWindow
         {
             StopButton.IsEnabled = false;
             StartButton.IsEnabled = true;
-            StartButton.Foreground = Brushes.GreenYellow;
+            StartButton.Foreground = Brushes.Black;
+            StartButton.Background = Brushes.GreenYellow;
+
             label.Visibility = Visibility.Hidden;
             instance.StopSimulator();
         }

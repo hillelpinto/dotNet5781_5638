@@ -33,12 +33,18 @@ namespace PL.WorkerWindow
             TimeSpan temp = new TimeSpan();
             bool check = TimeSpan.TryParse(Hours.Text + Minutes.Text + Seconds.Text, out temp);
             if (!check)
+            {
                 MessageBox.Show("Error of time format !");
+                return;
+            }
             int test = 0;
             check = int.TryParse(stoms.Text, out test);
             if (!check)
+            {
                 MessageBox.Show("Error of rate format !");
-           else
+                return;
+            }
+            else
             {
                 BackgroundWorker bg = new BackgroundWorker();
                 flag = true;

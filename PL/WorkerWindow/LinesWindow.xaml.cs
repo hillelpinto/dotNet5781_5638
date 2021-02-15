@@ -33,12 +33,12 @@ namespace PL.WorkerWindow
             if (simulatorClock.Time.Seconds != -1)
             {
                 CurrentHour.Visibility = Visibility.Visible;
-                Hourstxt.Visibility = Visibility.Visible;
+                //Hourstxt.Visibility = Visibility.Visible;
             }
             else
             {
                 CurrentHour.Visibility = Visibility.Hidden;
-                Hourstxt.Visibility = Visibility.Hidden;
+                //Hourstxt.Visibility = Visibility.Hidden;
             }
 
             ListLine.DataContext = instance.getLines();
@@ -110,8 +110,8 @@ namespace PL.WorkerWindow
         private void LineChecked(object sender, RoutedEventArgs e)
         {
             DeleteLineButton.IsEnabled = true;
-            DeleteLineButton.Background = Brushes.Gray;
-            DeleteLineButton.Foreground = Brushes.GreenYellow;
+            DeleteLineButton.Background = Brushes.Black;
+            DeleteLineButton.Foreground = Brushes.LimeGreen;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as BL.BO.Line;
   

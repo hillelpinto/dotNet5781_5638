@@ -31,30 +31,53 @@ namespace PL.TravelerWindow
             int test;
             int test2;
             bool check = int.TryParse(DepartureStation.Text, out test);
-            bool check2 = int.TryParse(ArrivalStation.Text, out test2);
+            bool check2 = int.TryParse(ArrivalStation.Text, out test2); 
             StationLine departure = new StationLine();
             StationLine arrival = new StationLine();
             if (check)
             {
-                departure = instance.getAllStationsLines().Find(item => item.shelterNumber == test || item.address == DepartureStation.Text);
+                departure = instance.getAllStationsLines().Find(item => item.shelterNumber == test);
                 if (departure==null)
                 {
                     MessageBox.Show("Station of departure not found !");
+                   
                 }
             }
-            if(check)
+            else
             {
-                arrival = instance.getAllStationsLines().Find(item => item.shelterNumber == test2 || item.address == ArrivalStation.Text);
-                if (arrival == null)
+                departure = instance.getAllStationsLines().Find(item => item.address == DepartureStation.Text);
+                if (departure == null)
                 {
                     MessageBox.Show("Station of departure not found !");
+                  
+                }
+
+            }
+            if(check2&&departure!=null)
+            {
+                arrival = instance.getAllStationsLines().Find(item => item.shelterNumber == test2 );
+                if (arrival == null)
+                {
+                    MessageBox.Show("Station of arrival not found !");
+                }
+               
+            }
+            else if(departure!=null)
+            {
+                arrival = instance.getAllStationsLines().Find(item => item.address == arrival.address);
+                if (arrival == null)
+                {
+                    MessageBox.Show("Station of arrival not found !");
                 }
                 else
                 {
-                    myList.DataContext = instance.getmyTrips(departure, arrival);
-                    List<Trip> essai = instance.getmyTrips(departure, arrival);
+                    if (departure.shelterNumber == arrival.shelterNumber)
+                        MessageBox.Show("Departure must be different from arrival !");
+                    else
+                        myList.DataContext = instance.getmyTrips(departure, arrival);
                 }
             }
+
 
 
         }

@@ -32,7 +32,7 @@
         <RadioButton Content="Stations of lines " Name="LineButton" Foreground="Aquamarine" FontSize="15" Checked="LinesChecked" Unchecked="LinesUnchecked" FontWeight="Bold" HorizontalAlignment="Left" Margin="277,45,0,0" VerticalAlignment="Top"/>
         <Grid Name="myTime" Margin="345,10,278,631">
             <Label Name="currentHour" FontWeight="Black" Visibility="Visible" Foreground="Aquamarine" Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" Height="37" Width="170"/>
-            <Label Foreground="Aquamarine" Content="Time :" Name="Hourstxt" FontWeight="Bold" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center"/>
+            <Label Foreground="Aquamarine" Content="Time :" Name="Hourstxt" FontWeight="Bold" HorizontalAlignment="Left" Margin="138,0,0,0" VerticalAlignment="Center"/>
         </Grid>
 
     </Grid>
