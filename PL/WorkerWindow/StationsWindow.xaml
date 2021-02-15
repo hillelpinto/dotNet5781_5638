@@ -24,7 +24,7 @@
             </LinearGradientBrush>
 
         </Grid.Background>
-        <Button Content="Back" Foreground="Aquamarine" Background="Black" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
+        <Button Content="Back" Foreground="Black" Background="Aquamarine" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
 
 
         <ContentControl Content="{Binding}" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="595" Width="1222"/>

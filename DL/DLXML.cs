@@ -97,7 +97,7 @@ namespace DAL
             int columnsLatitude = 5;
             Worksheet sheet = workbook.Worksheets[0];
 
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
                 myList.Add(new Station("s"));
 
@@ -134,7 +134,7 @@ namespace DAL
             List<StationLine> stationLine = new List<StationLine>();
 
             int index = 0;
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
 
                 stationLine.Add(new StationLine());
@@ -148,9 +148,9 @@ namespace DAL
                 stationLine[a].ID = forID;
                 forID++;
             }
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
-                for (int b = 0; b < 4; a++, b++)
+                for (int b = 0; b < 8; a++, b++)
                 {
                     if (b == 0)
                     {
@@ -165,9 +165,9 @@ namespace DAL
             }
 
             XElement root2 = XMLTools.LoadListFromXMLElement(StationConnected);
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
-                if (a == 39)
+                if (a == 79)
                 {
                     Stationsconnected tempy = new Stationsconnected(stationLine[a], stationLine[0]);
                     tempy.ID = forID;

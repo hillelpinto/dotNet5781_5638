@@ -21,7 +21,7 @@
 
         </TextBox>
         <Button Foreground="White" Background="Black" Content="Go !" HorizontalAlignment="Left" Margin="372,139,0,0" VerticalAlignment="Top" Width="86" Height="29" Click="Button_Click"/>
-        <ListBox ItemsSource="{Binding}" Background="Gray" Name="myList" Margin="42,267,42,0"/>
+        <ListBox ItemsSource="{Binding}" Foreground="White" FontWeight="Bold" Background="Gray" Name="myList" Margin="42,267,42,0"/>
 
 
     </Grid>

@@ -594,7 +594,15 @@ namespace BL
         {
             List<User> toR = new List<User>();
             dalData.getmyUsers().ToList().ForEach(user => toR.Add(convertUserToBO(user)));
-            return toR;
+
+            return from user in dalData.getmyUsers()
+                   select new User()
+                   {
+                       pwd = user.pwd,
+                       email=user.email,
+                       username=user.username            
+                   };
+           
         }
 
         public void deleteUser(User u)

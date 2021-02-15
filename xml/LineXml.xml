@@ -2,102 +2,102 @@
 <ArrayOfLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Line>
     <ID>21</ID>
-    <busLineNumber>338</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>TelAviv</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>TelAviv</getArea>
-    <speed>37</speed>
-  </Line>
-  <Line>
-    <ID>22</ID>
-    <busLineNumber>995</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>Haifa</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>Haifa</getArea>
-    <speed>43</speed>
-  </Line>
-  <Line>
-    <ID>23</ID>
-    <busLineNumber>870</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>TelAviv</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>TelAviv</getArea>
-    <speed>50</speed>
-  </Line>
-  <Line>
-    <ID>24</ID>
-    <busLineNumber>360</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>TelAviv</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>TelAviv</getArea>
-    <speed>21</speed>
-  </Line>
-  <Line>
-    <ID>25</ID>
-    <busLineNumber>356</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>Haifa</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>Haifa</getArea>
-    <speed>41</speed>
-  </Line>
-  <Line>
-    <ID>26</ID>
-    <busLineNumber>738</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>Ashdod</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>Ashdod</getArea>
-    <speed>35</speed>
-  </Line>
-  <Line>
-    <ID>27</ID>
-    <busLineNumber>971</busLineNumber>
+    <busLineNumber>957</busLineNumber>
     <firstStation>0</firstStation>
     <lastStation>0</lastStation>
     <area>Netanya</area>
     <CheckedOrNot>false</CheckedOrNot>
     <getArea>Netanya</getArea>
+    <speed>28</speed>
+  </Line>
+  <Line>
+    <ID>22</ID>
+    <busLineNumber>659</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>Ashdod</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>Ashdod</getArea>
+    <speed>25</speed>
+  </Line>
+  <Line>
+    <ID>23</ID>
+    <busLineNumber>854</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>BeerSheva</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>BeerSheva</getArea>
     <speed>45</speed>
   </Line>
   <Line>
-    <ID>28</ID>
-    <busLineNumber>260</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>Ashdod</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>Ashdod</getArea>
-    <speed>44</speed>
-  </Line>
-  <Line>
-    <ID>29</ID>
-    <busLineNumber>661</busLineNumber>
-    <firstStation>0</firstStation>
-    <lastStation>0</lastStation>
-    <area>Ashdod</area>
-    <CheckedOrNot>false</CheckedOrNot>
-    <getArea>Ashdod</getArea>
-    <speed>22</speed>
-  </Line>
-  <Line>
-    <ID>30</ID>
-    <busLineNumber>857</busLineNumber>
+    <ID>24</ID>
+    <busLineNumber>496</busLineNumber>
     <firstStation>0</firstStation>
     <lastStation>0</lastStation>
     <area>TelAviv</area>
     <CheckedOrNot>false</CheckedOrNot>
     <getArea>TelAviv</getArea>
-    <speed>22</speed>
+    <speed>31</speed>
+  </Line>
+  <Line>
+    <ID>25</ID>
+    <busLineNumber>142</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>Eilat</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>Eilat</getArea>
+    <speed>46</speed>
+  </Line>
+  <Line>
+    <ID>26</ID>
+    <busLineNumber>169</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>BeerSheva</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>BeerSheva</getArea>
+    <speed>40</speed>
+  </Line>
+  <Line>
+    <ID>27</ID>
+    <busLineNumber>891</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>Haifa</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>Haifa</getArea>
+    <speed>32</speed>
+  </Line>
+  <Line>
+    <ID>28</ID>
+    <busLineNumber>166</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>Eilat</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>Eilat</getArea>
+    <speed>31</speed>
+  </Line>
+  <Line>
+    <ID>29</ID>
+    <busLineNumber>451</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>Haifa</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>Haifa</getArea>
+    <speed>31</speed>
+  </Line>
+  <Line>
+    <ID>30</ID>
+    <busLineNumber>433</busLineNumber>
+    <firstStation>0</firstStation>
+    <lastStation>0</lastStation>
+    <area>BeerSheva</area>
+    <CheckedOrNot>false</CheckedOrNot>
+    <getArea>BeerSheva</getArea>
+    <speed>42</speed>
   </Line>
 </ArrayOfLine>

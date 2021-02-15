@@ -32,16 +32,17 @@ namespace PL.WorkerWindow.Views
         private void ChangeColor(object sender,MouseEventArgs e)
         {
 
-            var item = e.OriginalSource as ListViewItem;
-            item.Foreground = Brushes.Black;
+           
         }
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             if (ListBus.SelectedIndex != -1)
             {
+               
+               
                 updatebutton.IsEnabled = true;
-                updatebutton.Foreground = Brushes.Aquamarine;
-                updatebutton.Background = Brushes.Black;
+                updatebutton.Foreground = Brushes.Black;
+                updatebutton.Background = Brushes.Aquamarine;
                 distancetxt.IsReadOnly = false;
                 timeText.IsReadOnly = false;
                 Popupdistance.IsOpen = true;
@@ -106,8 +107,8 @@ namespace PL.WorkerWindow.Views
         {
 
             DeleteButton.IsEnabled = true;
-            DeleteButton.Foreground = Brushes.Aquamarine;
-            DeleteButton.Background = Brushes.Black;
+            DeleteButton.Foreground = Brushes.Black;
+            DeleteButton.Background = Brushes.Aquamarine;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = true;

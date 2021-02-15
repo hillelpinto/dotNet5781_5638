@@ -18,7 +18,7 @@
         <Label Name="usernamelabel" Visibility="Hidden" Content="Username :" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="102,132,0,0" VerticalAlignment="Top" Width="108"/>
         <Label Visibility="Hidden" Name="pwdlabel" Content="Password :" FontSize="15" FontWeight="Bold" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="102,220,0,0" VerticalAlignment="Top" Width="97"/>
         <PasswordBox Visibility="Hidden" Name="mypasswordBox" HorizontalAlignment="Left" Margin="250,220,0,0" VerticalAlignment="Top" Width="148" Height="30"/>
-        <Button x:Name="loginbutton" Visibility="Hidden" Foreground="Orange" Background="Black"  FontWeight="Bold" Click="Loginbutton" Content="Login " FontSize="15" HorizontalAlignment="Left" Margin="372,294,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button x:Name="loginbutton" Visibility="Hidden" Foreground="White" Background="Black"  FontWeight="Bold" Click="Loginbutton" Content="Login " FontSize="15" HorizontalAlignment="Left" Margin="372,294,0,0" VerticalAlignment="Top" Width="92"/>
         <RadioButton Name="NeedAcount" Content="Don't have an account yet ?" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="48,47,0,0" VerticalAlignment="Top" Height="28" Width="216" Checked="NeedAcount_Checked"/>
         <RadioButton Name="NeedLogin" Content="Already in the family ?" FontSize="15" Foreground="White" HorizontalAlignment="Left" Margin="332,47,0,0" VerticalAlignment="Top" Checked="NeedLogin_Checked"/>
         <TextBox Visibility="Hidden" Name="newusername" HorizontalAlignment="Left" Margin="316,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="33"/>

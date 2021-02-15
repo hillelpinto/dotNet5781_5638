@@ -27,7 +27,7 @@ namespace PL
         public MainWindow()
         {
             
-           // instance.init();
+           //instance.init();
             InitializeComponent();
             Uri myiconWindow = new Uri("https://drive.google.com/uc?export=download&id=1hwgmilcmFib-ksoihuhaKbwrmDFguA0G", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(myiconWindow);
@@ -38,7 +38,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          Window1 mywindow = new Window1(instance);
+          LoginWindow mywindow = new LoginWindow();
             mywindow.ShowDialog();
         }
 
