@@ -14,7 +14,7 @@ namespace DAL.DO
         public ExitLine(int a)
         {
             IdBus = a;
-            Start = new TimeSpan(0, 6, 0);
+            Start = new TimeSpan(6, 0, 0);
             End = new TimeSpan(22, 0, 0);
             FrequenceinMN = 10;
         }

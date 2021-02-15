@@ -688,6 +688,48 @@ namespace BL
 
 
         #endregion
+
+
+
+        #region TripClient
+        public List<Trip> getmyTrips(StationLine depart,StationLine arrive)
+        {
+            List<Trip> myList = new List<Trip>();
+            IEnumerable<Line> myLines = getLines().Where(line => line.listStations.Exists(station => station.shelterNumber == depart.shelterNumber));
+            List<Line> myRealLine = myLines.ToList();
+            foreach(Line l in myRealLine.ToList())
+            {
+                int firstIndex =l.listStations.FindIndex(station => station.shelterNumber == depart.shelterNumber);
+                int lastindex = l.listStations.FindIndex(station => station.shelterNumber == arrive.shelterNumber);
+                if(lastindex!=-1)
+                {
+                    if (lastindex < firstIndex)
+                        myRealLine.Remove(l);
+                }
+            }
+            List<Trip> ListToreturn = new List<Trip>();
+            myRealLine.ForEach(item => ListToreturn.Add(new Trip(item, HelptheTrip(item, depart, arrive))));
+            var i=from item in ListToreturn orderby item.time ascending select item;
+            return i.ToList();
+        }
+        private TimeSpan HelptheTrip(Line l,StationLine d,StationLine f)
+        {
+            TimeSpan timefinal = new TimeSpan(0, 0, 0);
+            int index = l.listStations.FindIndex(item => item.shelterNumber == d.shelterNumber);
+            int lastindex = l.listStations.FindIndex(station => station.shelterNumber == f.shelterNumber);
+
+            for (int a=index;a<lastindex;a++)
+            {
+                timefinal = timefinal.Add(TimeSpan.FromHours(l.listStations[a].Temps.Hours));
+                timefinal = timefinal.Add(TimeSpan.FromMinutes(l.listStations[a].Temps.Minutes));
+                timefinal = timefinal.Add(TimeSpan.FromSeconds(l.listStations[a].Temps.Seconds));
+
+            }
+            return timefinal;
+        }
+
+
+        #endregion
     }
 }
 

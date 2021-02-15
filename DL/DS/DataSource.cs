@@ -64,7 +64,7 @@ namespace DAL.DS
             int columnsLatitude = 5;
             Worksheet sheet = workbook.Worksheets[0];
 
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
                 DataSource.Stations.Add(new Station("s"));
            
@@ -86,7 +86,7 @@ namespace DAL.DS
 
             #region init StationLine
             int index = 0;
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
                
                 DataSource.StationLines.Add(new StationLine());
@@ -100,9 +100,9 @@ namespace DAL.DS
                 DataSource.StationLines[a].ID = forID;
                 forID++;
             }
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
-                for (int b = 0; b < 4; a++, b++)
+                for (int b = 0; b < 8; a++, b++)
                 {
                     if (b == 0)
                     {
@@ -118,9 +118,9 @@ namespace DAL.DS
             #endregion
 
             #region init StationC
-            for (int a = 0; a < 40; a++)
+            for (int a = 0; a < 80; a++)
             {
-                if (a == 39)
+                if (a == 79)
                 {
                     DataSource.StationsConnecteds.Add(new Stationsconnected(DataSource.StationLines[a], DataSource.StationLines[0]));
                     DataSource.StationsConnecteds[a].ID = forID;

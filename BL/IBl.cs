@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BL.BO;
+
 namespace BL
 {
     public interface IBl
@@ -101,6 +102,12 @@ namespace BL
          bool checkpwd(User a);
 
          void resetpwd(User a);
+        #endregion
+
+        #region TripClient
+        List<Trip> getmyTrips(StationLine depart,StationLine arrive);
+
+
         #endregion
     }
 }

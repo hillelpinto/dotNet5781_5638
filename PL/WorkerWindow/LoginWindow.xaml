@@ -9,8 +9,8 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
 
         </Grid.Background>
@@ -27,7 +27,7 @@
         <Label Visibility="Hidden" Content="Invent a strong password :" Name="pwdnew" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,195,0,0" VerticalAlignment="Top" Width="199"/>
         <TextBox Visibility="Hidden" x:Name="newmailaddress" HorizontalAlignment="Left" Margin="316,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Height="33"/>
         <Label Visibility="Hidden" Name="maillabel" Content="Enter your mail address please :" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="80,275,0,0" VerticalAlignment="Top"/>
-        <Button  Click="signin" Visibility="Hidden" Foreground="Orange" Background="Black" FontSize="15" FontWeight="Bold" Content="Sign In" Name="signinbutton" HorizontalAlignment="Left" Margin="237,334,0,0" VerticalAlignment="Top" Width="103" Height="24"/>
-        <Button Foreground="Orange" Background="Black" Visibility="Hidden"  FontSize="15" FontWeight="Bold" Name="resetpwd" Click="resetPassword" Content="Reset my password" HorizontalAlignment="Left" Margin="48,294,0,0" VerticalAlignment="Top" Width="162" Height="27" />
+        <Button  Click="signin" Visibility="Hidden" Foreground="White" Background="Black" FontSize="15" FontWeight="Bold" Content="Sign In" Name="signinbutton" HorizontalAlignment="Left" Margin="237,334,0,0" VerticalAlignment="Top" Width="103" Height="24"/>
+        <Button Foreground="White" Background="Black" Visibility="Hidden"  FontSize="15" FontWeight="Bold" Name="resetpwd" Click="resetPassword" Content="Reset my password" HorizontalAlignment="Left" Margin="48,294,0,0" VerticalAlignment="Top" Width="162" Height="27" />
     </Grid>
 </Window>

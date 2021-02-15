@@ -9,13 +9,13 @@
     <Grid Name="myGrid">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
 
         </Grid.Background>
         <Button Content="Worker" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="102,242,0,0" VerticalAlignment="Top" Height="59" Width="164" Click="Button_Click"/>
-        <Button Content="Traveler" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="365,242,0,0" VerticalAlignment="Top" Height="64" Width="164"/>
+        <Button Content="Traveler" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="365,242,0,0" VerticalAlignment="Top" Height="64" Width="164" Click="Button_Click_1"/>
         <Image x:Name="myLogo"  HorizontalAlignment="Left" Height="78" Margin="133,31,0,0" VerticalAlignment="Top" Width="476"/>
     </Grid>
 </Window>

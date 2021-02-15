@@ -31,5 +31,16 @@ namespace BL.BO
            
            
         }
+        public Line (Line l)
+        {
+            ID = l.ID;
+            BeginService = l.BeginService;
+            busLineNumber = l.busLineNumber;
+            EndService = l.EndService;
+            listStations = l.listStations;
+            area = l.area;
+            firstStation = l.firstStation;
+            CheckedOrNot = l.CheckedOrNot;
+        }
     }
 }

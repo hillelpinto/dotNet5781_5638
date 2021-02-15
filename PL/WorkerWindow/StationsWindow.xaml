@@ -19,19 +19,20 @@
     <Grid x:Name="myData" Margin="0,0,0,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
-        <Button Content="Back" Foreground="Orange" Background="Black" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
+        <Button Content="Back" Foreground="Aquamarine" Background="Black" Name="BackButton" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Width="57" Height="32" Click="BackButton_Click"/>
 
 
         <ContentControl Content="{Binding}" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="595" Width="1222"/>
-        <RadioButton x:Name="BusButton" Checked="BusesChecked" Unchecked="BusesUnchecked" Content="Stations of buses " FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="798,49,0,0" VerticalAlignment="Top" Height="21" Width="146"/>
-        <RadioButton Content="Stations of lines " Name="LineButton" FontSize="15" Checked="LinesChecked" Unchecked="LinesUnchecked" FontWeight="Bold" HorizontalAlignment="Left" Margin="277,45,0,0" VerticalAlignment="Top"/>
+        <RadioButton Foreground="Aquamarine" x:Name="BusButton" Checked="BusesChecked" Unchecked="BusesUnchecked" Content="Stations of buses " FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="798,49,0,0" VerticalAlignment="Top" Height="21" Width="146"/>
+        <RadioButton Content="Stations of lines " Name="LineButton" Foreground="Aquamarine" FontSize="15" Checked="LinesChecked" Unchecked="LinesUnchecked" FontWeight="Bold" HorizontalAlignment="Left" Margin="277,45,0,0" VerticalAlignment="Top"/>
         <Grid Name="myTime" Margin="345,10,278,631">
             <Label Name="currentHour" FontWeight="Black" Visibility="Visible" Foreground="Aquamarine" Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="201,0,0,0" VerticalAlignment="Center" Height="37" Width="170"/>
-            <Label Content="Time :" Name="Hourstxt" FontWeight="Bold" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center"/>
+            <Label Foreground="Aquamarine" Content="Time :" Name="Hourstxt" FontWeight="Bold" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Center"/>
         </Grid>
 
     </Grid>

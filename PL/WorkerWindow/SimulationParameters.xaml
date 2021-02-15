@@ -9,21 +9,22 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
-        <TextBox Name="Hours" HorizontalAlignment="Left" Margin="118,90,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="24"/>
+        <TextBox Name="Hours" HorizontalAlignment="Left" Margin="118,90,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="24"/>
         <TextBox Name="Minutes" HorizontalAlignment="Left" Margin="200,90,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="24"/>
         <TextBox Name="Seconds" HorizontalAlignment="Left" Margin="282,90,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="24"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,90,0,0" Text=":" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="267,90,0,0" Text=":" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,50,0,0" FontWeight="Bold" FontSize="15" Text="Type the simulation start time " TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,160,0,0" FontWeight="Bold" FontSize="15" Text="Precise the time ratio : real time -> simulation time ?" TextWrapping="Wrap" VerticalAlignment="Top" Width="382"/>
-        <TextBox Name="stoms" HorizontalAlignment="Left" Margin="275,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-        <TextBlock HorizontalAlignment="Left" Margin="341,200,0,0" Text="S" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="155,200,0,0" Text="1 S ======>" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Start" FontWeight="Bold" FontSize="15" Click="Validation" Foreground="Orange" Background="Black" HorizontalAlignment="Left" Margin="230,283,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="187,90,0,0" Text=":" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="267,90,0,0" Foreground="White" Text=":" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,50,0,0" Foreground="White" FontWeight="Bold" FontSize="15" Text="Type the simulation start time " TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,160,0,0" Foreground="White" FontWeight="Bold" FontSize="15" Text="Precise the time ratio : real time -> simulation time ?" TextWrapping="Wrap" VerticalAlignment="Top" Width="382"/>
+        <TextBox Name="stoms" HorizontalAlignment="Left" Margin="275,200,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="341,200,0,0" Text="S" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="155,200,0,0" Text="1 S ======>" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Start" FontWeight="Bold" FontSize="15" Click="Validation" Foreground="White" Background="Black" HorizontalAlignment="Left" Margin="200,281,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Name="hours" HorizontalAlignment="Left" FontWeight="Bold" FontSize="9" Margin="175,22,0,0" VerticalAlignment="Top" Width="126" Height="23"/>
 
     </Grid>

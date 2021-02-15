@@ -21,9 +21,9 @@ namespace PL.WorkerWindow
         int count;
         int countS;
         SimulatorClock simulatorClock;
-        public LinesWindow(IBl b,SimulatorClock s)
+        public LinesWindow(IBl b, SimulatorClock s)
         {
-           
+
             InitializeComponent();
             simulatorClock = s;
             instance = b;
@@ -31,9 +31,16 @@ namespace PL.WorkerWindow
             this.Icon = BitmapFrame.Create(myiconWindow);
             myTime.DataContext = simulatorClock;
             if (simulatorClock.Time.Seconds != -1)
+            {
                 CurrentHour.Visibility = Visibility.Visible;
+                Hourstxt.Visibility = Visibility.Visible;
+            }
             else
+            {
                 CurrentHour.Visibility = Visibility.Hidden;
+                Hourstxt.Visibility = Visibility.Hidden;
+            }
+
             ListLine.DataContext = instance.getLines();
         }
 

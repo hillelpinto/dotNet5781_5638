@@ -9,9 +9,10 @@
     <Grid x:Name="myData" Margin="0,0,0,-16">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
         <ListView Name="ListBus" Margin="0,84,371,10" ItemsSource="{Binding}" MouseDoubleClick ="ListBus_SelectionDetail">
             <ListView.ItemContainerStyle>
@@ -25,28 +26,28 @@
                     <GridViewColumn Header="License Number" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding GFormat}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding GFormat}" Foreground="Orange" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="License Release Date " >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock x:Name="Txt" HorizontalAlignment="Center" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" Foreground="Orange" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Kilometers" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Km}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock HorizontalAlignment="Center"  Text="{Binding Km}" Foreground="Orange" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Fuel Level" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding Fuel}" Foreground="Black" FontSize="15" FontWeight="Bold" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Fuel}" Foreground="Orange" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -86,8 +87,9 @@
             </ListView.View>
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4E00" Offset="1"/>
-                    <GradientStop Color="#434343" Offset="0.163"/>
+                    <GradientStop Color="#FF4F4A48" Offset="1"/>
+                    <GradientStop Color="#FF171212" Offset="0.163"/>
+
                 </LinearGradientBrush>
             </ListView.Background>
         </ListView>
@@ -100,7 +102,9 @@
 
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#434343" Offset="0.163"/>
+                    <GradientStop Color="#FF4F4A48" Offset="1"/>
+                    <GradientStop Color="#FF171212" Offset="0.163"/>
+
                 </LinearGradientBrush>
             </ListView.Background>
 
@@ -132,12 +136,12 @@
         <TextBox HorizontalAlignment="Left" TextChanged="driverpopup" Margin="1052,348,0,0" IsReadOnly="True" Text="{Binding DriverName}" Name="DriverField" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBox TextChanged="seatpopup" HorizontalAlignment="Left" Margin="1052,388,0,0" IsReadOnly="True" Name="SeatField" Text="{Binding SeatAvailable}" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="600,22,0,0" FontSize="15" VerticalAlignment="Top" Width="155" Height="25" Name="Combofilter" SelectionChanged="Combofilter_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="366,41,0,0" FontSize="15" FontWeight="Bold" Text="Searching and Filtering by :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="212"/>
+        <TextBlock HorizontalAlignment="Left" Margin="366,41,0,0" FontSize="15" FontWeight="Bold" Text="Searching and Filtering by :" TextWrapping="Wrap" Foreground="Orange" VerticalAlignment="Top" Height="32" Width="212"/>
         <TextBox Name="LicenseTosearch" HorizontalAlignment="Left" Margin="600,54,0,0" Text="Type the license ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25" TextChanged="TextBox_TextChanged"/>
         <Button Content="Search " Background="Black " Foreground="Orange" HorizontalAlignment="Left" Margin="770,58,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
         <Grid Name="myTime" Margin="900,16,43,651">
-            <Label Name="CurrentHours" HorizontalAlignment="Left" Margin="116,10,0,0"  Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="Orange" VerticalAlignment="Top" Width="138" Height="27"/>
-            <Label Content="Time :" Visibility="Hidden" Name="Hourstxt" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Name="CurrentHours"  HorizontalAlignment="Left" Margin="116,10,0,0"  Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="15" Foreground="Orange" VerticalAlignment="Top" Width="138" Height="27"/>
+            <Label Content="Time :" Visibility="Hidden" Name="Hourstxt" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,10,0,0" Foreground="Orange" VerticalAlignment="Top"/>
         </Grid>
 
 

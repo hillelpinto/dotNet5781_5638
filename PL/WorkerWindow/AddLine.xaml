@@ -11,20 +11,21 @@
     <Grid x:Name="mydata" RenderTransformOrigin="0.402,1.09" Height="404" VerticalAlignment="Top">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="LimeGreen" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
 
         <TextBox Name ="LicenseN" HorizontalAlignment="Left" Margin="312,35,0,0" Text="{Binding busLineNumber}"  TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="36"/>
 
 
 
-        <Button Content="Valider" Foreground="Aquamarine" FontWeight="Bold" Background="Gray" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Button_Click"/>
-        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Bus Line Number :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
-        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Shelter Number of First Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="243"/>
-        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Shelter Number of Last Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="228"/>
-        <TextBlock HorizontalAlignment="Left" Margin="48,238,0,0" Text="Area :" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="78"/>
+        <Button Content="Valider" Foreground="LimeGreen" FontWeight="Bold" Background="Black" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Button_Click"/>
+        <TextBlock Foreground="LimeGreen" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Bus Line Number :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
+        <TextBlock Foreground="LimeGreen" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Shelter Number of First Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="243"/>
+        <TextBlock Foreground="LimeGreen" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Shelter Number of Last Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="228"/>
+        <TextBlock Foreground="LimeGreen" HorizontalAlignment="Left" Margin="48,238,0,0" Text="Area :" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="78"/>
         <ComboBox Name="ComboArea" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="312,238,0,0" VerticalAlignment="Top" Width="150" Height="32"/>
         <ComboBox Name="firststationcombo" HorizontalAlignment="Left" Margin="312,101,0,0" VerticalAlignment="Top" Width="150" Height="29"/>
         <ComboBox Name="laststationcombo" HorizontalAlignment="Left" Margin="312,172,0,0" VerticalAlignment="Top" Width="150" Height="29" />

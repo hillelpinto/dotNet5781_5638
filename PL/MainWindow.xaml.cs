@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.WorkerWindow;
+using PL.TravelerWindow;
 using BL;
 namespace PL
 {
@@ -39,6 +40,12 @@ namespace PL
         {
           Window1 mywindow = new Window1(instance);
             mywindow.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            PlanningTrip win = new PlanningTrip(instance);
+            win.ShowDialog();
         }
     }
 }

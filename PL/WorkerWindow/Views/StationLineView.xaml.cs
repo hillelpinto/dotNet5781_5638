@@ -29,12 +29,19 @@ namespace PL.WorkerWindow.Views
             
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
+        private void ChangeColor(object sender,MouseEventArgs e)
+        {
+
+            var item = e.OriginalSource as ListViewItem;
+            item.Foreground = Brushes.Black;
+        }
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             if (ListBus.SelectedIndex != -1)
             {
                 updatebutton.IsEnabled = true;
-                updatebutton.Foreground = Brushes.Orange;
+                updatebutton.Foreground = Brushes.Aquamarine;
+                updatebutton.Background = Brushes.Black;
                 distancetxt.IsReadOnly = false;
                 timeText.IsReadOnly = false;
                 Popupdistance.IsOpen = true;
@@ -99,7 +106,8 @@ namespace PL.WorkerWindow.Views
         {
 
             DeleteButton.IsEnabled = true;
-            DeleteButton.Foreground = Brushes.Orange;
+            DeleteButton.Foreground = Brushes.Aquamarine;
+            DeleteButton.Background = Brushes.Black;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = true;

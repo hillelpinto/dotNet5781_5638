@@ -9,18 +9,19 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="LimeGreen" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="60,67,0,0" Text="Starting at" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" FontSize="15" Margin="60,120,0,0" Text="End the service at " TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock Name="frequence" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15" Margin="60,170,0,0" Text="Frequence of exit " TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="60,67,0,0" Text="Starting at" Foreground="GreenYellow" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Foreground="GreenYellow" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15" Margin="60,120,0,0" Text="End the service at " TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Foreground="GreenYellow" Name="frequence" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15" Margin="60,170,0,0" Text="Frequence of exit " TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="begintxt" HorizontalAlignment="Left" Margin="248,67,0,0" Text="{Binding BeginService}" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Height="26"/>
         <TextBox Name="endtxt" HorizontalAlignment="Left" Margin="248,120,0,0" Text="{Binding EndService}" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Height="26"/>
-        <Button Content="Validate" Foreground="Black" FontWeight="Bold" Background="Gray" HorizontalAlignment="Left" Margin="273,236,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click"/>
-        <Button Content="Quit" FontWeight="Bold" Background="Gray" HorizontalAlignment="Left" Margin="42,236,0,0" VerticalAlignment="Top" Click="quit" Width="82"/>
-        <ComboBox Name="comboFrq" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="248,174,0,0" VerticalAlignment="Top" Width="103" Height="26"/>
+        <Button Foreground="GreenYellow" Content="Validate"  FontWeight="Bold" Background="Gray" HorizontalAlignment="Left" Margin="273,236,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click"/>
+        <Button Content="Quit" FontWeight="Bold" Background="Gray" Foreground="GreenYellow" HorizontalAlignment="Left" Margin="42,236,0,0" VerticalAlignment="Top" Click="quit" Width="82"/>
+        <ComboBox Name="comboFrq" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="248,174,0,0" VerticalAlignment="Top" Width="103" Height="26"/>
 
     </Grid>
 </Window>

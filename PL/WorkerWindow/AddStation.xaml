@@ -9,9 +9,10 @@
     <Grid x:Name="mydata" Margin="0,0,0,-74">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Aquamarine" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
 
         <TextBox Name ="LicenseN" HorizontalAlignment="Left" Margin="281,38,0,0" Text="{Binding shelterNumber}"  TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="36"/>
@@ -19,25 +20,25 @@
 
         <TextBox Name="kmTotal" Text="{Binding latitude}" HorizontalAlignment="Left" Margin="281,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="37"/>
 
-        <Button Content="Valider" Foreground="Aquamarine" FontWeight="Bold" Background="Gray" HorizontalAlignment="Center" Margin="0,518,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Validate_Click"/>
-        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Station ID :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
-        <TextBlock FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Latitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="132"/>
-        <TextBlock HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Longitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="132"/>
-        <TextBlock HorizontalAlignment="Left" Margin="40,238,0,0" FontWeight="Bold" FontSize="15"  Text="Address of the Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="196"/>
-        <TextBlock HorizontalAlignment="Left" Margin="43,329,0,0" FontWeight="Bold" FontSize="15"  Text="Is there an access for the disable  ? " TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="264"/>
+        <Button Content="Valider" Foreground="Aquamarine" FontWeight="Bold" Background="Black" HorizontalAlignment="Center" Margin="0,518,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Validate_Click"/>
+        <TextBlock Foreground="Aquamarine" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Station ID :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
+        <TextBlock Foreground="Aquamarine" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Latitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="132"/>
+        <TextBlock Foreground="Aquamarine" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Longitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="132"/>
+        <TextBlock Foreground="Aquamarine" HorizontalAlignment="Left" Margin="40,238,0,0" FontWeight="Bold" FontSize="15"  Text="Address of the Station :" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="196"/>
+        <TextBlock Foreground="Aquamarine" HorizontalAlignment="Left" Margin="43,329,0,0" FontWeight="Bold" FontSize="15"  Text="Is there an access for the disable  ? " TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="264"/>
         <TextBox Text="{Binding longitude}" Name="Seat" IsReadOnly="False" HorizontalAlignment="Left" Margin="281,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="31"/>
-        <TextBlock HorizontalAlignment="Left" Margin="48,414,0,0" FontWeight="Bold" FontSize="15" Text="Is there a Digit Panel :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="181"/>
+        <TextBlock Foreground="Aquamarine" HorizontalAlignment="Left" Margin="48,414,0,0" FontWeight="Bold" FontSize="15" Text="Is there a Digit Panel :" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="181"/>
         <TextBox Text="{Binding address}" Name="Chauffeurname" HorizontalAlignment="Left" Margin="281,239,0,0" IsReadOnly="False" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" Height="31"/>
         <Label Content="*" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="28,41,0,0" VerticalAlignment="Top" Foreground="Red" Height="20" Width="24"/>
         <!--<Label Content="*" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="28,101,0,0" VerticalAlignment="Top" Foreground="Red"/>-->
         <Label Content="*" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="25,238,0,0" VerticalAlignment="Top" Foreground="Red" Width="30"/>
-        <RadioButton FontWeight="Bold" FontSize="15" Name="yesacessdisable" Content="Yes " HorizontalAlignment="Left" Margin="336,330,0,0" VerticalAlignment="Top" />
-        <RadioButton Content="No" Name="Nodisableaccess" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="408,330,0,0" VerticalAlignment="Top"/>
+        <RadioButton Foreground="Aquamarine" FontWeight="Bold" FontSize="15" Name="yesacessdisable" Content="Yes " HorizontalAlignment="Left" Margin="336,330,0,0" VerticalAlignment="Top" />
+        <RadioButton Foreground="Aquamarine" Content="No" Name="Nodisableaccess" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="408,330,0,0" VerticalAlignment="Top"/>
         <DockPanel Margin="336,414,52,167" LastChildFill="False">
             <RadioButton Content="No" FontSize="15" FontWeight="Bold" x:Name="NoDigit" DockPanel.Dock="Right" Width="41"/>
             <RadioButton Content="Yes" FontSize="15" FontWeight="Bold" x:Name="YesDigit" Width="56"></RadioButton>
         </DockPanel>
-        <Label Content="If you type a fake address,then u'll have a fake Lat/Lon ..." FontSize="12" FontStyle="Italic" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="150,274,0,0" VerticalAlignment="Top" Width="350"/>
+        <Label Foreground="Aquamarine" Content="If you type a fake address,then u'll have a fake Lat/Lon ..." FontSize="12" FontStyle="Italic" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="150,274,0,0" VerticalAlignment="Top" Width="350"/>
 
 
 

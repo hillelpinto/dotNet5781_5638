@@ -9,11 +9,12 @@
     <Grid Margin="0,0,0,-6" x:Name="D">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4E00" Offset="1"/>
-                <GradientStop Color="#434343" Offset="0.163"/>
+                <GradientStop Color="#FF4F4A48" Offset="1"/>
+                <GradientStop Color="#FF171212" Offset="0.163"/>
             </LinearGradientBrush>
+
         </Grid.Background>
-        <Button Content="Back" FontWeight="Bold" Foreground="Orange" HorizontalAlignment="Left" Margin="10,10,0,0" Background="Black" VerticalAlignment="Top" Height="30" Width="69" Click="Button_Click"/>
+        <Button Content="Back" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" Background="Black" VerticalAlignment="Top" Height="30" Width="69" Click="Button_Click"/>
         <Button x:Name="BusesButton"  Content="Autobuses in my Garage" FontWeight="Bold" ToolTip="See your buses and make CRUD action" Background="PeachPuff" HorizontalAlignment="Center" Margin="0,142,0,0" VerticalAlignment="Top"  FontSize="15" Width="192" Height="47" Click="Button_Click_1"/>
         <Button x:Name="StationsButton" Content="Stations of Lines" FontWeight="Bold" ToolTip="See your stations and make CRUD actions" HorizontalAlignment="Center" Background="PeachPuff" Margin="0,231,0,0" VerticalAlignment="Top" Height="51"  FontSize="15"  Width="192" Click="StationButton_Click" />
         <Button x:Name="LinesButton" Content="Lines in Service" FontWeight="Bold" ToolTip="See your lines and make CRUD actions" HorizontalAlignment="Center" Margin="0,334,0,0" Background="PeachPuff" VerticalAlignment="Top" FontSize="15" Height="53" Width="192" Click="LineButton_Click" />
