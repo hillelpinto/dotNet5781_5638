@@ -38,42 +38,42 @@
                     <GridViewColumn Header="Station ID" Width="100" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header=" Latitude " Width="110" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding latitude}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding latitude}"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Longitude" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding longitude}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding longitude}"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Address" Width="172">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding address}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding address}"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Digital Panel " Width="110">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding DigitPanel }"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding DigitPanel }"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Disabled Access " Width="110">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding HandicappedAccess}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding HandicappedAccess}"  HorizontalAlignment="Center" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -105,16 +105,16 @@
             </ListView.Background>
 
         </ListView>
-        <TextBlock  HorizontalAlignment="Left"  Text="Shelter Number" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,40,0,0" Height="20" Width="112"/>
-        <TextBlock  HorizontalAlignment="Left"  Text="Latitude" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,80,0,0" Height="20" Width="112"/>
-        <TextBlock  HorizontalAlignment="Left"  Text="Longitude" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,120,0,0" Height="20" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Shelter Number" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,40,0,0" Height="20" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Latitude" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,80,0,0" Height="20" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Longitude" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,120,0,0" Height="20" Width="112"/>
 
-        <TextBlock  HorizontalAlignment="Left" Name="add"  Text="Address" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,160,0,0" Height="20" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left" Name="add"  Text="Address" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,160,0,0" Height="20" Width="112"/>
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=add}"  Name="Popupadd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Aquamarine" FontStyle="Italic" Background="Black" >Make commit here !</TextBlock>
+            <TextBlock Foreground="#FF12A0E2" FontStyle="Italic" Background="Black" >Make commit here !</TextBlock>
         </Popup>
-        <TextBlock  HorizontalAlignment="Left"  Text="Digit Panel" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,200,0,0" Height="20" Width="112"/>
-        <TextBlock  HorizontalAlignment="Left"  Text="Disable access" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,240,0,0" Height="34" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Digit Panel" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,200,0,0" Height="20" Width="112"/>
+        <TextBlock  HorizontalAlignment="Left"  Text="Disable access" Foreground="#FF12A0E2" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"  Margin="887,240,0,0" Height="34" Width="112"/>
         <TextBox  FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Black" HorizontalAlignment="Left" Text="{Binding shelterNumber}"   TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Margin="1034,40,0,0" />
         <TextBox  FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Black" HorizontalAlignment="Left"   TextWrapping="Wrap" Text="{Binding latitude}" VerticalAlignment="Top" Width="120" Height="22" Margin="1034,80,0,0" />
         <TextBox  FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Black" HorizontalAlignment="Left"   TextWrapping="Wrap" Text="{Binding longitude}" VerticalAlignment="Top" Width="120" Height="22" Margin="1034,120,0,0" />
@@ -122,7 +122,7 @@
         <TextBox  FontSize="15" IsReadOnly="True" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left"   TextWrapping="Wrap" Text="{Binding DigitPanel}" VerticalAlignment="Top" Width="120" Height="22" Margin="1034,200,0,0" />
         <TextBox  FontSize="15" IsReadOnly="True" FontWeight="Bold" Text="{Binding HandicappedAccess}"  Foreground="Black" HorizontalAlignment="Left"   TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Margin="1034,240,0,0" />
 
-        <Button Name="CreateButton" Content="Create" FontSize="15" Foreground="Black" ToolTip="Press me to add a station " FontWeight="Bold" Background="Aquamarine" HorizontalAlignment="Left" Margin="923,408,0,0"  VerticalAlignment="Top" Width="171" Height="37" Click="CreateButton_Click"/>
+        <Button Name="CreateButton" Content="Create" FontSize="15" Foreground="Black" ToolTip="Press me to add a station " FontWeight="Bold" Background="#FF12A0E2" HorizontalAlignment="Left" Margin="923,408,0,0"  VerticalAlignment="Top" Width="171" Height="37" Click="CreateButton_Click"/>
         <Button  IsEnabled="False" Foreground="Black" Name="DeleteButton" FontSize="15" ToolTip="Fill a checkboxe and press me " FontWeight="Bold"  Content="Delete" HorizontalAlignment="Left" Margin="923,533,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="DeleteButton_Click"/>
         <Button Name="updatebutton" IsEnabled="False" Foreground="Black" ToolTip="Select a station and you can update the details available below this button " FontSize="15"  FontWeight="Bold"  Content="Update"  HorizontalAlignment="Left" Margin="923,466,0,0"  VerticalAlignment="Top" Width="171" Height="34" Click="updatebutton_Click"/>
 

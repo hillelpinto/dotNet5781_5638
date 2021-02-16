@@ -349,6 +349,10 @@ namespace BL
             tonotDelete = getAllStationsLines().Where(station => station.shelterNumber == l.shelterNumber).ToList();
             tonotDelete.ForEach(station => station.CheckedOrNot = l.CheckedOrNot);
             tonotDelete.ForEach(station => station.address = l.address);
+            tonotDelete.ForEach(station => station.longitude = l.longitude);
+            tonotDelete.ForEach(station => station.latitude = l.latitude);
+
+
             List<DAL.DO.StationLine> cloning = new List<DAL.DO.StationLine>();
             tonotDelete.ForEach(station => cloning.Add(convertSLinetoDO(station)));
             cloning.ForEach(station => dalData.modifystationline(station));
@@ -481,18 +485,22 @@ namespace BL
         }
        public void modifyStation(Station a)
        {
-            if (getmyStationsLines().Exists(station => station.shelterNumber == a.shelterNumber))
-            {
-                StationLine station = getmyStationsLines().Find(sl=> sl.shelterNumber == a.shelterNumber);
-                station.address = a.address;
-                modifyStationline(station);
-            }
+          
            
             DAL.DO.Station s = new DAL.DO.Station();
             a.CopyPropertiesTo(s);
             setAddress(s);
+            if (getmyStationsLines().Exists(station => station.shelterNumber == s.shelterNumber))
+            {
+                StationLine station = getmyStationsLines().Find(sl => sl.shelterNumber == s.shelterNumber);
+                station.address = s.address;
+                station.longitude = s.longitude;
+                station.latitude = s.latitude;
+                modifyStationline(station);
+            }
             dalData.modifyStation(s);
        }
+       
         void setAddress(DAL.DO.Station s)
         {
             DAL.DO.Station temp = dalData.GetStation().ToList().Find(item => item.ID == s.ID);

@@ -55,7 +55,7 @@
             </ListView.View>
         </ListView>
         <Grid x:Name="myTime" Margin="36,0,36,384">
-            <Label Name="LabelSimulationTime" Visibility="Hidden" Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}"  FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Center" Width="141" Height="30" RenderTransformOrigin="0.5,0.5">
+            <Label Name="LabelSimulationTime" Visibility="Hidden" Foreground="White" Content="{Binding TimeinFormat,UpdateSourceTrigger=PropertyChanged}"  FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Center" Width="141" Height="30" RenderTransformOrigin="0.5,0.5">
 
             </Label>
         </Grid>
