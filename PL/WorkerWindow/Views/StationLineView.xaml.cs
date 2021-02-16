@@ -42,7 +42,7 @@ namespace PL.WorkerWindow.Views
                
                 updatebutton.IsEnabled = true;
                 updatebutton.Foreground = Brushes.Black;
-                updatebutton.Background = Brushes.Aquamarine;
+                updatebutton.Background=Brushes.DeepSkyBlue ;
                 distancetxt.IsReadOnly = false;
                 timeText.IsReadOnly = false;
                 Popupdistance.IsOpen = true;
@@ -108,7 +108,7 @@ namespace PL.WorkerWindow.Views
 
             DeleteButton.IsEnabled = true;
             DeleteButton.Foreground = Brushes.Black;
-            DeleteButton.Background = Brushes.Aquamarine;
+            DeleteButton.Background = Brushes.DeepSkyBlue;
             var cb = sender as CheckBox;
             var thisbus = cb.DataContext as StationLine;
             thisbus.CheckedOrNot = true;

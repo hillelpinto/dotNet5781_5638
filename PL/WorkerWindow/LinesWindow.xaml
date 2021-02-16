@@ -75,7 +75,7 @@
                     <GridViewColumn  Width="94">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="AddStation" Content="Add Station" Foreground="Black" Height="20" Width="87" Background="Aquamarine" Click="AddStationpressed "></Button>
+                                <Button Name="AddStation" Content="Add Station" Foreground="Black" Height="20" Width="87" Background="DeepSkyBlue" Click="AddStationpressed "></Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -134,28 +134,28 @@
                     <GridViewColumn Header="Station ID" Width="72" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding shelterNumber}"  HorizontalAlignment="Center" Foreground="DeepSkyBlue" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Station name " Width="140" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding address}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock  Text="{Binding address}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="DeepSkyBlue" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Time to next stop" Width="110" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Temps}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Temps}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="DeepSkyBlue" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Distance to next stop" Width="117" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Distance}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Distance}" TextAlignment="Center" HorizontalAlignment="Center" Foreground="DeepSkyBlue" FontSize="15" FontWeight="Bold" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -173,7 +173,7 @@
 
         </ListView>
         <Button Name="addlinebutton" Content="Add Line " Background="Black" Foreground="LimeGreen" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="847,512,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="Button_Click"/>
-        <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="Aquamarine" FontSize="16" HorizontalAlignment="Left" Margin="921,31,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
+        <Label Content="Station list of the Line :" FontWeight="Bold" Foreground="DeepSkyBlue" FontSize="16" HorizontalAlignment="Left" Margin="921,31,0,0" VerticalAlignment="Top" Height="42" Width="281"/>
         <TextBox IsReadOnly="True" HorizontalAlignment="Left" Margin="1142,32,0,0" Name="linepresented"  TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Height="30" RenderTransformOrigin="0.413,0.141"/>
         <Button Name="DeleteLineButton" IsEnabled="False" Content="Delete Line" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="15" Margin="847,580,0,0" VerticalAlignment="Top" Height="50" Width="170" Click="DeleteLineButton_Click"/>
         <Button FontWeight="Bold" FontSize="15" IsEnabled="False" Foreground="Black" Name="DeleetStationbutton" Content="Delete Station "  HorizontalAlignment="Left" Margin="1172,580,0,0" VerticalAlignment="Top" Height="54" Width="150" Click="DeleetStationbutton_Click"/>

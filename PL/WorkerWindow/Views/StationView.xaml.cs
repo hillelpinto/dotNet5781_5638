@@ -36,10 +36,9 @@ namespace PL.WorkerWindow.Views
                 int index = ListBus.SelectedIndex;
                 Station i = instance.getStation(index);
                 myData.DataContext = i;
-                StationLine essai = instance.getmyStationsLines().Find(item => item.shelterNumber == i.shelterNumber);
-                MessageBox.Show(essai.longitude);
+             
                 updatebutton.Foreground = Brushes.Black;
-                updatebutton.Background = Brushes.Aquamarine;
+                updatebutton.Background = Brushes.DeepSkyBlue;
 
                 updatebutton.IsEnabled = true;
                 Popupadd.IsOpen = true;
@@ -62,7 +61,7 @@ namespace PL.WorkerWindow.Views
             instance.modifyStation(thisbus);
             DeleteButton.IsEnabled = true;
             DeleteButton.Foreground = Brushes.Black;
-            DeleteButton.Background = Brushes.Aquamarine;
+            DeleteButton.Background = Brushes.DeepSkyBlue;
 
 
         }
