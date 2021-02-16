@@ -98,7 +98,7 @@ namespace PL.WorkerWindow
 
             };
         }
-        void ServiceEnded(LineTiming line)
+        void ServiceEnded(LineTiming line)//This function handle the case that the line is not in  service
         {
             int id = instance.getAllAllLine().ToList().Find(item => item.busLineNumber == line.BusLineNumber).ID;
             TimeSpan debut = instance.getmySchedules().ToList().Find(item => item.IdBus == id).Start;
@@ -112,15 +112,11 @@ namespace PL.WorkerWindow
                         line.TimeBeforeArrival = new TimeSpan(h2 - h1 - 1, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
                     
                 }
-                else if (h2 - h1 < 0)//Before midnight :h2=06:00:00 ,h1=23:00:00
+                else if (h2 - h1 < 0)//Before midnight,ex  :h2=06:00:00 ,h1=23:00:00
                 {
                    
                             line.TimeBeforeArrival = new TimeSpan(23 + h2 - h1, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
-                        //}
-                        //else
-                        //{
-                        //    line.TimeBeforeArrival = new TimeSpan(h2, 60 - simulatorClock.Time.Minutes, 60 - simulatorClock.Time.Seconds);
-                        //}
+                    
 
                     
                 }
@@ -135,7 +131,7 @@ namespace PL.WorkerWindow
 
         }
 
-        private void Check(LineTiming objet,int rate)
+        private void Check(LineTiming objet,int rate)//This function check if the bus is arrive to the station then we add to the station frequencies time of the Line
         {
             var temp = (Line)instance.getAllAllLine().ToList().Find(line => line.busLineNumber == objet.BusLineNumber);
             int id = temp.ID;

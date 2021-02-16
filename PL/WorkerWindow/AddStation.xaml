@@ -20,7 +20,7 @@
 
         <TextBox Name="kmTotal" Text="{Binding latitude}" HorizontalAlignment="Left" Margin="281,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Height="37"/>
 
-        <Button Content="Valider" Foreground="Aquamarine" FontWeight="Bold" Background="Black" HorizontalAlignment="Center" Margin="0,518,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Validate_Click"/>
+        <Button Content="Valider" Foreground="Black" FontWeight="Bold" Background="Aquamarine" HorizontalAlignment="Center" Margin="0,518,0,0" VerticalAlignment="Top" Height="28" Width="124" Click="Validate_Click"/>
         <TextBlock Foreground="Aquamarine" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,41,0,0" Text="Station ID :" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="181"/>
         <TextBlock Foreground="Aquamarine" FontWeight="Bold" FontSize="15"  HorizontalAlignment="Left" Margin="48,101,0,0" Text="Latitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="132"/>
         <TextBlock Foreground="Aquamarine" HorizontalAlignment="Left" FontWeight="Bold" FontSize="15"  Margin="48,172,0,0" Text="Longitude :" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="132"/>
@@ -35,8 +35,8 @@
         <RadioButton Foreground="Aquamarine" FontWeight="Bold" FontSize="15" Name="yesacessdisable" Content="Yes " HorizontalAlignment="Left" Margin="336,330,0,0" VerticalAlignment="Top" />
         <RadioButton Foreground="Aquamarine" Content="No" Name="Nodisableaccess" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="408,330,0,0" VerticalAlignment="Top"/>
         <DockPanel Margin="336,414,52,167" LastChildFill="False">
-            <RadioButton Content="No" FontSize="15" FontWeight="Bold" x:Name="NoDigit" DockPanel.Dock="Right" Width="41"/>
-            <RadioButton Content="Yes" FontSize="15" FontWeight="Bold" x:Name="YesDigit" Width="56"></RadioButton>
+            <RadioButton Content="No" FontSize="15" FontWeight="Bold" Foreground="Aquamarine" x:Name="NoDigit" DockPanel.Dock="Right" Width="41"/>
+            <RadioButton Content="Yes" Foreground="Aquamarine" FontSize="15" FontWeight="Bold" x:Name="YesDigit" Width="56"></RadioButton>
         </DockPanel>
         <Label Foreground="Aquamarine" Content="If you type a fake address,then u'll have a fake Lat/Lon ..." FontSize="12" FontStyle="Italic" FontWeight="DemiBold"  HorizontalAlignment="Left" Margin="150,274,0,0" VerticalAlignment="Top" Width="350"/>
 

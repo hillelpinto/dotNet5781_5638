@@ -53,11 +53,12 @@ namespace PL.WorkerWindow
                 else
                 {
                     l.ID = r.Next(0, 10000);
-                    while (instance.getAllAllLine().ToList().Exists(line => line.ID == l.ID))
+                    while (instance.getAllAllLine().ToList().Exists(line => line.ID == l.ID))//Its the only place we add the ID in PL because we have to use it in the adding of the First/Last Station to indicate them that they belong to it
+                    {
                         l.ID = r.Next(0, 10000);
-
+                    }
                     l.area = (Area)ComboArea.SelectedIndex;
-                    StationLine first = instance.fromStation(instance.GetStations().ToList()[firststationcombo.SelectedIndex]);
+                    StationLine first = instance.fromStation(instance.GetStations().ToList()[firststationcombo.SelectedIndex]);//The first stations of the line
                    
                     first.LineHere = l.ID;
                     l.CheckedOrNot = false;

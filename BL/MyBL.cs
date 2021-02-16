@@ -53,7 +53,7 @@ namespace BL
                 throw new BLException(ex.Message);
             }
         }
-        public List<Bus> getBusesFilteringbyFuel()
+        public List<Bus> getBusesFilteringbyFuel()//Ordering by LINQ
         {
             List<Bus> ListFiltered = GetBuses();
             var toreturn = from bus in ListFiltered orderby bus.Fuel descending select bus;
@@ -117,14 +117,14 @@ namespace BL
         public List<Line> getLines()//It search all the lines saved and add it all the stationLine which passing through 
         {
             List<Line> t = new List<Line>();
-            dalData.getLines().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));
+            dalData.getLines().ToList().ForEach(line => t.Add(Deepcopy.convertToBOLine(line)));//here we just have the line
             foreach(Line l in t.ToList())
             {
                 foreach(StationLine s in getmyStationsLines())
                 {
-                    if (s.LineHere == l.ID)
+                    if (s.LineHere == l.ID)//It means that this stations is passed by the line l
                     {
-                        if (s.positioninmyLine!=null)
+                        if (s.positioninmyLine!=null)//We check if there's an index to pay attentio for
                         {
                             l.listStations.Insert(int.Parse(s.positioninmyLine), s);
                         }
@@ -134,7 +134,7 @@ namespace BL
                         }
                     }
                 }
-                if (l.listStations.Count() >= 2)
+                if (l.listStations.Count() >= 2)//If the line contains - than 2 stations it's not "a line"
                 {
 
                     setIndexinLine(l);
@@ -147,10 +147,10 @@ namespace BL
                     modifyLine(l);
                     t.Remove(l);
                 }
-                getMyHours(l);
+                getMyHours(l);//Get the time of start/end/
                 l.listStations[l.listStations.Count - 1].Distance = 0;
 
-                l.listStations[l.listStations.Count - 1].Temps = new TimeSpan(0,0,0);
+                l.listStations[l.listStations.Count - 1].Temps = new TimeSpan(0,0,0);//because there's no next stop at the terminus
 
             }
 
@@ -159,7 +159,7 @@ namespace BL
         }
       
 
-        public void setIndexinLine(Line l)//It set al the needed value in a line (distance,time,first station,last station..) 
+        public void setIndexinLine(Line l)//It set all the needed value in a line (distance,time,first station,last station..) 
             {
             
                 for (int a = 0; a < l.listStations.Count(); a++)
@@ -247,7 +247,7 @@ namespace BL
         public bool deleteLines()//It delete all the stations in the line too
             {
             IEnumerable<Line> lineInDeletion = getAllAllLine().ToList().Where(line => line.CheckedOrNot == true).ToList();
-            IEnumerable<StationLine> deleteStationFirst = getmyStationsLines().Where(station => lineInDeletion.ToList().Exists(line => line.ID == station.LineHere));
+            IEnumerable<StationLine> deleteStationFirst = getmyStationsLines().Where(station => lineInDeletion.ToList().Exists(line => line.ID == station.LineHere));//To catch the stations in the line in order to update them
             deleteStationFirst.ToList().ForEach(station => station.CheckedOrNot = true);
             deleteStationFirst.ToList().ForEach(station => modifyStationline(station));
          
@@ -294,7 +294,7 @@ namespace BL
                 List<StationLine> list = new List<StationLine>();
             
             dalData.getstationslines().ForEach(station => list.Add(convertSLinetoBO(station)));
-            list.ForEach(station => getmyTime(station));
+            list.ForEach(station => getmyTime(station));//Linq request to get the time and distance from the data in StatiosConnected
 
            
             return list.ToList();
@@ -310,7 +310,7 @@ namespace BL
                 i.Temps = getStationConnected().ToList()[index].timeBetween;
             }
         }
-        public StationLine findlineForStation(StationLine i)//This function will give all the line pasing through a station
+        public StationLine findlineForStation(StationLine i)//This function will give all the line passing through a specific station
         {
             List<StationLine> ss = getmyStationsLines().Where(station => station.shelterNumber == i.shelterNumber).ToList();
             StationLine s = i;
@@ -343,7 +343,7 @@ namespace BL
                 dalData.addStationL(s);
          
             }
-            public void modifyStationline(StationLine l)//
+            public void modifyStationline(StationLine l)//In the system if the station 321 is passyng by the line 1 and 2 then we'll have 2 stationline so when we want to delete the station 321 we have to delete all of them
             {
             List<StationLine> tonotDelete = new List<StationLine>();
             tonotDelete = getAllStationsLines().Where(station => station.shelterNumber == l.shelterNumber).ToList();
@@ -441,7 +441,7 @@ namespace BL
             s.latitude = latitude.ToString();
             s.longitude = longitude.ToString();
         }
-        void setLontLat(DAL.DO.Station s)
+        void setLontLat(DAL.DO.Station s)//Request google and parse the xml response to check if the address is real and in israel ,if its not =>we add to the station random values in latitude and longitude
         {
             bool inIsrael = false;
 
@@ -513,7 +513,7 @@ namespace BL
             simulatorClock.Rate = Rate;
             simulatorClock.stopWatch.Restart();
             simulatorClock.ClockObserver += updateTime;
-            while (simulatorClock.Cancel != true)
+            while (simulatorClock.Cancel != true)//Until we didnt click on stop simlation the time in our simulatorClock still working on adding the timeElapsed
             {
                 simulatorClock.Time = startTime + new TimeSpan(simulatorClock.stopWatch.ElapsedTicks * simulatorClock.Rate);
                 if (simulatorClock.Time.Hours == 23 && simulatorClock.Time.Minutes == 59 && simulatorClock.Time.Seconds == 59)
@@ -550,7 +550,7 @@ namespace BL
             return end;
 
         }
-        public bool commitDistanceTime(Stationsconnected s)
+        public bool commitDistanceTime(Stationsconnected s)//When we want to commit distance/time between 2 stationline we add this commit to the pbject which contains those value 
         {
             DAL.DO.Stationsconnected l = new DAL.DO.Stationsconnected();
             l.numeroUno = s.numeroUno;
@@ -703,7 +703,7 @@ namespace BL
         public List<Trip> getmyTrips(StationLine depart,StationLine arrive)
         {
             List<Trip> myList = new List<Trip>();
-            IEnumerable<Line> myLines = getLines().Where(line => line.listStations.Exists(station => station.shelterNumber == depart.shelterNumber));
+            IEnumerable<Line> myLines = getLines().Where(line => line.listStations.Exists(station => station.shelterNumber == depart.shelterNumber));//We get a list with all the line which contains the deeparture station
             List<Line> myRealLine = myLines.ToList();
             foreach(Line l in myRealLine.ToList())
             {
@@ -711,12 +711,12 @@ namespace BL
                 int lastindex = l.listStations.FindIndex(station => station.shelterNumber == arrive.shelterNumber);
                 if(lastindex!=-1)
                 {
-                    if (lastindex < firstIndex)
+                    if (lastindex < firstIndex)//It means that the arrival station is before the departure ...so no way,we remove it
                         myRealLine.Remove(l);
                 }
             }
             List<Trip> ListToreturn = new List<Trip>();
-            myRealLine.ForEach(item => ListToreturn.Add(new Trip(item, HelptheTrip(item, depart, arrive))));
+            myRealLine.ForEach(item => ListToreturn.Add(new Trip(item, HelptheTrip(item, depart, arrive))));//Here we get a list of line with time they made to make the journey
             var i=from item in ListToreturn orderby item.time ascending select item;
             return i.ToList();
         }

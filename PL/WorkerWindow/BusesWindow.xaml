@@ -121,20 +121,20 @@
         <TextBlock HorizontalAlignment="Left" Name="DriveForPopu" Margin="850,348,0,0" Text="Driver's Name" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Name="SeatForpopup" Margin="850,388,0,0" Text="Seat Available" Foreground="Orange" FontSize="15" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="26"/>
         <Popup  Placement="Bottom" PopupAnimation="Scroll"  PlacementTarget="{Binding ElementName=DriveForPopu}"  Name="PopupDriver" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Orange"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
+            <TextBlock Foreground="Black"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
         </Popup>
         <Popup  Placement="Bottom" PopupAnimation="Scroll" PlacementTarget="{Binding ElementName=SeatForpopup}"  Name="PopupSeat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="21" IsOpen="False">
-            <TextBlock Foreground="Orange"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
+            <TextBlock Foreground="Black"  Background="White" FontStyle="Italic" >Make commit here !</TextBlock>
         </Popup>
 
-        <TextBox HorizontalAlignment="Left" Margin="1052,104,0,0" Text="{Binding GFormat}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Orange" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="1052,144,0,0" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="1052,188,0,0" Text="{Binding Fuel}" FontSize="15" IsReadOnly="True"  FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="1052,228,0,0" Name="KmText" Text="{Binding Km}" FontSize="15" IsReadOnly="True" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="1052,268,0,0" Text="{Binding KmAfterLastMaintenance,UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold" IsReadOnly="True" Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="21"/>
-        <TextBox HorizontalAlignment="Left" Margin="1052,308,0,0" IsReadOnly="True" Text="{Binding Checkup,StringFormat='dd/MM/yyyy',UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" TextChanged="driverpopup" Margin="1052,348,0,0" IsReadOnly="True" Text="{Binding DriverName}" Name="DriverField" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
-        <TextBox TextChanged="seatpopup" HorizontalAlignment="Left" Margin="1052,388,0,0" IsReadOnly="True" Name="SeatField" Text="{Binding SeatAvailable}" FontSize="15" FontWeight="Bold"  Foreground="Gray" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox HorizontalAlignment="Left" Margin="1052,104,0,0" Text="{Binding GFormat}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,144,0,0" Text="{Binding startDate,StringFormat='dd/MM/yyyy'}" IsReadOnly="True" FontSize="15" FontWeight="Bold" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,188,0,0" Text="{Binding Fuel}" FontSize="15" IsReadOnly="True"  FontWeight="Bold"   Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,228,0,0" Name="KmText" Text="{Binding Km}" FontSize="15" IsReadOnly="True" FontWeight="Bold"   Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,268,0,0" Text="{Binding KmAfterLastMaintenance,UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold" IsReadOnly="True"  Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="21"/>
+        <TextBox HorizontalAlignment="Left" Margin="1052,308,0,0" IsReadOnly="True" Text="{Binding Checkup,StringFormat='dd/MM/yyyy',UpdateSourceTrigger=PropertyChanged}" FontSize="15" FontWeight="Bold"   Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" TextChanged="driverpopup" Margin="1052,348,0,0" IsReadOnly="True" Text="{Binding DriverName}" Name="DriverField" FontSize="15" FontWeight="Bold"   Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox TextChanged="seatpopup" HorizontalAlignment="Left" Margin="1052,388,0,0" IsReadOnly="True" Name="SeatField" Text="{Binding SeatAvailable}" FontSize="15" FontWeight="Bold"   Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="600,22,0,0" FontSize="15" VerticalAlignment="Top" Width="155" Height="25" Name="Combofilter" SelectionChanged="Combofilter_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="366,41,0,0" FontSize="15" FontWeight="Bold" Text="Searching and Filtering by :" TextWrapping="Wrap" Foreground="Orange" VerticalAlignment="Top" Height="32" Width="212"/>
         <TextBox Name="LicenseTosearch" HorizontalAlignment="Left" Margin="600,54,0,0" Text="Type the license ..." TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="25" TextChanged="TextBox_TextChanged"/>

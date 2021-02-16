@@ -33,12 +33,12 @@ namespace PL.WorkerWindow
             if (simulatorClock.Time.Seconds != -1)
             {
                 CurrentHour.Visibility = Visibility.Visible;
-                //Hourstxt.Visibility = Visibility.Visible;
+                Hourstxt.Visibility = Visibility.Visible;
             }
             else
             {
                 CurrentHour.Visibility = Visibility.Hidden;
-                //Hourstxt.Visibility = Visibility.Hidden;
+                Hourstxt.Visibility = Visibility.Hidden;
             }
 
             ListLine.DataContext = instance.getLines();

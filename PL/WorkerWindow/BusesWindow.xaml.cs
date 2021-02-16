@@ -331,7 +331,7 @@ namespace PL.WorkerWindow
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (instance.deleteBuses())
+            if (instance.deleteBuses())//If true it means that the driver's name before/after was diferent
             {
                 ListBus.DataContext = instance.GetBuses();
                 MessageBox.Show("Bus(es) deleted successfully !");

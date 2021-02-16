@@ -32,7 +32,7 @@ namespace PL.WorkerWindow
             temp = l;
             myList = instance.GetStations().Where(station => l.listStations.Exists(stationL => stationL.shelterNumber == station.shelterNumber) == false).ToList();//Get all the stations except the stations already in the line
             InitializeComponent();
-            mycombo.ItemsSource = myList;
+            mycombo.ItemsSource = myList;//We get here a list of the stations except the stations existing in the listStations of the line
 
         }
 
@@ -55,7 +55,7 @@ namespace PL.WorkerWindow
                     instance.addStationl(s);
                     s = instance.getAllStationsLines().Find(item => item.shelterNumber == s.shelterNumber&&item.LineHere==temp.ID);
 
-                    if (test - 1 >= 0)
+                    if (test - 1 >= 0)//It means that the index wasn't the terminus
                     {
                         instance.addOneCouple(s, temp.listStations[test - 1]);
 
