@@ -35,6 +35,9 @@ namespace PL.WorkerWindow
             ComboArea.ItemsSource = Enum.GetValues(typeof(Area)).Cast<Area>().ToList();
 
         }
+        /// <summary>
+        /// Event when we add a line ,we add too 2 stations which corresponds to the 2 stations in the line
+        /// </summary>
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

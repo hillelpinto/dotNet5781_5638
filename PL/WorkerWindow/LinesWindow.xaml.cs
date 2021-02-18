@@ -50,7 +50,10 @@ namespace PL.WorkerWindow
             window.Show();
             this.Close();
         }
-        
+        /// <summary>
+        /// Print the details about the simulation between time and arrival
+        /// </summary>
+
         private void ScheduleClicked(object sender, RoutedEventArgs e)
         {
             var thisLine = (sender as Button).DataContext as Line;
@@ -59,6 +62,9 @@ namespace PL.WorkerWindow
 
             ListLine.DataContext = instance.getLines();
          }
+        /// <summary>
+        /// Print the stations in the line we clicked on
+        /// </summary>
 
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
@@ -72,6 +78,9 @@ namespace PL.WorkerWindow
                 myDetails.Items.Refresh();
             }
         }
+        /// <summary>
+        /// In order to delete a station in a line
+        /// </summary>
         private void stationchecked(object sender, RoutedEventArgs e)
         {
             DeleetStationbutton.IsEnabled = true;
@@ -92,6 +101,9 @@ namespace PL.WorkerWindow
                 countS++;
             }
         }
+        /// <summary>
+        /// In order to deselect a station in deletion
+        /// </summary>
         private void stationunchecked(object sender, RoutedEventArgs e)
         {
             countS--;
@@ -107,6 +119,9 @@ namespace PL.WorkerWindow
             thisStation.CheckedOrNot = false;
             instance.modifyOnlyOneStation(thisStation);
         }
+        /// <summary>
+        /// Delete a line
+        /// </summary>
         private void LineChecked(object sender, RoutedEventArgs e)
         {
             DeleteLineButton.IsEnabled = true;
@@ -120,6 +135,9 @@ namespace PL.WorkerWindow
                 count++;
             
         }
+        /// <summary>
+        /// Deselect a line for deletion
+        /// </summary>
         private void LineUnchecked(object sender, RoutedEventArgs e)
         {
             count--;
@@ -137,6 +155,9 @@ namespace PL.WorkerWindow
                 instance.modifyLine(thisLine);
             }
         }
+        /// <summary>
+        /// Open the window to add a line
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddLine window = new AddLine(instance);
@@ -145,7 +166,9 @@ namespace PL.WorkerWindow
             ListLine.DataContext = instance.getLines();
 
         }
-
+        /// <summary>
+        /// Event when we delete a line
+        /// </summary>
         private void DeleteLineButton_Click(object sender, RoutedEventArgs e)
         {
             var data = (BL.BO.Line)myData.DataContext;
@@ -167,6 +190,9 @@ namespace PL.WorkerWindow
              
             }
         }
+        /// <summary>
+        /// Event when we click to add a station in line
+        /// </summary>
         private void AddStationpressed(object sender, RoutedEventArgs e)
         {
             var cb = sender as Button;
@@ -177,6 +203,9 @@ namespace PL.WorkerWindow
             myData.DataContext =myDetails.DataContext=linepresented.Text= null;
 
         }
+        /// <summary>
+        /// Evenet when we click on the delete button for station
+        /// </summary>
 
         private void DeleetStationbutton_Click(object sender, RoutedEventArgs e)
         {

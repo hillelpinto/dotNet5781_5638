@@ -29,6 +29,9 @@ namespace PL.WorkerWindow.Views
             ListBus.DataContext = instance.GetStations();
 
         }
+        /// <summary>
+        ///  It sets all the value on the right side about the stations physic
+        /// </summary>
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             try
@@ -52,6 +55,9 @@ namespace PL.WorkerWindow.Views
                 MessageBox.Show(ex.Message);
             }
         }
+        /// <summary>
+        ///This event is the callback of the checkbox selected when we want to delte a station
+        /// </summary>
         private void changed(object sender, RoutedEventArgs e)
         {
             count++;
@@ -65,6 +71,9 @@ namespace PL.WorkerWindow.Views
 
 
         }
+        /// <summary>
+        ///Same as the function below but when we deselect
+        /// </summary>
         private void unchanged(object sender, RoutedEventArgs e)
         {
             count--;
@@ -80,10 +89,16 @@ namespace PL.WorkerWindow.Views
             }
 
         }
+        /// <summary>
+        ///Popup shown
+        /// </summary>
         private void addpopup(object sender, TextChangedEventArgs e)
         {
             Popupadd.IsOpen = false;
         }
+        /// <summary>
+        ///This function is launched when we click on the delte button,it erased all the stations selected
+        /// </summary>
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -99,7 +114,9 @@ namespace PL.WorkerWindow.Views
 
             }
         }
-
+        /// <summary>
+        ///It opens the window to add a station
+        /// </summary>
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             AddStation window = new AddStation(instance);
@@ -107,6 +124,9 @@ namespace PL.WorkerWindow.Views
             ListBus.DataContext = instance.GetStations();
             ListBus.Items.Refresh();
         }
+        /// <summary>
+        ///It gets the data in address field and update it according to a new lat lon value ,and set it to the station selected
+        /// </summary>
 
         private void updatebutton_Click(object sender, RoutedEventArgs e)
         {

@@ -56,7 +56,9 @@ namespace PL.WorkerWindow
         {
             this.Close();
         }
-
+        /// <summary>
+        /// It launch the buse's window
+        /// </summary>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -64,16 +66,19 @@ namespace PL.WorkerWindow
             window.Show();
             this.Close();
         }
-
+        /// <summary>
+        /// It launch the lin's window
+        /// </summary>
         private void LineButton_Click(object sender, RoutedEventArgs e)
         {
-            int ssss = simulatorClock.Time.Hours;
             LinesWindow window = new LinesWindow(instance,simulatorClock);
             window.Show();
             this.Close();
         }
-     
-        
+
+        /// <summary>
+        /// It launch the Station's window (Stations bus/ Stations line)
+        /// </summary>
 
         private void StationButton_Click(object sender, RoutedEventArgs e)
         {
@@ -82,6 +87,9 @@ namespace PL.WorkerWindow
             this.Close();
 
         }
+        /// <summary>
+        /// Window will be opened to set the simultion's time's parameter
+        /// </summary>
         private void simulationstart(object sender, RoutedEventArgs e)
         {
             SimulationParameters win = new SimulationParameters(instance);
@@ -97,7 +105,9 @@ namespace PL.WorkerWindow
             }
 
         }
-
+        /// <summary>
+        /// Set the color and value of our button (start/stop)
+        /// </summary>
         private void stopsimulation(object sender, RoutedEventArgs e)
         {
             StopButton.IsEnabled = false;

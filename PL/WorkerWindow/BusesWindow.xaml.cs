@@ -61,7 +61,9 @@ namespace PL.WorkerWindow
 
 
         }
-
+        /// <summary>
+        /// Set the details on the right side ,according to the sort or not(sort by km/fuel...)
+        /// </summary>
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             int index = ListBus.SelectedIndex;
@@ -101,6 +103,9 @@ namespace PL.WorkerWindow
                 comp2 = SeatField.Text;
             }
         }
+        /// <summary>
+        /// Set the thread when we want to make a maintenance
+        /// </summary>
         private void MaintenanceClicked(object sender, RoutedEventArgs e)
         {
             var b = (sender as Button).DataContext as Bus;
@@ -127,7 +132,9 @@ namespace PL.WorkerWindow
             else
                 MessageBox.Show("Error !");
         }
-
+        /// <summary>
+        /// Set the value in the progressbar
+        /// </summary>
         private void threadMaintenance_DoWork(object sender, DoWorkEventArgs e)
         {
             var mine = (Bus)e.Argument;//mine will be the bus we passed in parameter of the runworkerasynch
@@ -142,6 +149,9 @@ namespace PL.WorkerWindow
             mine.Percent = 100;
             e.Result = mine;
         }
+        /// <summary>
+        /// Set the thread about the refuel
+        /// </summary>
 
         private void RefuelClicked(object sender, RoutedEventArgs e)
         {
@@ -153,7 +163,9 @@ namespace PL.WorkerWindow
             threadRefuel.RunWorkerAsync(data);
 
         }
-
+        /// <summary>
+        /// We finish with a fullTank so we set it
+        /// </summary>
         private void threadRefuel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             var item = (Bus)e.Result;
@@ -183,7 +195,9 @@ namespace PL.WorkerWindow
             mine.Percent = 100;
             e.Result = mine;
         }
-
+        /// <summary>
+        /// Open the window to add a bus to the system
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddBus window = new AddBus(instance);
@@ -193,7 +207,9 @@ namespace PL.WorkerWindow
             ListBus.DataContext = instance.GetBuses();
            
         }
-
+        /// <summary>
+        /// Get the data in the driver and seat field and update it to the bus selected
+        /// </summary>
 
         private void Update(object sender, RoutedEventArgs e)
         {
@@ -239,6 +255,9 @@ namespace PL.WorkerWindow
             this.Close();
            
         }
+        /// <summary>
+        /// Event when we want to delete a bus
+        /// </summary>
         private void changed(object sender, RoutedEventArgs e)
         {
             DeleteButton.IsEnabled = true;
@@ -249,6 +268,9 @@ namespace PL.WorkerWindow
             count++;
             
         }
+        /// <summary>
+        /// Event in deselection of deletion of a bus
+        /// </summary>
         private void unchanged(object sender, RoutedEventArgs e)
         {
             count--;
@@ -259,7 +281,9 @@ namespace PL.WorkerWindow
             thisbus.CheckedOrNot = false;
             instance.modifyBus(thisbus);
         }
-
+        /// <summary>
+        /// Set the listview item according to a specific sort
+        /// </summary>
         private void Combofilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -299,6 +323,9 @@ namespace PL.WorkerWindow
         {
 
         }
+        /// <summary>
+        /// Popup shown
+        /// </summary>
         private void seatpopup(object sender, TextChangedEventArgs e)
         {
             PopupDriver.IsOpen = false;
@@ -327,7 +354,9 @@ namespace PL.WorkerWindow
                 MessageBox.Show(check.Message);
             }
         }
-
+        /// <summary>
+        /// We make the deletion of buses selected
+        /// </summary>
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 

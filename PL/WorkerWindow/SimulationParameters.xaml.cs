@@ -28,6 +28,9 @@ namespace PL.WorkerWindow
             InitializeComponent();
             instance = b;
         }
+        /// <summary>
+        /// When we have input a correct time we launch a thread which call a function which sets the hours in the system
+        /// </summary>
         public void Validation(object sender, RoutedEventArgs e)
         {
             TimeSpan temp = new TimeSpan();
@@ -56,6 +59,9 @@ namespace PL.WorkerWindow
 
 
         }
+        /// <summary>
+        /// The doWork function of the thread to launch the simulation
+        /// </summary>
 
         private void Simulator(object sender, DoWorkEventArgs e)
         {
@@ -68,6 +74,9 @@ namespace PL.WorkerWindow
                 Dispatcher.BeginInvoke(new Action(() => hours.Content=myTime.ToString()));
             });
         }
+        /// <summary>
+        /// It catch the data in hours field and also the rate
+        /// </summary>
         private void GetValue(out TimeSpan myTime,out int Rate)
         {
             myTime = new TimeSpan(int.Parse(Hours.Text), int.Parse(Minutes.Text), int.Parse(Seconds.Text));

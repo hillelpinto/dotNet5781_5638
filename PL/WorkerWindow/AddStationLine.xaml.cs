@@ -35,6 +35,9 @@ namespace PL.WorkerWindow
             mycombo.ItemsSource = myList;//We get here a list of the stations except the stations existing in the listStations of the line
 
         }
+        /// <summary>
+        /// We starting with a clone of the station selected and add to it the line hich passing through
+        /// </summary>
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

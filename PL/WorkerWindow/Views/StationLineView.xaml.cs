@@ -29,11 +29,9 @@ namespace PL.WorkerWindow.Views
             
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
-        private void ChangeColor(object sender,MouseEventArgs e)
-        {
-
-           
-        }
+        /// <summary>
+        /// Set the value of the data about the line which passin through in this stations but also all on all the line which passing through,no only one
+        /// </summary>
         private void ListBus_SelectionDetail(object sender, MouseButtonEventArgs e)
         {
             if (ListBus.SelectedIndex != -1)
@@ -59,7 +57,9 @@ namespace PL.WorkerWindow.Views
                 terminus.Text = instance.getmyStationsLines().Find(station => station.shelterNumber == i.myLines[0].lastStation).address;
             }
         }
-
+        /// <summary>
+        /// We get the lat/lon value ,correct their format and set them to a webbrowser to print them on a map
+        /// </summary>
         private void MapRequest(object sender, RoutedEventArgs e)
         {
             var cb = sender as Button;
@@ -74,6 +74,9 @@ namespace PL.WorkerWindow.Views
             map.ShowDialog();
            
         }
+        /// <summary>
+        /// It open the simulation's window
+        /// </summary>
         private void SimulationClicked(object sender, RoutedEventArgs e)
         {
             if (simulatorClock.Time.Seconds != -1)
@@ -85,6 +88,11 @@ namespace PL.WorkerWindow.Views
                 MessageBox.Show("Please activate the simulation in the main Menu !");
         
         }
+        /// <summary>
+        ///   /// <summary>
+        /// Event when we want to deselect the deletion of a station
+        /// </summary>
+        /// </summary>
 
         private void unchanged(object sender, RoutedEventArgs e)
         {
@@ -102,7 +110,9 @@ namespace PL.WorkerWindow.Views
            
 
         }
-       
+        /// <summary>
+        /// Click to delete a station in the checkbox
+        /// </summary>
         private void changed(object sender, RoutedEventArgs e)
         {
 
@@ -116,6 +126,9 @@ namespace PL.WorkerWindow.Views
             count++;
 
         }
+        /// <summary>
+        /// Event when we have to delete a station or stations selected
+        /// </summary>
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             Popupdistance.IsOpen = false;
@@ -134,6 +147,9 @@ namespace PL.WorkerWindow.Views
             }
 
         }
+        /// <summary>
+        /// Open the window to add a stations line
+        /// </summary>
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             Popupdistance.IsOpen = false;
@@ -143,6 +159,9 @@ namespace PL.WorkerWindow.Views
             win.ShowDialog();
             ListBus.DataContext = instance.getmyStationsLines().GroupBy(id => id.shelterNumber).Select(y => y.First());
         }
+        /// <summary>
+        /// When we update the time or distance of the stations in a line specific selected in the combobox
+        /// </summary>
         private void updatebutton_Click(object sender, RoutedEventArgs e)
         {
             Popupdistance.IsOpen = false;
@@ -171,7 +190,9 @@ namespace PL.WorkerWindow.Views
             else
                 MessageBox.Show("Error of time format !");
         }
-
+        /// <summary>
+        /// It set all thevalue of the line selected which passing through a station
+        /// </summary>
         private void mycomboLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (mycomboLine.SelectedIndex != -1)

@@ -52,6 +52,9 @@ namespace PL.WorkerWindow
             this.Close();
 
         }
+        /// <summary>
+        /// Launch the stations line view
+        /// </summary>
         private void LinesChecked(object sender, RoutedEventArgs e)
         {
             DataContext = new StationLineModels();
@@ -62,6 +65,9 @@ namespace PL.WorkerWindow
             BusButton.IsChecked = true;
 
         }
+        /// <summary>
+        /// Launch the stations view
+        /// </summary>
         private void BusesChecked(object sender, RoutedEventArgs e)
         {
             DataContext = new StationModels();

@@ -32,7 +32,9 @@ namespace PL.WorkerWindow
             Old.IsChecked = true;
             OldBus = true;
         }
-
+        /// <summary>
+        /// We check all the input(old or not) and then save the bus in database
+        /// </summary>
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
 
@@ -86,7 +88,9 @@ namespace PL.WorkerWindow
             }
           
         }
-
+        /// <summary>
+        /// Set the visibility when old or not
+        /// </summary>
         private void New_Checked(object sender, RoutedEventArgs e)
         {
             flag = true;
@@ -108,6 +112,9 @@ namespace PL.WorkerWindow
             checkuplabel.Visibility = Visibility.Hidden;
 
         }
+        /// <summary>
+        /// Set the visibility when ths bus to add is old
+        /// </summary>
         private void Old_Checked(object sender, RoutedEventArgs e)
         {
             OldBus = true;

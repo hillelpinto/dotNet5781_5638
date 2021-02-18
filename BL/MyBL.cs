@@ -27,19 +27,26 @@ namespace BL
             dalData.init();
         }
         #region BusFunction
-
+        /// <summary>
+        ///For adapt the do bus to bo bus which we present it in the PL
+        /// </summary>
         public BO.Bus convertBusToBO(DAL.DO.Bus a)
         {
             Bus b = new Bus();
             a.CopyPropertiesTo(b);
             return b;
         }
-
+        /// <summary>
+        ///Set the status about the need of mainteance /refuel etc...
+        /// </summary>
         public void checkStatus()
         {
             dalData.checkstatus();
 
         }
+        /// <summary>
+        ///If the bus didnt exist ,it add him
+        /// </summary>
         public void addBus(Bus a)
         {
             try
@@ -53,23 +60,35 @@ namespace BL
                 throw new BLException(ex.Message);
             }
         }
+        /// <summary>
+        ///LINQ Sort
+        /// </summary>
         public List<Bus> getBusesFilteringbyFuel()//Ordering by LINQ
         {
             List<Bus> ListFiltered = GetBuses();
             var toreturn = from bus in ListFiltered orderby bus.Fuel descending select bus;
             return toreturn.ToList();
         }
+        /// <summary>
+        ///Same
+        /// </summary>
         public List<Bus> getBusesFilteringByKmC()
         {
             var Listfiltered = from bus in GetBuses() orderby bus.KmAfterLastMaintenance descending select bus;
 
             return Listfiltered.ToList();
         }
+        /// <summary>
+        ///Same
+        /// </summary>
         public List<Bus> getBusesFilteringbyKm()
         {
             IEnumerable<Bus> Listfiltered = from bus in GetBuses() orderby bus.Km descending select bus;
             return Listfiltered.ToList();
         }
+        /// <summary>
+        ///Catch a string and print all the license starting with this value
+        /// </summary>
         public List<Bus> getBusesFilteringBylicense(string a)
         {
             bool check = GetBuses().Exists(item => item.license.ToString().Substring(0, a.Length) == a);
@@ -79,6 +98,9 @@ namespace BL
             return Listfiltered.ToList();
 
         }
+        /// <summary>
+        ///Get the data
+        /// </summary>
         public List<Bus> GetBuses()
         {
             List<DAL.DO.Bus> myList = dalData.getmyBuses().ToList();
@@ -89,13 +111,18 @@ namespace BL
             }
             return MyList;
         }
-     
+        /// <summary>
+        ///Set the boolean value to disable
+        /// </summary>
         public bool deleteBuses()
         {
             return dalData.deletebuses();
 
         }
-      
+        /// <summary>
+        ///If we change the driver's name or the number of the avilable seat ,the commit is made here(call for commit because its dl more precisely..)
+        /// </summary>
+
         public void modifyBus(Bus b)
         {
 
@@ -106,14 +133,18 @@ namespace BL
         #endregion
 
         #region LineFunction
-
+        /// <summary>
+        ///It set all the value of the line in parameter to the line already existing in the system
+        /// </summary>
         public void modifyLine(Line l)
         {
             DAL.DO.Line s = Deepcopy.convertToDOLine(l);
             dalData.modifyLine(s);
         }
-    
 
+        /// <summary>
+        ///Get the line but with all the data corresponding (Hours of service , station's list ...)
+        /// </summary>
         public List<Line> getLines()//It search all the lines saved and add it all the stationLine which passing through 
         {
             List<Line> t = new List<Line>();
@@ -157,7 +188,9 @@ namespace BL
 
             return t;
         }
-      
+        /// <summary>
+        ///Set the index of the station's line in the line 
+        /// </summary>
 
         public void setIndexinLine(Line l)//It set all the needed value in a line (distance,time,first station,last station..) 
             {
@@ -196,7 +229,10 @@ namespace BL
                 }
 
             }
-            public void addLine(Line l)
+        /// <summary>
+        ///If the stations dint exist we add it 
+        /// </summary>
+        public void addLine(Line l)
             {
             try
             {
@@ -213,6 +249,9 @@ namespace BL
                 throw new BLException(ex.Message);
             }
             }
+        /// <summary>
+        ///It takes a line and set it the hours of service ccording to its data in ExitLine
+        /// </summary>
         public void getMyHours(Line l)
         {
 
@@ -224,6 +263,9 @@ namespace BL
                
             }
         }
+        /// <summary>
+        ///If we want to add a line we add also an objet with his ID and the hours of service
+        /// </summary>
         public void addLineSchedule(ExitLine l)
         {
             DAL.DO.ExitLine S = new DAL.DO.ExitLine();
@@ -243,7 +285,9 @@ namespace BL
 
         //}
 
-
+        /// <summary>
+        ///Delete a line and all the stations inside him
+        /// </summary>
         public bool deleteLines()//It delete all the stations in the line too
             {
             IEnumerable<Line> lineInDeletion = getAllAllLine().ToList().Where(line => line.CheckedOrNot == true).ToList();
@@ -255,10 +299,13 @@ namespace BL
                 return dalData.DeleteLines();
             }
 
-            #endregion
+        #endregion
 
         #region StationLineFunction
-            public StationLine convertSLinetoBO(DAL.DO.StationLine s)
+        /// <summary>
+        ///Adapt the DO line to BO line that will be represented in PL
+        /// </summary>
+        public StationLine convertSLinetoBO(DAL.DO.StationLine s)
             {
                 StationLine l = new StationLine();
       
@@ -277,19 +324,27 @@ namespace BL
             l.ID = s.ID;
             return l;
         }
+        /// <summary>
+        ///It returns the stations line without the line passing through them
+        /// </summary>
         public List<StationLine> getAllStationsLines()
         {
             List<StationLine> toReturn = new List<StationLine>();
             dalData.getAllStationsLines().ForEach(station => toReturn.Add(convertSLinetoBO(station)));
             return toReturn;
         }
-
-            public bool deleteStationLine()
+        /// <summary>
+        ///
+        /// </summary>
+        public bool deleteStationLine()
             {
 
                 return dalData.deleteStationLine();
             }
-            public List<StationLine> getmyStationsLines()//It returns all the stationsLine with setting it time and distance acording to stationsConected 
+        /// <summary>
+        ///This function returns the stations line with in each of them a list of lines passing through
+        /// </summary>
+        public List<StationLine> getmyStationsLines()//It returns all the stationsLine with setting it time and distance acording to stationsConected 
             {
                 List<StationLine> list = new List<StationLine>();
             
@@ -299,7 +354,9 @@ namespace BL
            
             return list.ToList();
             }
-
+        /// <summary>
+        ///Take a station and set its time and distance o the next station according to the StationsConnected
+        /// </summary>
         public void getmyTime(StationLine i)
         {
             int index = getStationConnected().ToList().FindIndex(station => station.numeroUno == i.ID);
@@ -310,6 +367,9 @@ namespace BL
                 i.Temps = getStationConnected().ToList()[index].timeBetween;
             }
         }
+        /// <summary>
+        ///Take a station and set it his list of line passing through
+        /// </summary>
         public StationLine findlineForStation(StationLine i)//This function will give all the line passing through a specific station
         {
             List<StationLine> ss = getmyStationsLines().Where(station => station.shelterNumber == i.shelterNumber).ToList();
@@ -322,8 +382,10 @@ namespace BL
             return s;
         }
 
-
-            public StationLine fromStation(Station l)//This function returns the data corresponding to the physical station ,in order to create a stationLine corresponding to it
+        /// <summary>
+        ///Clone a caracteristique physic'station bus to the stationLine corresponding(Same ID code)
+        /// </summary>
+        public StationLine fromStation(Station l)//This function returns the data corresponding to the physical station ,in order to create a stationLine corresponding to it
             {
                 StationLine b = new StationLine();
                 b.shelterNumber = l.shelterNumber;
@@ -335,7 +397,10 @@ namespace BL
                 return b;
 
             }
-            public void addStationl(StationLine l)
+        /// <summary>
+        ///
+        /// </summary>
+        public void addStationl(StationLine l)
             {
            
                 DAL.DO.StationLine s = new DAL.DO.StationLine();
@@ -343,7 +408,10 @@ namespace BL
                 dalData.addStationL(s);
          
             }
-            public void modifyStationline(StationLine l)//In the system if the station 321 is passyng by the line 1 and 2 then we'll have 2 stationline so when we want to delete the station 321 we have to delete all of them
+        /// <summary>
+        ///We set the new value of address and longitude and latitude 
+        /// </summary>
+        public void modifyStationline(StationLine l)//In the system if the station 321 is passyng by the line 1 and 2 then we'll have 2 stationline so when we want to delete the station 321 we have to delete all of them
             {
             List<StationLine> tonotDelete = new List<StationLine>();
             tonotDelete = getAllStationsLines().Where(station => station.shelterNumber == l.shelterNumber).ToList();
@@ -379,25 +447,40 @@ namespace BL
 
                 return a;
             }
-            public IEnumerable<Station> GetStations()
+        /// <summary>
+        ///It gets all the stations marked as enable 
+        /// </summary>
+        public IEnumerable<Station> GetStations()
             {
             List<Station> temp = new List<Station>(); 
                 dalData.GetStation().ToList().ForEach(station => temp.Add(convertStationtoBo(station)));
             IEnumerable<Station> myList = temp.Where(station => station.CheckedOrNot == false);
                 return myList;
             }
-            public IEnumerable<Station> getStationLessOne(int a)
+        /// <summary>
+        ///It gets all the station except the one with a specific station's code
+        /// </summary>
+        /// 
+        public IEnumerable<Station> getStationLessOne(int a)
             {
                 IEnumerable<Station> mystation = GetStations().Where(station => station.shelterNumber != a);
                 return mystation;
 
             }
-           
-            public bool deleteStations()
+
+
+        /// <sum+
+       
+        ///
+        /// </summary>
+        public bool deleteStations()
             {
                 return (dalData.deleteStations());
             }
-            public Station getStation(int a)
+        /// <summary>
+        ///This function returns a station at a specific index
+        /// </summary>
+        public Station getStation(int a)
             {
                 if (a == -1)
                     throw new Exception("Double click on a station !");
@@ -413,7 +496,11 @@ namespace BL
             {
                 throw new NotImplementedException();
             }
-            public void addstation(Station a)
+
+        /// <summary>
+        ///If the stations already exists we throw a error if not,we add it
+        /// </summary>
+        public void addstation(Station a)
             {
             try
             {
@@ -432,7 +519,9 @@ namespace BL
                 throw new BLException(ex.Message);
             }
             }
-
+        /// <summary>
+        ///In case that the address is incorrect
+        /// </summary>
         void setRandomValue(DAL.DO.Station s)
         {
             Random r = new Random();
@@ -445,6 +534,9 @@ namespace BL
             s.latitude = latitude.ToString();
             s.longitude = longitude.ToString();
         }
+        /// <summary>
+        ///Get a reponses in XML format and parse it to get the value about the addresse(longitude and latitude)
+        /// </summary>
         void setLontLat(DAL.DO.Station s)//Request google and parse the xml response to check if the address is real and in israel ,if its not =>we add to the station random values in latitude and longitude
         {
             bool inIsrael = false;
@@ -483,7 +575,11 @@ namespace BL
                 setRandomValue(s);
             }
         }
-       public void modifyStation(Station a)
+
+        /// <summary>
+        ///When we modify the address so the lat lon value are also updated
+        /// </summary>
+        public void modifyStation(Station a)
        {
           
            
@@ -512,7 +608,10 @@ namespace BL
         }
         #endregion
 
-        #region Simulation
+        #region Simulation 
+        /// <summary>
+        ///This function (will be launched in a thread) set a time all the time
+        /// </summary>
         public void StartSimulator(TimeSpan startTime, int Rate, Action<TimeSpan> updateTime)
         {
             SimulatorClock.Instance.Cancel = false;
@@ -535,21 +634,26 @@ namespace BL
         {
             return hours;
         }
+        /// <summary>
+        ///It set the cancel field in the instance of the simulator,at true
+        /// </summary>
         public void StopSimulator()
         {
             SimulatorClock.Instance.Cancel = true;
             SimulatorClock.Instance.Time = new TimeSpan(0, 0, -1);
         }
- 
-      
 
-   
+
+
+
 
 
         #endregion
 
         #region StationConnected
-
+        /// <summary>
+        ///Get the data
+        /// </summary>
         public IEnumerable<Stationsconnected> getStationConnected()
         {
             List<Stationsconnected> toreturn = new List<Stationsconnected>();
@@ -558,6 +662,9 @@ namespace BL
             return end;
 
         }
+        /// <summary>
+        ///When we update the time between 2 stations ,we commit it to the stations connected object corresponding to those stations
+        /// </summary>
         public bool commitDistanceTime(Stationsconnected s)//When we want to commit distance/time between 2 stationline we add this commit to the pbject which contains those value 
         {
             DAL.DO.Stationsconnected l = new DAL.DO.Stationsconnected();
@@ -570,8 +677,10 @@ namespace BL
            
             return dalData.commitTime(l);
         }
-      
 
+        /// <summary>
+        ///When we add a station ,we also add to it a time between him and its adjacent station
+        /// </summary>
         public void addOneCouple(StationLine s,StationLine l)
         {
             DAL.DO.StationLine temp = new DAL.DO.StationLine();
@@ -597,7 +706,9 @@ namespace BL
                 u.CopyPropertiesTo(b);
                 dalData.addUser(b);
             }
-
+        /// <summary>
+        ///Get the data
+        /// </summary>
         public IEnumerable<User> getmyUser()
         {
             List<User> toR = new List<User>();
@@ -612,20 +723,29 @@ namespace BL
                    };
            
         }
-
+        /// <summary>
+        ///When we modify the pwd the user is deleted and created with a new password 
+        /// </summary>
         public void deleteUser(User u)
             {
                 DAL.DO.User b = new DAL.DO.User();
                 u.CopyPropertiesTo(b);
                 dalData.deleteUser(b);
             }
-            public bool isExists(User u)
+        /// <summary>
+        ///In the login we have to check if the user already exists
+        /// </summary>
+
+        public bool isExists(User u)
             {
           
             
                 return dalData.getmyUsers().ToList().Exists(user => user.username == u.username);
             }
-            public bool checkpwd(User a)
+        /// <summary>
+        ///Check if the username and pwd are linked
+        /// </summary>
+        public bool checkpwd(User a)
             {
                 User b = new User();
                 b.pwd = dalData.getmyUsers().ToList().Find(user => user.username == a.username).pwd;
@@ -634,7 +754,11 @@ namespace BL
                 else
                     return false;
             }
-            public void resetpwd(User j)
+
+        /// <summary>
+        ///If the mail is correct we send to the user a new password ,if not we update his pwd by default to 0000
+        /// </summary>
+        public void resetpwd(User j)
             {
                 DAL.DO.User a = new DAL.DO.User();
                 j.CopyPropertiesTo(a);
@@ -688,6 +812,9 @@ namespace BL
             s.CopyPropertiesTo(l);
             return l;
         }
+        /// <summary>
+        ///Get the hours of service of all the line
+        /// </summary>
         public IEnumerable<ExitLine> getmySchedules()
         {
             IEnumerable<DAL.DO.ExitLine> mylist = dalData.getmySchedules();
@@ -695,6 +822,9 @@ namespace BL
             mylist.ToList().ForEach(item => toreturn.Add(convertSchedule(item)));
             return toreturn;
         }
+        /// <summary>
+        ///This function will update the hours of service before with the new one
+        /// </summary>
         public void modifySchedule(ExitLine s)
         {
             DAL.DO.ExitLine l = new DAL.DO.ExitLine();
@@ -708,6 +838,9 @@ namespace BL
 
 
         #region TripClient
+        /// <summary>
+        ///This function will get all the line with a specifif station inside , get the time elapsed between them and return a list of the line ordered by the time they take to make the journey 
+        /// </summary>
         public List<Trip> getmyTrips(StationLine depart,StationLine arrive)
         {
             List<Trip> myList = new List<Trip>();
@@ -728,6 +861,10 @@ namespace BL
             var i=from item in ListToreturn orderby item.time ascending select item;
             return i.ToList();
         }
+
+        /// <summary>
+        ///It make the calcul of the timespan elapsed between the stations of departure to the station of arrival
+        /// </summary>
         private TimeSpan HelptheTrip(Line l,StationLine d,StationLine f)
         {
             TimeSpan timefinal = new TimeSpan(0, 0, 0);

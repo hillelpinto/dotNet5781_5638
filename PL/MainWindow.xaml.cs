@@ -35,13 +35,17 @@ namespace PL
             var image = new BitmapImage(myl);
             myLogo.Source = image;
         }
-
+        /// <summary>
+        /// If we are a worker in the society so we're going to login window
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
           LoginWindow mywindow = new LoginWindow();
             mywindow.ShowDialog();
         }
-
+        /// <summary>
+        /// Open the traveler's window
+        /// </summary>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             PlanningTrip win = new PlanningTrip(instance);

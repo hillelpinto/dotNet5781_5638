@@ -37,6 +37,9 @@ namespace PL.WorkerWindow
             comboFrq.ItemsSource = comboSource;
             comboFrq.SelectedIndex = index;
         }
+        /// <summary>
+        /// Get the data inserted in the new time of the service of the line and update it to the database
+        /// </summary>
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

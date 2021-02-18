@@ -34,9 +34,11 @@ namespace PL.WorkerWindow
 
         }
 
-       
-        
 
+
+        /// <summary>
+        /// Set the visibility when we have to sign in
+        /// </summary>
         private void NeedAcount_Checked(object sender, RoutedEventArgs e)
         {
             pwdnew.Visibility = Visibility.Visible;
@@ -57,6 +59,9 @@ namespace PL.WorkerWindow
             loginbutton.Visibility = Visibility.Hidden;
 
         }
+        /// <summary>
+        /// Get the data to open a new account and add it to the system
+        /// </summary>
         private void signin(object sender, RoutedEventArgs e)
         {
             User a = new User();
@@ -77,7 +82,9 @@ namespace PL.WorkerWindow
             }
 
         }
-
+        /// <summary>
+        /// Settting the visibility when we have to log in
+        /// </summary>
         private void NeedLogin_Checked(object sender, RoutedEventArgs e)
         {
             userfield.Visibility = Visibility.Visible;
@@ -99,6 +106,9 @@ namespace PL.WorkerWindow
             signinbutton.Visibility = Visibility.Hidden;
 
         }
+        /// <summary>
+        /// When we are already in the family so the login button is shown and we can enter to the system with this event
+        /// </summary>
         private void Loginbutton(object sender, RoutedEventArgs e)
         {
             User a = new User();
@@ -117,6 +127,9 @@ namespace PL.WorkerWindow
             else
                 MessageBox.Show("Wrong password !");
         }
+        /// <summary>
+        /// Action of reseting the password's user
+        /// </summary>
         private void resetPassword(object sender,RoutedEventArgs e)
         {
             User a = new User();

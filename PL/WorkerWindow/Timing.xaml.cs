@@ -29,6 +29,9 @@ namespace PL.WorkerWindow
 
         LineTiming s;
         StationLine temp;
+        /// <summary>
+        /// Here we starting with a check of the current hours to know if the line is on service or not
+        /// </summary>
         public Timing(StationLine station,IBl b,SimulatorClock sC)
         {
             InitializeComponent();
@@ -59,7 +62,9 @@ namespace PL.WorkerWindow
 
             myTiming.ToList().ForEach(item => MakeTimer(item, simulatorClock.Rate));
         }
-
+        /// <summary>
+        /// The main function to update the time every seconds but according to the rate in order to know how much seconds we have to substract
+        /// </summary>
         private void MakeTimer(LineTiming clas, int rate)
         {
             TimerLeft = new DispatcherTimer();
@@ -98,6 +103,9 @@ namespace PL.WorkerWindow
 
             };
         }
+        /// <summary>
+        /// This function calculate the time we need to the next start of service ( this function will be used only if the current time is not in the line's service)
+        /// </summary>
         void ServiceEnded(LineTiming line)//This function handle the case that the line is not in  service
         {
             int id = instance.getAllAllLine().ToList().Find(item => item.busLineNumber == line.BusLineNumber).ID;
@@ -130,7 +138,9 @@ namespace PL.WorkerWindow
 
 
         }
-
+        /// <summary>
+        /// It check if the line is already arrived ,if yes so the time restart to the frequencies of the line
+        /// </summary>
         private void Check(LineTiming objet,int rate)//This function check if the bus is arrive to the station then we add to the station frequencies time of the Line
         {
             var temp = (Line)instance.getAllAllLine().ToList().Find(line => line.busLineNumber == objet.BusLineNumber);

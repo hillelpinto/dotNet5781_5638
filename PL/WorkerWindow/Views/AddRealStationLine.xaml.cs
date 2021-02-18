@@ -26,7 +26,9 @@ namespace PL.WorkerWindow.Views
             InitializeComponent();
            mycomboLine.ItemsSource = instance.getLines();
         }
-
+        /// <summary>
+        /// Adding the station
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
@@ -58,6 +60,9 @@ namespace PL.WorkerWindow.Views
             else
                 MessageBox.Show("Error of index !");
         }
+        /// <summary>
+        /// It checks if the index is correct acording to the stations present in the line
+        /// </summary>
         bool checkIndex(StationLine i)
         {
 
@@ -69,6 +74,9 @@ namespace PL.WorkerWindow.Views
             else
                 return false;
         }
+        /// <summary>
+        /// When we select a line ,we have to present the stations which's not already belong to the line
+        /// </summary>
 
         private void mycomboLine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

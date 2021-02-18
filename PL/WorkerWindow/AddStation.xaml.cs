@@ -36,7 +36,9 @@ namespace PL.WorkerWindow
         {
             return yesacessdisable.IsChecked == true;
         }
-
+        /// <summary>
+        /// Event when we add the station: Check the input ,and also if its already exists then add it
+        /// </summary>
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
             if (LicenseN.Text.Length == 0 || Chauffeurname.Text.Length == 0)
