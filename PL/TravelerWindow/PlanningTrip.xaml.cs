@@ -62,7 +62,7 @@ namespace PL.TravelerWindow
                 }
                
             }
-            else if(departure!=null)
+            if(departure!=null)
             {
                 arrival = instance.getAllStationsLines().Find(item => item.address == arrival.address);
                 if (arrival == null)
